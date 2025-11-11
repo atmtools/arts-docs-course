@@ -1,0 +1,803 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="_static/favicon-16x16.png" sizes="16x16" rel="icon" type="image/png">
+    <link href="_static/favicon-32x32.png" sizes="32x32" rel="icon" type="image/png">
+    <link rel="apple-touch-icon" sizes="180x180" href="_static/apple-touch-icon.png" type="image/png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interpolation in ARTS &mdash; ARTS 3.0.0dev8 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="_static/plot_directive.css" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=73457b95" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=3afc90f3"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=f281be69"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Sorted grids" href="dev.matpack.sorted_grid.html" />
+    <link rel="prev" title="Multidimensional views" href="dev.matpack.view.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/arts-logo-light-bg.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="users.html">Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workspace.html">The Workspace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pyarts3.html">API Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="devs.html">For Developers</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="dev.classes.html">ARTS Classes and Structs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev.error.html">Errors inside the C++ code</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="dev.matpack.html">Matpack</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="dev.matpack.Sparse.html">Sparse matrices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dev.matpack.data.html">Multidimensional data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dev.matpack.view.html">Multidimensional views</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Interpolation in ARTS</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#linear-interpolation">Linear interpolation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#higher-order-interpolation">Higher order interpolation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dev.matpack.sorted_grid.html">Sorted grids</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dev.matpack.gridded_data.html">Gridded data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dev.matpack.band_matrix.html">Band matrices</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dev.workspace.html">Workspace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev.doc.html">Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev.xml.html">XML IO</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="indices.html">Indices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contact.html">Contact</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ARTS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="devs.html">For Developers</a></li>
+          <li class="breadcrumb-item"><a href="dev.matpack.html">Matpack</a></li>
+      <li class="breadcrumb-item active">Interpolation in ARTS</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/dev.matpack.interpolation.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="interpolation-in-arts">
+<h1>Interpolation in ARTS<a class="headerlink" href="#interpolation-in-arts" title="Link to this heading"></a></h1>
+<section id="linear-interpolation">
+<h2>Linear interpolation<a class="headerlink" href="#linear-interpolation" title="Link to this heading"></a></h2>
+<p>There are no general single-step interpolation functions in ARTS.
+Instead, there is a set of useful utility functions that can be used
+to achieve interpolation. Roughly, you can separate these into
+functions determining grid position arrays, functions determining
+interpolation weight tensors, and functions applying the
+interpolation. Doing an interpolation thus requires a chain of
+function calls:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">gridpos</span></code> (one for each interpolation dimension)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">interpweights</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">interp</span></code></p></li>
+</ol>
+<p>Currently implemented in ARTS is multilinear interpolation in up to 6
+dimensions. (Is the 6D case called hexa-linear interpolation?)  The
+necessary functions and their interaction will be explained in this
+chapter.</p>
+<section id="implementation-files">
+<h3>Implementation files<a class="headerlink" href="#implementation-files" title="Link to this heading"></a></h3>
+<p>Variables and functions related to interpolation are defined in the files:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">interpolation.h</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">interpolation.cc</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">test</span> <span class="pre">interpolation.cc</span></code></p></li>
+</ul>
+<p>The first two files contain the declarations and implementation,
+the last file some usage examples.</p>
+</section>
+<section id="green-and-blue-interpolation">
+<h3>Green and blue interpolation<a class="headerlink" href="#green-and-blue-interpolation" title="Link to this heading"></a></h3>
+<figure class="align-default" id="id4">
+<a class="reference internal image-reference" href="_images/interpolation_types.svg"><img alt="_images/interpolation_types.svg" src="_images/interpolation_types.svg" style="width: 800px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">The two different types of interpolation. Green (dotted):
+Interpolation to a new grid, output has same dimension as input,
+in this case 2D. Blue (dashed): Interpolation to a sequence of
+points, output is always 1D.</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>There are two different types of interpolation in ARTS:</p>
+<ul class="simple">
+<li><p><em>Green Interpolation</em>: Interpolation of a gridded field to a new grid.</p></li>
+<li><p><em>Blue Interpolation</em>: Interpolation of a gridded field to asequence of positions.</p></li>
+</ul>
+<p>The figure above illustrates the different types
+for a 2D example.</p>
+<p>The first step of an interpolation always consists in determining
+where your new points are, relative to the original grid. You can do
+this separately for each dimension. The positions have to be stored
+somehow, which is described in the next section.</p>
+</section>
+<section id="grid-checking-functions">
+<h3>Grid checking functions<a class="headerlink" href="#grid-checking-functions" title="Link to this heading"></a></h3>
+<p>Before you do an interpolation, you should check that the new grid is
+inside the old grid. (Or only slightly outside.) You can use the
+convenience function <code class="docutils literal notranslate"><span class="pre">chk_interpolation_grids</span></code> for this
+purpose, which resides in file <code class="docutils literal notranslate"><span class="pre">check_input.cc</span></code>. The
+function has the following parameters:</p>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="k">const</span><span class="w"> </span><span class="n">String</span><span class="o">&amp;</span><span class="w">     </span><span class="n">which_interpolation</span><span class="w">   </span><span class="n">A</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="n">describing</span><span class="w"> </span><span class="n">the</span>
+<span class="w">                                        </span><span class="n">interpolation</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">which</span>
+<span class="w">                                        </span><span class="n">the</span><span class="w"> </span><span class="n">grids</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">intended</span><span class="p">.</span>
+<span class="n">ConstVectorView</span><span class="w">   </span><span class="n">old_grid</span><span class="w">              </span><span class="n">The</span><span class="w"> </span><span class="n">original</span><span class="w"> </span><span class="n">grid</span><span class="p">.</span>
+<span class="n">ConstVectorView</span><span class="w">   </span><span class="n">new_grid</span><span class="w">              </span><span class="n">The</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">grid</span><span class="p">.</span>
+<span class="k">const</span><span class="w"> </span><span class="n">Numeric</span><span class="o">&amp;</span><span class="w">    </span><span class="n">extpolfac</span><span class="w">             </span><span class="n">The</span><span class="w"> </span><span class="n">extrapolation</span><span class="w"> </span><span class="n">fraction</span><span class="p">.</span>
+<span class="w">                                        </span><span class="n">See</span><span class="w"> </span><span class="n">gridpos</span><span class="w"> </span><span class="n">function</span><span class="w"> </span><span class="k">for</span>
+<span class="w">                                        </span><span class="n">details</span><span class="p">.</span><span class="w"> </span><span class="n">Has</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">default</span>
+<span class="w">                                        </span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="n">which</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">consistent</span>
+<span class="w">                                        </span><span class="n">with</span><span class="w"> </span><span class="n">gridpos</span><span class="p">.</span>
+</pre></div>
+</div>
+<p>There is also a special version for the case that the new grid is just
+a scalar. What the function does is check if old and new grid for an
+interpolation are ok. If not, it throws a detailed runtime error
+message.</p>
+<p>The parameter <code class="docutils literal notranslate"><span class="pre">extpolfac</span></code> determines how much extrapolation
+is tolerated. Its default value is 0.5, which means that we allow
+extrapolation as far out as half the spacing of the last two grid
+points on that edge of the grid.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">chk_interpolation_grids</span></code> function is quite thorough.
+It checks not only the grid range, but also the proper sorting,
+whether there are duplicate values, etc.. It is not completely cheap
+computationally. Its intended use is at the beginning of workspace
+methods, when you check the input variables and issue runtime errors
+if there are any problems. The runtime error thrown also explains in
+quite a lot of detail what is actually wrong with the grids.</p>
+</section>
+<section id="grid-positions">
+<h3>Grid positions<a class="headerlink" href="#grid-positions" title="Link to this heading"></a></h3>
+<p>A grid position specifies where an interpolation point is, relative
+to the original grid. It consists of three parts, an <a class="reference internal" href="pyarts3.arts.Index.html#pyarts3.arts.Index" title="pyarts3.arts.Index"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyarts3.arts.Index</span></code></a> giving the
+original grid index below the interpolation point, a <a class="reference internal" href="pyarts3.arts.Numeric.html#pyarts3.arts.Numeric" title="pyarts3.arts.Numeric"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyarts3.arts.Numeric</span></code></a>
+giving the fractional distance to the next original grid point, and a
+<a class="reference internal" href="pyarts3.arts.Numeric.html#pyarts3.arts.Numeric" title="pyarts3.arts.Numeric"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyarts3.arts.Numeric</span></code></a> giving 1 minus this number. Of course, the last element is
+redundant. However, it is efficient to store this, since it is used
+many times over. We store the two numerics in a plain C array of
+dimension 2. (No need to use a fancy Array or Vector for this, since
+the dimension is fixed.) So the structure <code class="docutils literal notranslate"><span class="pre">GridPos</span></code> looks like:</p>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">GridPos</span><span class="w">  </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Index</span><span class="w">   </span><span class="n">idx</span><span class="p">;</span><span class="w">      </span><span class="cm">/*!&lt; Original grid index below</span>
+<span class="cm">                          interpolation point. */</span>
+<span class="w">  </span><span class="n">Numeric</span><span class="w"> </span><span class="n">fd</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span><span class="w">    </span><span class="cm">/*!&lt; Fractional distance to next point</span>
+<span class="cm">                          (0&lt;=fd[0]&lt;=1), fd[1] = 1-fd[0]. */</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>For example, <code class="docutils literal notranslate"><span class="pre">idx=3</span></code> and <code class="docutils literal notranslate"><span class="pre">fd=0.5</span></code> means that this interpolation point is
+half-way between index 3 and 4 of the original grid.  Note, that
+“below” in the first paragraph means “with a lower index”. If the
+original grid is sorted in descending order, the value at the grid
+point below the interpolation point will be numerically higher than
+the interpolation point.  In other words, grid positions and
+fractional distances are defined relative to the order of the original
+grid. Examples:</p>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="n">old</span><span class="w"> </span><span class="n">grid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span>
+<span class="k">new</span><span class="w"> </span><span class="n">grid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2.25</span>
+<span class="n">idx</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="n">fd</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="mf">0.25</span>
+
+<span class="n">old</span><span class="w"> </span><span class="n">grid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">2</span>
+<span class="k">new</span><span class="w"> </span><span class="n">grid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2.25</span>
+<span class="n">idx</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="n">fd</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="mf">0.75</span>
+</pre></div>
+</div>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">fd[0]</span></code> is different in the second case, because the old grid
+is sorted in descending order. Note also that <code class="docutils literal notranslate"><span class="pre">idx</span></code> is the same in
+both cases.</p>
+<p>Grid positions for a whole new grid are stored in an <code class="docutils literal notranslate"><span class="pre">Array&lt;GridPos&gt;</span></code>
+(called <code class="docutils literal notranslate"><span class="pre">ArrayOfGridPos</span></code>).</p>
+</section>
+<section id="setting-up-grid-position-arrays">
+<h3>Setting up grid position arrays<a class="headerlink" href="#setting-up-grid-position-arrays" title="Link to this heading"></a></h3>
+<p>There is only one function to set up grid position arrays, namely
+<code class="docutils literal notranslate"><span class="pre">gridpos</span></code>:</p>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">gridpos</span><span class="p">(</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">gp</span><span class="p">,</span>
+<span class="w">              </span><span class="n">ConstVectorView</span><span class="w"> </span><span class="n">old_grid</span><span class="p">,</span>
+<span class="w">              </span><span class="n">ConstVectorView</span><span class="w"> </span><span class="n">new_grid</span>
+<span class="w">              </span><span class="k">const</span><span class="w"> </span><span class="n">Numeric</span><span class="o">&amp;</span><span class="w">  </span><span class="n">extpolfac</span><span class="o">=</span><span class="mf">0.5</span><span class="w"> </span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Some points to remember:</p>
+<ul>
+<li><p>As usual, the output <code class="docutils literal notranslate"><span class="pre">gp</span></code> has to have the right dimension.</p></li>
+<li><p>The old grid has to be strictly sorted. It can be in ascending
+or descending order. But there must not be any duplicate values.
+Furthermore, the old grid must contain at least two points.</p></li>
+<li><p>The new grid does not have to be sorted, but the function will be
+faster if it is sorted or mostly sorted. It is ok if the new grid
+contains only one point.</p></li>
+<li><p>The beauty is, that this is all it needs to do also interpolation in
+higher dimensions: You just have to call <code class="docutils literal notranslate"><span class="pre">gridpos</span></code> for all the
+dimensions that you want to interpolate.</p></li>
+<li><p>Note also, that for this step you do not need the field itself at
+all!</p></li>
+<li><p>If you want to use the returned gp object for something else
+than interpolation, you should know that gridpos guarantees the
+following:</p>
+<ul>
+<li><p>For the ascending old grid case:</p>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="n">old_grid</span><span class="p">[</span><span class="n">tgp</span><span class="p">.</span><span class="n">idx</span><span class="p">]</span><span class="o">&lt;=</span><span class="n">tng</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">tgp</span><span class="p">.</span><span class="n">idx</span><span class="o">==</span><span class="mi">0</span>
+</pre></div>
+</div>
+</li>
+<li><p>And for the descending old grid case:</p>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="n">old_grid</span><span class="p">[</span><span class="n">tgp</span><span class="p">.</span><span class="n">idx</span><span class="p">]</span><span class="o">&gt;=</span><span class="n">tng</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">tgp</span><span class="p">.</span><span class="n">idx</span><span class="o">==</span><span class="mi">0</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p>Finally, note that parameter <code class="docutils literal notranslate"><span class="pre">extpolfac</span></code> plays the
+same role as explained above.</p></li>
+</ul>
+</section>
+<section id="interpolation-weights">
+<h3>Interpolation weights<a class="headerlink" href="#interpolation-weights" title="Link to this heading"></a></h3>
+<p>As explained in the “Numerical Recipes”
+<span id="id1">[<a class="reference internal" href="bibliography.html#id129" title="W.H. Press, S.A. Teukolsky, W.T. Vetterling, and B.P. Flannery. Numerical recipes in C. Cambridge University Press, 2 edition, 1997.">25</a>]</span>, 2D bi-linear interpolation means, that
+the interpolated value is a weighted average of the original field at
+the four corner points of the grid square in which the interpolation
+point is located. Taking the corner points in the order indicated in the Figure
+below, the interpolated value is given by:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}y(t,u)
+&amp;=&amp; (1-t)*(1-u)*y_1 \nonumber \\
+&amp; &amp; \mbox{} + t*(1-u)*y_2 \nonumber \\
+&amp; &amp; \mbox{} + (1-t)*u*y_3 \nonumber \\
+&amp; &amp; \mbox{} + t*u*y_4 \nonumber \\
+&amp;=&amp; w_1*y_1 + w_2*y_2 + w_3*y_3 + w_4*y_4\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(t\)</span> and <span class="math notranslate nohighlight">\(u\)</span> are the fractional distances between the
+corner points in the two dimensions, <span class="math notranslate nohighlight">\(y_i\)</span> are the field values
+at the corner points, and <span class="math notranslate nohighlight">\(w_i\)</span> are the interpolation weights.</p>
+<figure class="align-default" id="id5">
+<a class="reference internal image-reference" href="_images/interpolation_square.svg"><img alt="_images/interpolation_square.svg" src="_images/interpolation_square.svg" style="width: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">The grid square for 2D interpolation. The numbers 1… 4
+mark the corner points, IP is the interpolation point, <span class="math notranslate nohighlight">\(t\)</span> and <span class="math notranslate nohighlight">\(u\)</span>
+are the fractional distances in the two dimensions.
+(By the way, I have discovered that this is exactly the result that
+you get if you first interpolate linearly in one dimension, then in
+the other. I was playing around with this a bit, but it is the more
+efficient way to pre-calculate the <span class="math notranslate nohighlight">\(w_i\)</span> and do all dimensions at once.)</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>How many interpolation weights one needs for a multilinear
+interpolation depends on the dimension of the interpolation: There are
+exactly <span class="math notranslate nohighlight">\(2^n\)</span> interpolation weights for an <span class="math notranslate nohighlight">\(n\)</span> dimensional
+interpolation.  These weights have to be computed for each
+interpolation point (each grid point of the new grid, if we do a
+“green” type interpolation. Or each point in the sequence, if we do a
+“blue” type interpolation).</p>
+<p>This means, calculating the interpolation weights is not exactly
+cheap, especially if one interpolates simultaneously in many
+dimensions. On the other hand, one can save a lot by re-using the
+weights.  Therefore, interpolation weights in ARTS are stored in a
+tensor which has one more dimension than the output field. The last
+dimension is for the weight, so this last dimension has the extent 4
+in the 2D case, 8 in the 3D case, and so on (always <span class="math notranslate nohighlight">\(2^n\)</span>).</p>
+<p>In the case of a “blue” type interpolation, the weights are
+always stored in a matrix, since the output field is always 1D (a
+vector).</p>
+</section>
+<section id="setting-up-interpolation-weight-tensors">
+<h3>Setting up interpolation weight tensors<a class="headerlink" href="#setting-up-interpolation-weight-tensors" title="Link to this heading"></a></h3>
+<p>Interpolation weight tensors can be computed by a family of functions,
+which are all called <code class="docutils literal notranslate"><span class="pre">interpweights</span></code>. Which function is actually
+used depends on the dimension of the input and output quantities. For
+this step we still do not need the actual fields, just the grid
+positions.</p>
+<section id="blue-interpolation">
+<h4>Blue interpolation<a class="headerlink" href="#blue-interpolation" title="Link to this heading"></a></h4>
+<p>In this case the functions are:</p>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">interpweights</span><span class="p">(</span><span class="w"> </span><span class="n">MatrixView</span><span class="w"> </span><span class="n">itw</span><span class="p">,</span>
+<span class="w">                    </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">cgp</span><span class="w"> </span><span class="p">);</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">interpweights</span><span class="p">(</span><span class="w"> </span><span class="n">MatrixView</span><span class="w"> </span><span class="n">itw</span><span class="p">,</span>
+<span class="w">                    </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">rgp</span><span class="p">,</span>
+<span class="w">                    </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">cgp</span><span class="w"> </span><span class="p">);</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">interpweights</span><span class="p">(</span><span class="w"> </span><span class="n">MatrixView</span><span class="w"> </span><span class="n">itw</span><span class="p">,</span>
+<span class="w">                    </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">pgp</span><span class="p">,</span>
+<span class="w">                    </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">rgp</span><span class="p">,</span>
+<span class="w">                    </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">cgp</span><span class="w"> </span><span class="p">);</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">interpweights</span><span class="p">(</span><span class="w"> </span><span class="n">MatrixView</span><span class="w"> </span><span class="n">itw</span><span class="p">,</span>
+<span class="w">                    </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">vgp</span><span class="p">,</span>
+<span class="w">                    </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">sgp</span><span class="p">,</span>
+<span class="w">                    </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">bgp</span><span class="p">,</span>
+<span class="w">                    </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">pgp</span><span class="p">,</span>
+<span class="w">                    </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">rgp</span><span class="p">,</span>
+<span class="w">                    </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">cgp</span><span class="w"> </span><span class="p">);</span>
+</pre></div>
+</div>
+<p>In all cases, the dimension of <code class="docutils literal notranslate"><span class="pre">itw</span></code> must be consistent with the
+given grid position arrays and the dimension of the interpolation
+(last dimension <span class="math notranslate nohighlight">\(2^n\)</span>). Because the grid position arrays are
+interpreted as defining a sequence of positions they must all have
+the same length.</p>
+</section>
+<section id="green-interpolation">
+<h4>Green interpolation<a class="headerlink" href="#green-interpolation" title="Link to this heading"></a></h4>
+<p>In this case the functions are:</p>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">interpweights</span><span class="p">(</span><span class="w"> </span><span class="n">Tensor3View</span><span class="w"> </span><span class="n">itw</span><span class="p">,</span>
+<span class="w">                    </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">rgp</span><span class="p">,</span>
+<span class="w">                    </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">cgp</span><span class="w"> </span><span class="p">);</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">interpweights</span><span class="p">(</span><span class="w"> </span><span class="n">Tensor4View</span><span class="w"> </span><span class="n">itw</span><span class="p">,</span>
+<span class="w">                    </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">pgp</span><span class="p">,</span>
+<span class="w">                    </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">rgp</span><span class="p">,</span>
+<span class="w">                    </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">cgp</span><span class="w"> </span><span class="p">);</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">interpweights</span><span class="p">(</span><span class="w"> </span><span class="n">Tensor5View</span><span class="w"> </span><span class="n">itw</span><span class="p">,</span>
+<span class="w">                    </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">bgp</span><span class="p">,</span>
+<span class="w">                    </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">pgp</span><span class="p">,</span>
+<span class="w">                    </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">rgp</span><span class="p">,</span>
+<span class="w">                    </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">cgp</span><span class="w"> </span><span class="p">);</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">interpweights</span><span class="p">(</span><span class="w"> </span><span class="n">Tensor6View</span><span class="w"> </span><span class="n">itw</span><span class="p">,</span>
+<span class="w">                    </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">sgp</span><span class="p">,</span>
+<span class="w">                    </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">bgp</span><span class="p">,</span>
+<span class="w">                    </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">pgp</span><span class="p">,</span>
+<span class="w">                    </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">rgp</span><span class="p">,</span>
+<span class="w">                    </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">cgp</span><span class="w"> </span><span class="p">);</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">interpweights</span><span class="p">(</span><span class="w"> </span><span class="n">Tensor7View</span><span class="w"> </span><span class="n">itw</span><span class="p">,</span>
+<span class="w">                    </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">vgp</span><span class="p">,</span>
+<span class="w">                    </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">sgp</span><span class="p">,</span>
+<span class="w">                    </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">bgp</span><span class="p">,</span>
+<span class="w">                    </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">pgp</span><span class="p">,</span>
+<span class="w">                    </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">rgp</span><span class="p">,</span>
+<span class="w">                    </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">cgp</span><span class="w"> </span><span class="p">);</span>
+</pre></div>
+</div>
+<p>In this case the grid position arrays are interpreted as defining the
+grids for the interpolated field, therefore they can have different
+lengths. Of course, <code class="docutils literal notranslate"><span class="pre">itw</span></code> must be consistent with the length of
+all the grid position arrays, and with the dimension of the
+interpolation (last dimension <span class="math notranslate nohighlight">\(2^n\)</span>).</p>
+</section>
+</section>
+<section id="the-actual-interpolation">
+<h3>The actual interpolation<a class="headerlink" href="#the-actual-interpolation" title="Link to this heading"></a></h3>
+<p>For this final step we need the grid positions, the
+interpolation weights, and the actual fields. For each interpolated
+value, the weights are applied to the appropriate original field values
+and the sum is taken (see Equation above). The <code class="docutils literal notranslate"><span class="pre">interp</span></code> family of functions
+performs this step.</p>
+<section id="id2">
+<h4>Blue interpolation<a class="headerlink" href="#id2" title="Link to this heading"></a></h4>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">interp</span><span class="p">(</span><span class="w"> </span><span class="n">VectorView</span><span class="w">            </span><span class="n">ia</span><span class="p">,</span>
+<span class="w">            </span><span class="n">ConstMatrixView</span><span class="w">       </span><span class="n">itw</span><span class="p">,</span>
+<span class="w">            </span><span class="n">ConstVectorView</span><span class="w">       </span><span class="n">a</span><span class="p">,</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">cgp</span><span class="p">);</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">interp</span><span class="p">(</span><span class="w"> </span><span class="n">VectorView</span><span class="w">            </span><span class="n">ia</span><span class="p">,</span>
+<span class="w">            </span><span class="n">ConstMatrixView</span><span class="w">       </span><span class="n">itw</span><span class="p">,</span>
+<span class="w">            </span><span class="n">ConstMatrixView</span><span class="w">       </span><span class="n">a</span><span class="p">,</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">rgp</span><span class="p">,</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">cgp</span><span class="p">);</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">interp</span><span class="p">(</span><span class="w"> </span><span class="n">VectorView</span><span class="w">            </span><span class="n">ia</span><span class="p">,</span>
+<span class="w">            </span><span class="n">ConstMatrixView</span><span class="w">       </span><span class="n">itw</span><span class="p">,</span>
+<span class="w">            </span><span class="n">ConstTensor3View</span><span class="w">      </span><span class="n">a</span><span class="p">,</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">pgp</span><span class="p">,</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">rgp</span><span class="p">,</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">cgp</span><span class="p">);</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">interp</span><span class="p">(</span><span class="w"> </span><span class="n">VectorView</span><span class="w">            </span><span class="n">ia</span><span class="p">,</span>
+<span class="w">            </span><span class="n">ConstMatrixView</span><span class="w">       </span><span class="n">itw</span><span class="p">,</span>
+<span class="w">            </span><span class="n">ConstTensor4View</span><span class="w">      </span><span class="n">a</span><span class="p">,</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">bgp</span><span class="p">,</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">pgp</span><span class="p">,</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">rgp</span><span class="p">,</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">cgp</span><span class="p">);</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">interp</span><span class="p">(</span><span class="w"> </span><span class="n">VectorView</span><span class="w">            </span><span class="n">ia</span><span class="p">,</span>
+<span class="w">            </span><span class="n">ConstMatrixView</span><span class="w">       </span><span class="n">itw</span><span class="p">,</span>
+<span class="w">            </span><span class="n">ConstTensor5View</span><span class="w">      </span><span class="n">a</span><span class="p">,</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">sgp</span><span class="p">,</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">bgp</span><span class="p">,</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">pgp</span><span class="p">,</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">rgp</span><span class="p">,</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">cgp</span><span class="p">);</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">interp</span><span class="p">(</span><span class="w"> </span><span class="n">VectorView</span><span class="w">            </span><span class="n">ia</span><span class="p">,</span>
+<span class="w">            </span><span class="n">ConstMatrixView</span><span class="w">       </span><span class="n">itw</span><span class="p">,</span>
+<span class="w">            </span><span class="n">ConstTensor6View</span><span class="w">      </span><span class="n">a</span><span class="p">,</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">vgp</span><span class="p">,</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">sgp</span><span class="p">,</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">bgp</span><span class="p">,</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">pgp</span><span class="p">,</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">rgp</span><span class="p">,</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">cgp</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h4>Green interpolation<a class="headerlink" href="#id3" title="Link to this heading"></a></h4>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">interp</span><span class="p">(</span><span class="w"> </span><span class="n">MatrixView</span><span class="w">            </span><span class="n">ia</span><span class="p">,</span>
+<span class="w">            </span><span class="n">ConstTensor3View</span><span class="w">      </span><span class="n">itw</span><span class="p">,</span>
+<span class="w">            </span><span class="n">ConstMatrixView</span><span class="w">       </span><span class="n">a</span><span class="p">,</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">rgp</span><span class="p">,</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">cgp</span><span class="p">);</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">interp</span><span class="p">(</span><span class="w"> </span><span class="n">Tensor3View</span><span class="w">           </span><span class="n">ia</span><span class="p">,</span>
+<span class="w">            </span><span class="n">ConstTensor4View</span><span class="w">      </span><span class="n">itw</span><span class="p">,</span>
+<span class="w">            </span><span class="n">ConstTensor3View</span><span class="w">      </span><span class="n">a</span><span class="p">,</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">pgp</span><span class="p">,</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">rgp</span><span class="p">,</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">cgp</span><span class="p">);</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">interp</span><span class="p">(</span><span class="w"> </span><span class="n">Tensor4View</span><span class="w">           </span><span class="n">ia</span><span class="p">,</span>
+<span class="w">            </span><span class="n">ConstTensor5View</span><span class="w">      </span><span class="n">itw</span><span class="p">,</span>
+<span class="w">            </span><span class="n">ConstTensor4View</span><span class="w">      </span><span class="n">a</span><span class="p">,</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">bgp</span><span class="p">,</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">pgp</span><span class="p">,</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">rgp</span><span class="p">,</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">cgp</span><span class="p">);</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">interp</span><span class="p">(</span><span class="w"> </span><span class="n">Tensor5View</span><span class="w">           </span><span class="n">ia</span><span class="p">,</span>
+<span class="w">            </span><span class="n">ConstTensor6View</span><span class="w">      </span><span class="n">itw</span><span class="p">,</span>
+<span class="w">            </span><span class="n">ConstTensor5View</span><span class="w">      </span><span class="n">a</span><span class="p">,</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">sgp</span><span class="p">,</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">bgp</span><span class="p">,</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">pgp</span><span class="p">,</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">rgp</span><span class="p">,</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">cgp</span><span class="p">);</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">interp</span><span class="p">(</span><span class="w"> </span><span class="n">Tensor6View</span><span class="w">           </span><span class="n">ia</span><span class="p">,</span>
+<span class="w">            </span><span class="n">ConstTensor7View</span><span class="w">      </span><span class="n">itw</span><span class="p">,</span>
+<span class="w">            </span><span class="n">ConstTensor6View</span><span class="w">      </span><span class="n">a</span><span class="p">,</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">vgp</span><span class="p">,</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">sgp</span><span class="p">,</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">bgp</span><span class="p">,</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">pgp</span><span class="p">,</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">rgp</span><span class="p">,</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="n">ArrayOfGridPos</span><span class="o">&amp;</span><span class="w"> </span><span class="n">cgp</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h3>
+<section id="a-simple-example">
+<h4>A simple example<a class="headerlink" href="#a-simple-example" title="Link to this heading"></a></h4>
+<p>This example is contained in file <code class="docutils literal notranslate"><span class="pre">test_interpolation.cc</span></code>.</p>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">test05</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Very simple interpolation case</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+
+<span class="w">  </span><span class="n">Vector</span><span class="w"> </span><span class="n">og</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span><span class="w">            </span><span class="c1">// 1, 2, 3, 4, 5</span>
+<span class="w">  </span><span class="n">Vector</span><span class="w"> </span><span class="n">ng</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mf">0.25</span><span class="p">);</span><span class="w">          </span><span class="c1">// 2.0, 2,25, 2.5, 2.75, 3.0</span>
+
+<span class="w">  </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Original grid:</span><span class="se">\n</span><span class="s">&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">og</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;New grid:</span><span class="se">\n</span><span class="s">&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">ng</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+
+<span class="w">  </span><span class="c1">// To store the grid positions:</span>
+<span class="w">  </span><span class="n">ArrayOfGridPos</span><span class="w"> </span><span class="n">gp</span><span class="p">(</span><span class="n">ng</span><span class="p">.</span><span class="n">nelem</span><span class="p">());</span>
+
+<span class="w">  </span><span class="n">gridpos</span><span class="p">(</span><span class="n">gp</span><span class="p">,</span><span class="n">og</span><span class="p">,</span><span class="n">ng</span><span class="p">);</span>
+<span class="w">  </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Grid positions:</span><span class="se">\n</span><span class="s">&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">gp</span><span class="p">;</span>
+
+<span class="w">  </span><span class="c1">// To store interpolation weights:</span>
+<span class="w">  </span><span class="n">Matrix</span><span class="w"> </span><span class="n">itw</span><span class="p">(</span><span class="n">gp</span><span class="p">.</span><span class="n">nelem</span><span class="p">(),</span><span class="mi">2</span><span class="p">);</span>
+<span class="w">  </span><span class="n">interpweights</span><span class="p">(</span><span class="n">itw</span><span class="p">,</span><span class="n">gp</span><span class="p">);</span>
+
+<span class="w">  </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Interpolation weights:</span><span class="se">\n</span><span class="s">&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">itw</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+
+<span class="w">  </span><span class="c1">// Original field:</span>
+<span class="w">  </span><span class="n">Vector</span><span class="w"> </span><span class="n">of</span><span class="p">(</span><span class="n">og</span><span class="p">.</span><span class="n">nelem</span><span class="p">(),</span><span class="mi">0</span><span class="p">);</span>
+<span class="w">  </span><span class="n">of</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w">                   </span><span class="c1">// 0, 0, 10, 0, 0</span>
+
+<span class="w">  </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Original field:</span><span class="se">\n</span><span class="s">&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+
+<span class="w">  </span><span class="c1">// Interpolated field:</span>
+<span class="w">  </span><span class="n">Vector</span><span class="w"> </span><span class="n">nf</span><span class="p">(</span><span class="n">ng</span><span class="p">.</span><span class="n">nelem</span><span class="p">());</span>
+
+<span class="w">  </span><span class="n">interp</span><span class="p">(</span><span class="n">nf</span><span class="p">,</span><span class="w"> </span><span class="n">itw</span><span class="p">,</span><span class="w"> </span><span class="n">of</span><span class="p">,</span><span class="w"> </span><span class="n">gp</span><span class="p">);</span>
+
+<span class="w">  </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;New field:</span><span class="se">\n</span><span class="s">&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">nf</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Ok, maybe you think this is not so simple, but a
+large part of the code is either setting up the example grids and
+fields, or output. And here is how the output looks like:</p>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="n">Very</span><span class="w"> </span><span class="n">simple</span><span class="w"> </span><span class="n">interpolation</span><span class="w"> </span><span class="k">case</span>
+<span class="no">Original</span><span class="w"> </span><span class="no">grid</span><span class="p">:</span>
+<span class="w">  </span><span class="mi">1</span><span class="w">   </span><span class="mi">2</span><span class="w">   </span><span class="mi">3</span><span class="w">   </span><span class="mi">4</span><span class="w">   </span><span class="mi">5</span>
+<span class="n">New</span><span class="w"> </span><span class="n">grid</span><span class="o">:</span>
+<span class="w">  </span><span class="mi">2</span><span class="w"> </span><span class="mf">2.25</span><span class="w"> </span><span class="mf">2.5</span><span class="w"> </span><span class="mf">2.75</span><span class="w">   </span><span class="mi">3</span>
+<span class="n">Grid</span><span class="w"> </span><span class="n">positions</span><span class="o">:</span>
+<span class="w">  </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w">    </span><span class="mi">1</span>
+<span class="w">  </span><span class="mi">1</span><span class="w"> </span><span class="mf">0.25</span><span class="w"> </span><span class="mf">0.75</span>
+<span class="w">  </span><span class="mi">1</span><span class="w"> </span><span class="mf">0.5</span><span class="w">  </span><span class="mf">0.5</span>
+<span class="w">  </span><span class="mi">1</span><span class="w"> </span><span class="mf">0.75</span><span class="w"> </span><span class="mf">0.25</span>
+<span class="w">  </span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="w">    </span><span class="mi">0</span>
+<span class="n">Interpolation</span><span class="w"> </span><span class="n">weights</span><span class="o">:</span>
+<span class="w">  </span><span class="mi">1</span><span class="w">   </span><span class="mi">0</span>
+<span class="mf">0.75</span><span class="w"> </span><span class="mf">0.25</span>
+<span class="mf">0.5</span><span class="w"> </span><span class="mf">0.5</span>
+<span class="mf">0.25</span><span class="w"> </span><span class="mf">0.75</span>
+<span class="w">  </span><span class="mi">0</span><span class="w">   </span><span class="mi">1</span>
+<span class="n">Original</span><span class="w"> </span><span class="n">field</span><span class="o">:</span>
+<span class="w">  </span><span class="mi">0</span><span class="w">   </span><span class="mi">0</span><span class="w">  </span><span class="mi">10</span><span class="w">   </span><span class="mi">0</span><span class="w">   </span><span class="mi">0</span>
+<span class="n">New</span><span class="w"> </span><span class="n">field</span><span class="o">:</span>
+<span class="w">  </span><span class="mi">0</span><span class="w"> </span><span class="mf">2.5</span><span class="w">   </span><span class="mi">5</span><span class="w"> </span><span class="mf">7.5</span><span class="w">  </span><span class="mi">10</span>
+</pre></div>
+</div>
+</section>
+<section id="a-more-elaborate-example">
+<h4>A more elaborate example<a class="headerlink" href="#a-more-elaborate-example" title="Link to this heading"></a></h4>
+<p>What if you want to interpolate only some dimensions of a tensor,
+while retaining others? — You have to make a loop yourself, but it
+is very easy. Below is an explicit example for a more complicated
+interpolation case. (Green type interpolation of all pages of a
+Tensor3.) This example is also contained in file
+<code class="docutils literal notranslate"><span class="pre">test_interpolation.cc</span></code>.</p>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">test04</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Green type interpolation of all &quot;</span>
+<span class="w">      </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;pages of a Tensor3</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+
+<span class="w">  </span><span class="c1">// The original Tensor is called a, the new one n.</span>
+
+<span class="w">  </span><span class="c1">// 10 pages, 20 rows, 30 columns, all grids are: 1,2,3</span>
+<span class="w">  </span><span class="n">Vector</span><span class="w">  </span><span class="n">a_pgrid</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">a_rgrid</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">a_cgrid</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Tensor3</span><span class="w"> </span><span class="n">a</span><span class="p">(</span><span class="w"> </span><span class="n">a_pgrid</span><span class="p">.</span><span class="n">nelem</span><span class="p">(),</span>
+<span class="w">            </span><span class="n">a_rgrid</span><span class="p">.</span><span class="n">nelem</span><span class="p">(),</span>
+<span class="w">            </span><span class="n">a_cgrid</span><span class="p">.</span><span class="n">nelem</span><span class="p">()</span><span class="w"> </span><span class="p">);</span>
+<span class="w">  </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">// Put some simple numbers in the middle of each page:</span>
+<span class="w">  </span><span class="n">a</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="w">  </span><span class="n">a</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span>
+<span class="w">  </span><span class="n">a</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">30</span><span class="p">;</span>
+
+<span class="w">  </span><span class="c1">// New row and column grids:</span>
+<span class="w">  </span><span class="c1">// 1, 1.5, 2, 2.5, 3</span>
+<span class="w">  </span><span class="n">Vector</span><span class="w">  </span><span class="n">n_rgrid</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mf">.5</span><span class="p">),</span><span class="w"> </span><span class="n">n_cgrid</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mf">.5</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Tensor3</span><span class="w"> </span><span class="n">n</span><span class="p">(</span><span class="w"> </span><span class="n">a_pgrid</span><span class="p">.</span><span class="n">nelem</span><span class="p">(),</span>
+<span class="w">            </span><span class="n">n_rgrid</span><span class="p">.</span><span class="n">nelem</span><span class="p">(),</span>
+<span class="w">            </span><span class="n">n_cgrid</span><span class="p">.</span><span class="n">nelem</span><span class="p">()</span><span class="w"> </span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// So, n has the same number of pages as a,</span>
+<span class="w">  </span><span class="c1">// but more rows and columns.</span>
+
+<span class="w">  </span><span class="c1">// Get the grid position arrays:</span>
+<span class="w">  </span><span class="n">ArrayOfGridPos</span><span class="w"> </span><span class="n">n_rgp</span><span class="p">(</span><span class="n">n_rgrid</span><span class="p">.</span><span class="n">nelem</span><span class="p">());</span><span class="w"> </span><span class="c1">// For rows.</span>
+<span class="w">  </span><span class="n">ArrayOfGridPos</span><span class="w"> </span><span class="n">n_cgp</span><span class="p">(</span><span class="n">n_cgrid</span><span class="p">.</span><span class="n">nelem</span><span class="p">());</span><span class="w"> </span><span class="c1">// For columns.</span>
+
+<span class="w">  </span><span class="n">gridpos</span><span class="p">(</span><span class="w"> </span><span class="n">n_rgp</span><span class="p">,</span><span class="w"> </span><span class="n">a_rgrid</span><span class="p">,</span><span class="w"> </span><span class="n">n_rgrid</span><span class="w"> </span><span class="p">);</span>
+<span class="w">  </span><span class="n">gridpos</span><span class="p">(</span><span class="w"> </span><span class="n">n_cgp</span><span class="p">,</span><span class="w"> </span><span class="n">a_cgrid</span><span class="p">,</span><span class="w"> </span><span class="n">n_cgrid</span><span class="w"> </span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// Get the interpolation weights:</span>
+<span class="w">  </span><span class="n">Tensor3</span><span class="w"> </span><span class="n">itw</span><span class="p">(</span><span class="w"> </span><span class="n">n_rgrid</span><span class="p">.</span><span class="n">nelem</span><span class="p">(),</span><span class="w"> </span><span class="n">n_cgrid</span><span class="p">.</span><span class="n">nelem</span><span class="p">(),</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">);</span>
+<span class="w">  </span><span class="n">interpweights</span><span class="p">(</span><span class="w"> </span><span class="n">itw</span><span class="p">,</span><span class="w"> </span><span class="n">n_rgp</span><span class="p">,</span><span class="w"> </span><span class="n">n_cgp</span><span class="w"> </span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// Do a &quot;green&quot; interpolation for all pages of a:</span>
+
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">Index</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="n">a</span><span class="p">.</span><span class="n">npages</span><span class="p">();</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="c1">// Select the current page of both a and n:</span>
+<span class="w">      </span><span class="n">ConstMatrixView</span><span class="w"> </span><span class="n">ap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">(</span><span class="w"> </span><span class="n">i</span><span class="p">,</span>
+<span class="w">                              </span><span class="n">Range</span><span class="p">(</span><span class="n">joker</span><span class="p">),</span><span class="w"> </span><span class="n">Range</span><span class="p">(</span><span class="n">joker</span><span class="p">)</span><span class="w"> </span><span class="p">);</span>
+<span class="w">      </span><span class="n">MatrixView</span><span class="w">      </span><span class="n">np</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="p">(</span><span class="w"> </span><span class="n">i</span><span class="p">,</span>
+<span class="w">                              </span><span class="n">Range</span><span class="p">(</span><span class="n">joker</span><span class="p">),</span><span class="w"> </span><span class="n">Range</span><span class="p">(</span><span class="n">joker</span><span class="p">)</span><span class="w"> </span><span class="p">);</span>
+
+<span class="w">      </span><span class="c1">// Do the interpolation:</span>
+<span class="w">      </span><span class="n">interp</span><span class="p">(</span><span class="w"> </span><span class="n">np</span><span class="p">,</span><span class="w"> </span><span class="n">itw</span><span class="p">,</span><span class="w"> </span><span class="n">ap</span><span class="p">,</span><span class="w"> </span><span class="n">n_rgp</span><span class="p">,</span><span class="w"> </span><span class="n">n_cgp</span><span class="w"> </span><span class="p">);</span>
+
+<span class="w">      </span><span class="c1">// Note that this is efficient, because interpolation</span>
+<span class="w">      </span><span class="c1">// weights and grid positions are re-used.</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">  </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Original field:</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">Index</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="n">a</span><span class="p">.</span><span class="n">npages</span><span class="p">();</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="w"> </span><span class="p">)</span>
+<span class="w">      </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;page &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;:</span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="w">          </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">a</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">Range</span><span class="p">(</span><span class="n">joker</span><span class="p">),</span><span class="n">Range</span><span class="p">(</span><span class="n">joker</span><span class="p">))</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+
+<span class="w">  </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Interpolated field:</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">Index</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">.</span><span class="n">npages</span><span class="p">();</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="w"> </span><span class="p">)</span>
+<span class="w">      </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;page &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;:</span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="w">          </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">Range</span><span class="p">(</span><span class="n">joker</span><span class="p">),</span><span class="n">Range</span><span class="p">(</span><span class="n">joker</span><span class="p">))</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The output is:</p>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="n">Green</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="n">interpolation</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">all</span><span class="w"> </span><span class="n">pages</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">Tensor3</span>
+<span class="n">Original</span><span class="w"> </span><span class="n">field</span><span class="o">:</span>
+<span class="n">page</span><span class="w"> </span><span class="mi">0</span><span class="o">:</span>
+<span class="w">  </span><span class="mi">0</span><span class="w">   </span><span class="mi">0</span><span class="w">   </span><span class="mi">0</span>
+<span class="w">  </span><span class="mi">0</span><span class="w">  </span><span class="mi">10</span><span class="w">   </span><span class="mi">0</span>
+<span class="w">  </span><span class="mi">0</span><span class="w">   </span><span class="mi">0</span><span class="w">   </span><span class="mi">0</span>
+<span class="n">page</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span>
+<span class="w">  </span><span class="mi">0</span><span class="w">   </span><span class="mi">0</span><span class="w">   </span><span class="mi">0</span>
+<span class="w">  </span><span class="mi">0</span><span class="w">  </span><span class="mi">20</span><span class="w">   </span><span class="mi">0</span>
+<span class="w">  </span><span class="mi">0</span><span class="w">   </span><span class="mi">0</span><span class="w">   </span><span class="mi">0</span>
+<span class="n">page</span><span class="w"> </span><span class="mi">2</span><span class="o">:</span>
+<span class="w">  </span><span class="mi">0</span><span class="w">   </span><span class="mi">0</span><span class="w">   </span><span class="mi">0</span>
+<span class="w">  </span><span class="mi">0</span><span class="w">  </span><span class="mi">30</span><span class="w">   </span><span class="mi">0</span>
+<span class="w">  </span><span class="mi">0</span><span class="w">   </span><span class="mi">0</span><span class="w">   </span><span class="mi">0</span>
+<span class="n">Interpolated</span><span class="w"> </span><span class="n">field</span><span class="o">:</span>
+<span class="n">page</span><span class="w"> </span><span class="mi">0</span><span class="o">:</span>
+<span class="w">  </span><span class="mi">0</span><span class="w">   </span><span class="mi">0</span><span class="w">   </span><span class="mi">0</span><span class="w">   </span><span class="mi">0</span><span class="w">   </span><span class="mi">0</span>
+<span class="w">  </span><span class="mi">0</span><span class="w"> </span><span class="mf">2.5</span><span class="w">   </span><span class="mi">5</span><span class="w"> </span><span class="mf">2.5</span><span class="w">   </span><span class="mi">0</span>
+<span class="w">  </span><span class="mi">0</span><span class="w">   </span><span class="mi">5</span><span class="w">  </span><span class="mi">10</span><span class="w">   </span><span class="mi">5</span><span class="w">   </span><span class="mi">0</span>
+<span class="w">  </span><span class="mi">0</span><span class="w"> </span><span class="mf">2.5</span><span class="w">   </span><span class="mi">5</span><span class="w"> </span><span class="mf">2.5</span><span class="w">   </span><span class="mi">0</span>
+<span class="w">  </span><span class="mi">0</span><span class="w">   </span><span class="mi">0</span><span class="w">   </span><span class="mi">0</span><span class="w">   </span><span class="mi">0</span><span class="w">   </span><span class="mi">0</span>
+<span class="n">page</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span>
+<span class="w">  </span><span class="mi">0</span><span class="w">   </span><span class="mi">0</span><span class="w">   </span><span class="mi">0</span><span class="w">   </span><span class="mi">0</span><span class="w">   </span><span class="mi">0</span>
+<span class="w">  </span><span class="mi">0</span><span class="w">   </span><span class="mi">5</span><span class="w">  </span><span class="mi">10</span><span class="w">   </span><span class="mi">5</span><span class="w">   </span><span class="mi">0</span>
+<span class="w">  </span><span class="mi">0</span><span class="w">  </span><span class="mi">10</span><span class="w">  </span><span class="mi">20</span><span class="w">  </span><span class="mi">10</span><span class="w">   </span><span class="mi">0</span>
+<span class="w">  </span><span class="mi">0</span><span class="w">   </span><span class="mi">5</span><span class="w">  </span><span class="mi">10</span><span class="w">   </span><span class="mi">5</span><span class="w">   </span><span class="mi">0</span>
+<span class="w">  </span><span class="mi">0</span><span class="w">   </span><span class="mi">0</span><span class="w">   </span><span class="mi">0</span><span class="w">   </span><span class="mi">0</span><span class="w">   </span><span class="mi">0</span>
+<span class="n">page</span><span class="w"> </span><span class="mi">2</span><span class="o">:</span>
+<span class="w">  </span><span class="mi">0</span><span class="w">   </span><span class="mi">0</span><span class="w">   </span><span class="mi">0</span><span class="w">   </span><span class="mi">0</span><span class="w">   </span><span class="mi">0</span>
+<span class="w">  </span><span class="mi">0</span><span class="w"> </span><span class="mf">7.5</span><span class="w">  </span><span class="mi">15</span><span class="w"> </span><span class="mf">7.5</span><span class="w">   </span><span class="mi">0</span>
+<span class="w">  </span><span class="mi">0</span><span class="w">  </span><span class="mi">15</span><span class="w">  </span><span class="mi">30</span><span class="w">  </span><span class="mi">15</span><span class="w">   </span><span class="mi">0</span>
+<span class="w">  </span><span class="mi">0</span><span class="w"> </span><span class="mf">7.5</span><span class="w">  </span><span class="mi">15</span><span class="w"> </span><span class="mf">7.5</span><span class="w">   </span><span class="mi">0</span>
+<span class="w">  </span><span class="mi">0</span><span class="w">   </span><span class="mi">0</span><span class="w">   </span><span class="mi">0</span><span class="w">   </span><span class="mi">0</span><span class="w">   </span><span class="mi">0</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="higher-order-interpolation">
+<h2>Higher order interpolation<a class="headerlink" href="#higher-order-interpolation" title="Link to this heading"></a></h2>
+<p>Everything that was written so far in this chapter referred to linear
+interpolation, which uses two neighboring data points in the 1D
+case. But ARTS also has a framework for higher order polynomial
+interpolation. It is defined in the the file</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">matpack/lagrange_interp.h</span></code></p></li>
+</ul>
+<p>The higher order interpolation framework uses a template class,
+<code class="docutils literal notranslate"><span class="pre">lagrange_interp::lag_t&lt;&gt;</span></code>, which is described below.
+The class takes two compile-time parameters, the polynomial order
+<span class="math notranslate nohighlight">\(O\)</span> and  grid transformation type.  The rules for how
+to transform the grid are in the file <code class="docutils literal notranslate"><span class="pre">matpack/lagrange_interp.h</span></code>.
+Regardless, the template type holds weights and indices to the
+original grid, which are used to compute the interpolated value
+and which are used to map into the data field.</p>
+<p>Three styles of interpolations are implemented as functions:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">interp</span></code>: Pure interpolation.  Reduces the data field to the
+a single interpolated value.  Takes as many <code class="docutils literal notranslate"><span class="pre">lagrange_interp::lag_t&lt;&gt;</span></code>
+as the rank of the data field.  May also use an <code class="docutils literal notranslate"><span class="pre">interpweights</span></code>
+approach similar to the linear case, but this is not required.
+The signature is either <code class="docutils literal notranslate"><span class="pre">T</span> <span class="pre">interp(data,</span> <span class="pre">lag_t&lt;&gt;,</span> <span class="pre">lag_t&lt;&gt;,</span> <span class="pre">...)</span></code>
+or <code class="docutils literal notranslate"><span class="pre">T</span> <span class="pre">interp(data,</span> <span class="pre">interpweights,</span> <span class="pre">lag_t&lt;&gt;,</span> <span class="pre">lag_t&lt;&gt;,</span> <span class="pre">...)</span></code>, to
+return the interpolated value <code class="docutils literal notranslate"><span class="pre">T</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">reinterp</span></code>: Reinterpolates the data to a new grid.  Retains
+the same rank as the data field but changes the grid.  This
+takes as many lists of <code class="docutils literal notranslate"><span class="pre">lagrange_interp::lag_t&lt;&gt;</span></code> as the
+rank of the data field.  The lists can be of any type that
+follows rules similar to <code class="docutils literal notranslate"><span class="pre">std::vector</span></code> or <code class="docutils literal notranslate"><span class="pre">std::array</span></code>.
+May use <code class="docutils literal notranslate"><span class="pre">reinterpweights</span></code> as a multidimensional
+interpolation weights approach similar to the linear case,
+and it may reuse data.  This yields four possible signatures:
+<code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">reinterp(data_t&amp;,</span> <span class="pre">data,</span> <span class="pre">list&lt;lag_t&lt;&gt;&gt;,</span> <span class="pre">list&lt;lag_t&lt;&gt;&gt;,</span> <span class="pre">...)</span></code>,
+<code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">reinterp(data_t&amp;,</span> <span class="pre">data,</span> <span class="pre">reinterpweights,</span> <span class="pre">list&lt;lag_t&lt;&gt;&gt;,</span> <span class="pre">list&lt;lag_t&lt;&gt;&gt;,</span> <span class="pre">...)</span></code>,
+<code class="docutils literal notranslate"><span class="pre">data_t</span> <span class="pre">reinterp(data,</span> <span class="pre">list&lt;lag_t&lt;&gt;&gt;,</span> <span class="pre">list&lt;lag_t&lt;&gt;&gt;,</span> <span class="pre">...)</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">data_t</span> <span class="pre">reinterp(data,</span> <span class="pre">reinterpweights,</span> <span class="pre">list&lt;lag_t&lt;&gt;&gt;,</span> <span class="pre">list&lt;lag_t&lt;&gt;&gt;,</span> <span class="pre">...)</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">flat_interp</span></code>: Interpolates a line through the data field composed
+of all the coordinates of the <code class="docutils literal notranslate"><span class="pre">lag_t&lt;&gt;</span></code> objects.  This reduces
+the data_field to a vector of values.  For rank 1 data fields,
+this is equivalent to the <code class="docutils literal notranslate"><span class="pre">interp</span></code> function.  The methods take
+as many lists of <code class="docutils literal notranslate"><span class="pre">lag_t&lt;&gt;</span></code> as the rank of the data field.  These
+must all have the same length, and this length is the size of the
+output vector.  May use <code class="docutils literal notranslate"><span class="pre">flat_interpweights</span></code> as a
+multidimensional interpolation weights approach similar to the
+linear case, and it may reuse data.  This yields four possible
+signatures:
+<code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">flat_interp(data_t&amp;,</span> <span class="pre">data,</span> <span class="pre">list&lt;lag_t&lt;&gt;&gt;,</span> <span class="pre">list&lt;lag_t&lt;&gt;&gt;,</span> <span class="pre">...)</span></code>,
+<code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">flat_interp(data_t&amp;,</span> <span class="pre">data,</span> <span class="pre">flat_interpweights,</span> <span class="pre">list&lt;lag_t&lt;&gt;&gt;,</span> <span class="pre">list&lt;lag_t&lt;&gt;&gt;,</span> <span class="pre">...)</span></code>,
+<code class="docutils literal notranslate"><span class="pre">data_t</span> <span class="pre">flat_interp(data,</span> <span class="pre">list&lt;lag_t&lt;&gt;&gt;,</span> <span class="pre">list&lt;lag_t&lt;&gt;&gt;,</span> <span class="pre">...)</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">data_t</span> <span class="pre">flat_interp(data,</span> <span class="pre">flat_interpweights,</span> <span class="pre">list&lt;lag_t&lt;&gt;&gt;,</span> <span class="pre">list&lt;lag_t&lt;&gt;&gt;,</span> <span class="pre">...)</span></code>.</p></li>
+</ul>
+<section id="weights">
+<h3>Weights<a class="headerlink" href="#weights" title="Link to this heading"></a></h3>
+<p>Lagrange weights are computed as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}l_j(x) = \prod_{\substack{0 \leq m \leq O \\ m \neq j}}
+\frac{u(f(x)) - u(f(x _m))}{u(f(x_j)) - u(f(x_m))}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(f\)</span> is a grid scaling function and <span class="math notranslate nohighlight">\(u\)</span> deals with cyclicity.
+The transformation can be whatever, but most common
+is to use the identity function <span class="math notranslate nohighlight">\(f(x) = x\)</span>, which is thus the default.</p>
+</section>
+<section id="grid-cyclicity">
+<h3>Grid cyclicity<a class="headerlink" href="#grid-cyclicity" title="Link to this heading"></a></h3>
+<p>If the grid is cyclic <span class="math notranslate nohighlight">\(\left[X_0, X_1\right)\)</span>,
+and for simplicity of writing these examples <span class="math notranslate nohighlight">\(f(x) = x\)</span>, then
+the algorithmic first thing that happens is that <span class="math notranslate nohighlight">\(x\)</span> is shifted
+to be within this range <span class="math notranslate nohighlight">\(\left[X_0, X_1\right)\)</span>.
+If the grid coordinates closest to <span class="math notranslate nohighlight">\(x\)</span> after the shift are
+<span class="math notranslate nohighlight">\(\left[x_j, x_{j+1}, \cdots, x_{j+n}\right]\)</span>,
+and <span class="math notranslate nohighlight">\(x_j \leq x \lt x_{j+n}\)</span> then <span class="math notranslate nohighlight">\(u(x) = x\)</span> for all values.
+If <span class="math notranslate nohighlight">\(x \lt x_j\)</span>, then <span class="math notranslate nohighlight">\(u(x) = x + X_0 - X_1\)</span>
+for all <span class="math notranslate nohighlight">\(x_i \geq \left(X_1-X_0\right) / 2\)</span>.
+If <span class="math notranslate nohighlight">\(x \gt x_{j+n}\)</span>, then <span class="math notranslate nohighlight">\(u(x) = x - X_0 + X_1\)</span>
+for all <span class="math notranslate nohighlight">\(x_i \lt \left(X_1-X_0\right) / 2\)</span>.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="dev.matpack.view.html" class="btn btn-neutral float-left" title="Multidimensional views" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="dev.matpack.sorted_grid.html" class="btn btn-neutral float-right" title="Sorted grids" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright The ARTS Developers.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,170 @@
+MTCKD400WaterData
+#################
+
+.. currentmodule:: pyarts3.arts.predef
+
+.. autoclass:: MTCKD400WaterData
+
+  .. rubric:: Overview
+
+  .. list-table::
+
+    * - Method
+      - :func:`~pyarts3.arts.predef.MTCKD400WaterData.readxml`
+      - Read variable from file.
+    * - Method
+      - :func:`~pyarts3.arts.predef.MTCKD400WaterData.savexml`
+      - Saves variable to file.
+    * - Static Method
+      - :func:`~pyarts3.arts.predef.MTCKD400WaterData.fromxml`
+      - Create variable from file.
+    * - :class:`Vector`
+      - :attr:`~pyarts3.arts.predef.MTCKD400WaterData.for_absco_ref`
+      - Foreign absorption
+    * - :class:`Numeric`
+      - :attr:`~pyarts3.arts.predef.MTCKD400WaterData.ref_h2o_vmr`
+      - Reference water VMR
+    * - :class:`Numeric`
+      - :attr:`~pyarts3.arts.predef.MTCKD400WaterData.ref_press`
+      - Reference pressure
+    * - :class:`Numeric`
+      - :attr:`~pyarts3.arts.predef.MTCKD400WaterData.ref_temp`
+      - Reference temperature
+    * - :class:`Vector`
+      - :attr:`~pyarts3.arts.predef.MTCKD400WaterData.self_absco_ref`
+      - Self absorption
+    * - :class:`Vector`
+      - :attr:`~pyarts3.arts.predef.MTCKD400WaterData.self_texp`
+      - Self temperature exponent
+    * - :class:`Vector`
+      - :attr:`~pyarts3.arts.predef.MTCKD400WaterData.wavenumbers`
+      - Wavenumbers
+    * - Operator
+      - :func:`~pyarts3.arts.predef.MTCKD400WaterData.__eq__`
+      - Return self==value.
+    * - Operator
+      - :func:`~pyarts3.arts.predef.MTCKD400WaterData.__format__`
+      - __format__(self, arg: str, /) -> str
+    * - Operator
+      - :func:`~pyarts3.arts.predef.MTCKD400WaterData.__ge__`
+      - Return self>=value.
+    * - Operator
+      - :func:`~pyarts3.arts.predef.MTCKD400WaterData.__getstate__`
+      - __getstate__(self) -> tuple[pyarts3.arts.Vector, pyarts3.arts.Vector, pyarts3.arts.Vector, pyarts3.arts.Vector]
+    * - Operator
+      - :func:`~pyarts3.arts.predef.MTCKD400WaterData.__gt__`
+      - Return self>value.
+    * - Operator
+      - :func:`~pyarts3.arts.predef.MTCKD400WaterData.__hash__`
+      - Return hash(self).
+    * - Operator
+      - :func:`~pyarts3.arts.predef.MTCKD400WaterData.__init__`
+      - __init__(self, arg: pyarts3.arts.predef.MTCKD400WaterData) -> None
+    * - Operator
+      - :func:`~pyarts3.arts.predef.MTCKD400WaterData.__le__`
+      - Return self<=value.
+    * - Operator
+      - :func:`~pyarts3.arts.predef.MTCKD400WaterData.__lt__`
+      - Return self<value.
+    * - Operator
+      - :func:`~pyarts3.arts.predef.MTCKD400WaterData.__ne__`
+      - Return self!=value.
+    * - Operator
+      - :func:`~pyarts3.arts.predef.MTCKD400WaterData.__repr__`
+      - __repr__(self) -> str
+    * - Operator
+      - :func:`~pyarts3.arts.predef.MTCKD400WaterData.__setstate__`
+      - __setstate__(self, arg: tuple[pyarts3.arts.ArrayOfNumeric, pyarts3.arts.ArrayOfNumeric, pyarts3.arts.ArrayOfNumeric, pyarts3.arts.ArrayOfNumeric], /) -> None
+    * - Operator
+      - :func:`~pyarts3.arts.predef.MTCKD400WaterData.__str__`
+      - __str__(self) -> str
+
+  .. rubric:: Constructors
+
+  .. automethod:: __init__
+     :noindex:
+
+  .. rubric:: Methods
+
+  .. automethod:: MTCKD400WaterData.readxml
+  .. automethod:: MTCKD400WaterData.savexml
+
+  .. rubric:: Static Methods
+
+  .. automethod:: MTCKD400WaterData.fromxml
+
+  .. rubric:: Attributes
+
+  .. attribute:: MTCKD400WaterData.for_absco_ref
+     :type: Vector
+
+     Foreign absorption
+
+     .. :class:`Vector`
+
+
+  .. attribute:: MTCKD400WaterData.ref_h2o_vmr
+     :type: Numeric
+
+     Reference water VMR
+
+     .. :class:`Numeric`
+
+
+  .. attribute:: MTCKD400WaterData.ref_press
+     :type: Numeric
+
+     Reference pressure
+
+     .. :class:`Numeric`
+
+
+  .. attribute:: MTCKD400WaterData.ref_temp
+     :type: Numeric
+
+     Reference temperature
+
+     .. :class:`Numeric`
+
+
+  .. attribute:: MTCKD400WaterData.self_absco_ref
+     :type: Vector
+
+     Self absorption
+
+     .. :class:`Vector`
+
+
+  .. attribute:: MTCKD400WaterData.self_texp
+     :type: Vector
+
+     Self temperature exponent
+
+     .. :class:`Vector`
+
+
+  .. attribute:: MTCKD400WaterData.wavenumbers
+     :type: Vector
+
+     Wavenumbers
+
+     .. :class:`Vector`
+
+
+
+  .. rubric:: Operators
+
+  .. automethod:: MTCKD400WaterData.__eq__
+  .. automethod:: MTCKD400WaterData.__format__
+  .. automethod:: MTCKD400WaterData.__ge__
+  .. automethod:: MTCKD400WaterData.__getstate__
+  .. automethod:: MTCKD400WaterData.__gt__
+  .. automethod:: MTCKD400WaterData.__hash__
+  .. automethod:: MTCKD400WaterData.__init__
+  .. automethod:: MTCKD400WaterData.__le__
+  .. automethod:: MTCKD400WaterData.__lt__
+  .. automethod:: MTCKD400WaterData.__ne__
+  .. automethod:: MTCKD400WaterData.__repr__
+  .. automethod:: MTCKD400WaterData.__setstate__
+  .. automethod:: MTCKD400WaterData.__str__
+

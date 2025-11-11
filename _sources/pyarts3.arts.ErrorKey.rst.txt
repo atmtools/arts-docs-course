@@ -1,0 +1,111 @@
+ErrorKey
+########
+
+.. currentmodule:: pyarts3.arts
+
+.. autoclass:: ErrorKey
+
+  .. rubric:: Overview
+
+  .. list-table::
+
+    * - Method
+      - :func:`~pyarts3.arts.ErrorKey.readxml`
+      - Read variable from file.
+    * - Method
+      - :func:`~pyarts3.arts.ErrorKey.savexml`
+      - Saves variable to file.
+    * - Static Method
+      - :func:`~pyarts3.arts.ErrorKey.fromxml`
+      - Create variable from file.
+    * - :class:`Index`
+      - :attr:`~pyarts3.arts.ErrorKey.y_size`
+      - Size of target in measurement vector
+    * - :class:`Index`
+      - :attr:`~pyarts3.arts.ErrorKey.y_start`
+      - Start index of target in measurement vector
+    * - Operator
+      - :func:`~pyarts3.arts.ErrorKey.__eq__`
+      - Return self==value.
+    * - Operator
+      - :func:`~pyarts3.arts.ErrorKey.__format__`
+      - __format__(self, arg: str, /) -> str
+    * - Operator
+      - :func:`~pyarts3.arts.ErrorKey.__ge__`
+      - Return self>=value.
+    * - Operator
+      - :func:`~pyarts3.arts.ErrorKey.__getstate__`
+      - Helper for pickle.
+    * - Operator
+      - :func:`~pyarts3.arts.ErrorKey.__gt__`
+      - Return self>value.
+    * - Operator
+      - :func:`~pyarts3.arts.ErrorKey.__hash__`
+      - Return hash(self).
+    * - Operator
+      - :func:`~pyarts3.arts.ErrorKey.__init__`
+      - __init__(self, arg: pyarts3.arts.ErrorKey) -> None
+    * - Operator
+      - :func:`~pyarts3.arts.ErrorKey.__le__`
+      - Return self<=value.
+    * - Operator
+      - :func:`~pyarts3.arts.ErrorKey.__lt__`
+      - Return self<value.
+    * - Operator
+      - :func:`~pyarts3.arts.ErrorKey.__ne__`
+      - Return self!=value.
+    * - Operator
+      - :func:`~pyarts3.arts.ErrorKey.__repr__`
+      - __repr__(self) -> str
+    * - Operator
+      - :func:`~pyarts3.arts.ErrorKey.__str__`
+      - __str__(self) -> str
+
+  .. rubric:: Constructors
+
+  .. automethod:: __init__
+     :noindex:
+
+  .. rubric:: Methods
+
+  .. automethod:: ErrorKey.readxml
+  .. automethod:: ErrorKey.savexml
+
+  .. rubric:: Static Methods
+
+  .. automethod:: ErrorKey.fromxml
+
+  .. rubric:: Attributes
+
+  .. attribute:: ErrorKey.y_size
+     :type: Index
+
+     Size of target in measurement vector
+
+     .. :class:`Index`
+
+
+  .. attribute:: ErrorKey.y_start
+     :type: Index
+
+     Start index of target in measurement vector
+
+     .. :class:`Index`
+
+
+
+  .. rubric:: Operators
+
+  .. automethod:: ErrorKey.__eq__
+  .. automethod:: ErrorKey.__format__
+  .. automethod:: ErrorKey.__ge__
+  .. automethod:: ErrorKey.__getstate__
+  .. automethod:: ErrorKey.__gt__
+  .. automethod:: ErrorKey.__hash__
+  .. automethod:: ErrorKey.__init__
+  .. automethod:: ErrorKey.__le__
+  .. automethod:: ErrorKey.__lt__
+  .. automethod:: ErrorKey.__ne__
+  .. automethod:: ErrorKey.__repr__
+  .. automethod:: ErrorKey.__str__
+

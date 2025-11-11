@@ -1,0 +1,46 @@
+gravity_operator
+================
+
+.. currentmodule:: pyarts3.workspace
+
+.. attribute:: Workspace.gravity_operator
+   :type: ~pyarts3.arts.NumericTernaryOperator
+
+   The gravity operator.
+
+   Usage: gravity = :attr:`~pyarts3.workspace.Workspace.gravity_operator` ( :attr:`~pyarts3.workspace.Workspace.altitude`, :attr:`~pyarts3.workspace.Workspace.latitude`, :attr:`~pyarts3.workspace.Workspace.longitude` ).
+
+   Parameters
+   ----------
+   altitude : Numeric
+       Altitude in meters.
+   latitude : Numeric
+       Latitude in degrees.
+   longitude : Numeric
+       Longitude in degrees.
+
+   Returns
+   -------
+   gravity : Numeric
+       The gravity in :math:`\textrm{m/s}^2`.
+
+
+
+
+   .. rubric:: Input to workspace method
+
+   .. hlist::
+       :columns: 1
+
+       * :func:`~pyarts3.workspace.Workspace.atmospheric_fieldHydrostaticPressure`
+
+
+   .. rubric:: Output from workspace method
+
+   .. hlist::
+       :columns: 1
+
+       * :func:`~pyarts3.workspace.Workspace.gravity_operatorCentralMass`
+
+   .. :class:`~pyarts3.arts.NumericTernaryOperator`
+

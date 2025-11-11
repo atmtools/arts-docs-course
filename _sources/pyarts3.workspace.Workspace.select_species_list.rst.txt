@@ -1,0 +1,22 @@
+select_species_list
+===================
+
+.. currentmodule:: pyarts3.workspace
+
+.. attribute:: Workspace.select_species_list
+   :type: ~pyarts3.arts.ArrayOfSpeciesEnum
+
+   Species selection when multiple species must be chosen.
+
+
+
+
+   .. rubric:: Input to workspace method
+
+   .. hlist::
+       :columns: 1
+
+       * :func:`~pyarts3.workspace.Workspace.ray_path_propagation_matrix_species_splitFromPath`
+
+   .. :class:`~pyarts3.arts.ArrayOfSpeciesEnum`
+

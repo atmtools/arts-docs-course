@@ -1,0 +1,8 @@
+Scattering calculations
+=======================
+
+.. plot:: ../../../examples/4-scattering-properties/2-scattering-calculations/1-scattering_species.sht.py
+    :include-source:
+
+
+

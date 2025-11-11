@@ -1,0 +1,20 @@
+Arts catalogue data
+===================
+
+These examples give an overview of the basic functionality of ARTS absorption catalogue data
+and how to use it in your own scripts.
+
+
+.. contents::
+   :depth: 1
+   :local:
+   :backlinks: none
+
+Line strength
+-------------
+
+.. plot:: ../../../examples/5-absorption/1-arts-catalogue-data/1-line-strength.py
+    :include-source:
+
+
+
