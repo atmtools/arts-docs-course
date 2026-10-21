@@ -8,7 +8,7 @@
     <link href="_static/favicon-32x32.png" sizes="32x32" rel="icon" type="image/png">
     <link rel="apple-touch-icon" sizes="180x180" href="_static/apple-touch-icon.png" type="image/png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>pyarts3.hitran &mdash; ARTS 3.0.0dev8 documentation</title>
+  <title>pyarts3.hitran &mdash; ARTS 3.0.0dev10 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -17,9 +17,10 @@
       <link rel="stylesheet" type="text/css" href="_static/custom.css?v=73457b95" />
 
   
+    <link rel="canonical" href="https://atmtools.github.io/arts-docs-master/pyarts3.hitran.html" />
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=3afc90f3"></script>
+      <script src="_static/documentation_options.js?v=abe3498d"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -30,7 +31,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="pyarts3.math" href="pyarts3.math.html" />
-    <link rel="prev" title="pyarts3.data" href="pyarts3.data.html" /> 
+    <link rel="prev" title="pyarts3.gui" href="pyarts3.gui.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -62,15 +63,20 @@
 <li class="toctree-l1 current"><a class="reference internal" href="pyarts3.html">API Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="pyarts3.arts.html">pyarts3.arts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pyarts3.data.html">pyarts3.data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyarts3.gui.html">pyarts3.gui</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">pyarts3.hitran</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#pyarts3.hitran.gen_hitran_isotopologues"><code class="docutils literal notranslate"><span class="pre">gen_hitran_isotopologues()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pyarts3.hitran.gen_latest_molparam_map"><code class="docutils literal notranslate"><span class="pre">gen_latest_molparam_map()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyarts3.hitran.get_latest_molparam_map"><code class="docutils literal notranslate"><span class="pre">get_latest_molparam_map()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyarts3.hitran.pos2char"><code class="docutils literal notranslate"><span class="pre">pos2char()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyarts3.hitran.to_cat_data"><code class="docutils literal notranslate"><span class="pre">to_cat_data()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="pyarts3.math.html">pyarts3.math</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pyarts3.plots.html">pyarts3.plots</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pyarts3.recipe.html">pyarts3.recipe</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pyarts3.utils.html">pyarts3.utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyarts3.spectroscopy.html">pyarts3.spectroscopy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pyarts3.workspace.html">pyarts3.workspace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pyarts3.xml.html">pyarts3.xml</a></li>
 </ul>
@@ -129,13 +135,40 @@ internally, but species names that are different from Hitran are mapped to
 ARTS names in the output.</p>
 </dd></dl>
 
+<dl class="py function">
+<dt class="sig sig-object py" id="pyarts3.hitran.get_latest_molparam_map">
+<span class="sig-prename descclassname"><span class="pre">pyarts3.hitran.</span></span><span class="sig-name descname"><span class="pre">get_latest_molparam_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">molparam_txt_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyarts3/hitran.html#get_latest_molparam_map"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyarts3.hitran.get_latest_molparam_map" title="Link to this definition"></a></dt>
+<dd><p>Generates a version of latest_molparam_map used in hitran_species.cc</p>
+<p>The variable is returned as a dictionary mapping species to a list of
+isotopologues. Each isotopologue is represented as a list of four items:
+[specnum, pos, isotopologue string, abundance]
+1. specnum: HITRAN species number
+2. pos: position index in HITRAN notation
+3. isotopologue string: isotopologue identifier in HITRAN notation
+4. abundance: natural abundance of the isotopologue</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyarts3.hitran.pos2char">
+<span class="sig-prename descclassname"><span class="pre">pyarts3.hitran.</span></span><span class="sig-name descname"><span class="pre">pos2char</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ind</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyarts3/hitran.html#pos2char"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyarts3.hitran.pos2char" title="Link to this definition"></a></dt>
+<dd><p>Convert an isotoplogue index to a HITRAN char for that index</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyarts3.hitran.to_cat_data">
+<span class="sig-prename descclassname"><span class="pre">pyarts3.hitran.</span></span><span class="sig-name descname"><span class="pre">to_cat_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">molparam_txt_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyarts3/hitran.html#to_cat_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyarts3.hitran.to_cat_data" title="Link to this definition"></a></dt>
+<dd><p>Converts the molparam.txt file to a format suitable for catdatabase input.</p>
+<p>The output is printed to stream with print() as the intent is to use this
+output in ARTS directly.</p>
+</dd></dl>
+
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="pyarts3.data.html" class="btn btn-neutral float-left" title="pyarts3.data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="pyarts3.gui.html" class="btn btn-neutral float-left" title="pyarts3.gui" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="pyarts3.math.html" class="btn btn-neutral float-right" title="pyarts3.math" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

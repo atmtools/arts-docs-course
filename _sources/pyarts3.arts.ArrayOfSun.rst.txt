@@ -13,11 +13,17 @@ ArrayOfSun
       - :func:`~pyarts3.arts.ArrayOfSun.append`
       - Append `arg` to the end of the list.
     * - Method
+      - :func:`~pyarts3.arts.ArrayOfSun.appendxml`
+      - Append variable from file.
+    * - Method
       - :func:`~pyarts3.arts.ArrayOfSun.clear`
       - Remove all items from list.
     * - Method
       - :func:`~pyarts3.arts.ArrayOfSun.extend`
       - Extend `self` by appending elements from `arg`.
+    * - Method
+      - :func:`~pyarts3.arts.ArrayOfSun.extendxml`
+      - Extend variable from file.
     * - Method
       - :func:`~pyarts3.arts.ArrayOfSun.insert`
       - Insert object `arg1` before index `arg0`.
@@ -52,9 +58,6 @@ ArrayOfSun
       - :func:`~pyarts3.arts.ArrayOfSun.__getitem__`
       - __getitem__(self, arg: slice, /) -> pyarts3.arts.ArrayOfSun
     * - Operator
-      - :func:`~pyarts3.arts.ArrayOfSun.__getstate__`
-      - __getstate__(self) -> tuple[pyarts3.arts.ArrayOfSun]
-    * - Operator
       - :func:`~pyarts3.arts.ArrayOfSun.__gt__`
       - Return self>value.
     * - Operator
@@ -85,9 +88,6 @@ ArrayOfSun
       - :func:`~pyarts3.arts.ArrayOfSun.__setitem__`
       - __setitem__(self, arg0: slice, arg1: pyarts3.arts.ArrayOfSun, /) -> None
     * - Operator
-      - :func:`~pyarts3.arts.ArrayOfSun.__setstate__`
-      - __setstate__(self, arg: tuple[pyarts3.arts.ArrayOfSun]) -> None
-    * - Operator
       - :func:`~pyarts3.arts.ArrayOfSun.__str__`
       - __str__(self) -> str
 
@@ -99,8 +99,10 @@ ArrayOfSun
   .. rubric:: Methods
 
   .. automethod:: ArrayOfSun.append
+  .. automethod:: ArrayOfSun.appendxml
   .. automethod:: ArrayOfSun.clear
   .. automethod:: ArrayOfSun.extend
+  .. automethod:: ArrayOfSun.extendxml
   .. automethod:: ArrayOfSun.insert
   .. automethod:: ArrayOfSun.pop
   .. automethod:: ArrayOfSun.readxml
@@ -118,7 +120,6 @@ ArrayOfSun
   .. automethod:: ArrayOfSun.__format__
   .. automethod:: ArrayOfSun.__ge__
   .. automethod:: ArrayOfSun.__getitem__
-  .. automethod:: ArrayOfSun.__getstate__
   .. automethod:: ArrayOfSun.__gt__
   .. automethod:: ArrayOfSun.__hash__
   .. automethod:: ArrayOfSun.__init__
@@ -129,6 +130,5 @@ ArrayOfSun
   .. automethod:: ArrayOfSun.__ne__
   .. automethod:: ArrayOfSun.__repr__
   .. automethod:: ArrayOfSun.__setitem__
-  .. automethod:: ArrayOfSun.__setstate__
   .. automethod:: ArrayOfSun.__str__
 

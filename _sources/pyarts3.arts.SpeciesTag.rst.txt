@@ -27,6 +27,9 @@ SpeciesTag
     * - :class:`~pyarts3.arts.String`
       - :attr:`~pyarts3.arts.SpeciesTag.full_name`
       - The full name
+    * - :class:`SpeciesEnum`
+      - :attr:`~pyarts3.arts.SpeciesTag.spec`
+      - Species
     * - :class:`int`
       - :attr:`~pyarts3.arts.SpeciesTag.spec_ind`
       - Species index
@@ -42,9 +45,6 @@ SpeciesTag
     * - Operator
       - :func:`~pyarts3.arts.SpeciesTag.__ge__`
       - __ge__(self, arg: pyarts3.arts.SpeciesTag, /) -> bool
-    * - Operator
-      - :func:`~pyarts3.arts.SpeciesTag.__getstate__`
-      - __getstate__(self) -> tuple[int, pyarts3.arts.SpeciesTagType, pyarts3.arts.SpeciesEnum]
     * - Operator
       - :func:`~pyarts3.arts.SpeciesTag.__gt__`
       - __gt__(self, arg: pyarts3.arts.SpeciesTag, /) -> bool
@@ -66,9 +66,6 @@ SpeciesTag
     * - Operator
       - :func:`~pyarts3.arts.SpeciesTag.__repr__`
       - __repr__(self) -> str
-    * - Operator
-      - :func:`~pyarts3.arts.SpeciesTag.__setstate__`
-      - __setstate__(self, arg: tuple[int, pyarts3.arts.SpeciesTagType, pyarts3.arts.SpeciesEnum], /) -> None
     * - Operator
       - :func:`~pyarts3.arts.SpeciesTag.__str__`
       - __str__(self) -> str
@@ -106,6 +103,14 @@ SpeciesTag
      .. :class:`~pyarts3.arts.String`
 
 
+  .. attribute:: SpeciesTag.spec
+     :type: SpeciesEnum
+
+     Species
+
+     .. :class:`SpeciesEnum`
+
+
   .. attribute:: SpeciesTag.spec_ind
      :type: int
 
@@ -128,7 +133,6 @@ SpeciesTag
   .. automethod:: SpeciesTag.__eq__
   .. automethod:: SpeciesTag.__format__
   .. automethod:: SpeciesTag.__ge__
-  .. automethod:: SpeciesTag.__getstate__
   .. automethod:: SpeciesTag.__gt__
   .. automethod:: SpeciesTag.__hash__
   .. automethod:: SpeciesTag.__init__
@@ -136,6 +140,5 @@ SpeciesTag
   .. automethod:: SpeciesTag.__lt__
   .. automethod:: SpeciesTag.__ne__
   .. automethod:: SpeciesTag.__repr__
-  .. automethod:: SpeciesTag.__setstate__
   .. automethod:: SpeciesTag.__str__
 

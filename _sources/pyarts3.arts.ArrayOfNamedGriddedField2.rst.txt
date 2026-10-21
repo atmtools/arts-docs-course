@@ -13,6 +13,9 @@ ArrayOfNamedGriddedField2
       - :func:`~pyarts3.arts.ArrayOfNamedGriddedField2.append`
       - Append `arg` to the end of the list.
     * - Method
+      - :func:`~pyarts3.arts.ArrayOfNamedGriddedField2.appendxml`
+      - Append variable from file.
+    * - Method
       - :func:`~pyarts3.arts.ArrayOfNamedGriddedField2.clear`
       - Remove all items from list.
     * - Method
@@ -21,6 +24,9 @@ ArrayOfNamedGriddedField2
     * - Method
       - :func:`~pyarts3.arts.ArrayOfNamedGriddedField2.extend`
       - Extend `self` by appending elements from `arg`.
+    * - Method
+      - :func:`~pyarts3.arts.ArrayOfNamedGriddedField2.extendxml`
+      - Extend variable from file.
     * - Method
       - :func:`~pyarts3.arts.ArrayOfNamedGriddedField2.insert`
       - Insert object `arg1` before index `arg0`.
@@ -61,9 +67,6 @@ ArrayOfNamedGriddedField2
       - :func:`~pyarts3.arts.ArrayOfNamedGriddedField2.__getitem__`
       - __getitem__(self, arg: slice, /) -> pyarts3.arts.ArrayOfNamedGriddedField2
     * - Operator
-      - :func:`~pyarts3.arts.ArrayOfNamedGriddedField2.__getstate__`
-      - __getstate__(self) -> tuple[pyarts3.arts.ArrayOfNamedGriddedField2]
-    * - Operator
       - :func:`~pyarts3.arts.ArrayOfNamedGriddedField2.__gt__`
       - Return self>value.
     * - Operator
@@ -94,9 +97,6 @@ ArrayOfNamedGriddedField2
       - :func:`~pyarts3.arts.ArrayOfNamedGriddedField2.__setitem__`
       - __setitem__(self, arg0: slice, arg1: pyarts3.arts.ArrayOfNamedGriddedField2, /) -> None
     * - Operator
-      - :func:`~pyarts3.arts.ArrayOfNamedGriddedField2.__setstate__`
-      - __setstate__(self, arg: tuple[pyarts3.arts.ArrayOfNamedGriddedField2]) -> None
-    * - Operator
       - :func:`~pyarts3.arts.ArrayOfNamedGriddedField2.__str__`
       - __str__(self) -> str
 
@@ -108,9 +108,11 @@ ArrayOfNamedGriddedField2
   .. rubric:: Methods
 
   .. automethod:: ArrayOfNamedGriddedField2.append
+  .. automethod:: ArrayOfNamedGriddedField2.appendxml
   .. automethod:: ArrayOfNamedGriddedField2.clear
   .. automethod:: ArrayOfNamedGriddedField2.count
   .. automethod:: ArrayOfNamedGriddedField2.extend
+  .. automethod:: ArrayOfNamedGriddedField2.extendxml
   .. automethod:: ArrayOfNamedGriddedField2.insert
   .. automethod:: ArrayOfNamedGriddedField2.pop
   .. automethod:: ArrayOfNamedGriddedField2.readxml
@@ -130,7 +132,6 @@ ArrayOfNamedGriddedField2
   .. automethod:: ArrayOfNamedGriddedField2.__format__
   .. automethod:: ArrayOfNamedGriddedField2.__ge__
   .. automethod:: ArrayOfNamedGriddedField2.__getitem__
-  .. automethod:: ArrayOfNamedGriddedField2.__getstate__
   .. automethod:: ArrayOfNamedGriddedField2.__gt__
   .. automethod:: ArrayOfNamedGriddedField2.__hash__
   .. automethod:: ArrayOfNamedGriddedField2.__init__
@@ -141,6 +142,5 @@ ArrayOfNamedGriddedField2
   .. automethod:: ArrayOfNamedGriddedField2.__ne__
   .. automethod:: ArrayOfNamedGriddedField2.__repr__
   .. automethod:: ArrayOfNamedGriddedField2.__setitem__
-  .. automethod:: ArrayOfNamedGriddedField2.__setstate__
   .. automethod:: ArrayOfNamedGriddedField2.__str__
 

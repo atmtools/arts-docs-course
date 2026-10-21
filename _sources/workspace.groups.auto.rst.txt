@@ -9,12 +9,10 @@
     * :class:`~pyarts3.arts.ArrayOfArrayOfPropagationPathPoint`
     * :class:`~pyarts3.arts.ArrayOfArrayOfPropmatMatrix`
     * :class:`~pyarts3.arts.ArrayOfArrayOfPropmatVector`
-    * :class:`~pyarts3.arts.ArrayOfArrayOfSpeciesTag`
     * :class:`~pyarts3.arts.ArrayOfArrayOfStokvecMatrix`
     * :class:`~pyarts3.arts.ArrayOfArrayOfStokvecVector`
     * :class:`~pyarts3.arts.ArrayOfAscendingGrid`
     * :class:`~pyarts3.arts.ArrayOfAtmPoint`
-    * :class:`~pyarts3.arts.ArrayOfCIARecord`
     * :class:`~pyarts3.arts.ArrayOfMuelmatTensor3`
     * :class:`~pyarts3.arts.ArrayOfMuelmatVector`
     * :class:`~pyarts3.arts.ArrayOfPropagationPathPoint`
@@ -22,8 +20,10 @@
     * :class:`~pyarts3.arts.ArrayOfPropmatVector`
     * :class:`~pyarts3.arts.ArrayOfQuantumLevelIdentifier`
     * :class:`~pyarts3.arts.ArrayOfScatteringSpecies`
+    * :class:`~pyarts3.arts.ArrayOfSensorMetaInfo`
     * :class:`~pyarts3.arts.ArrayOfSensorObsel`
     * :class:`~pyarts3.arts.ArrayOfSpeciesEnum`
+    * :class:`~pyarts3.arts.ArrayOfSpeciesTag`
     * :class:`~pyarts3.arts.ArrayOfSpecmatMatrix`
     * :class:`~pyarts3.arts.ArrayOfStokvecMatrix`
     * :class:`~pyarts3.arts.ArrayOfStokvecVector`
@@ -31,21 +31,21 @@
     * :class:`~pyarts3.arts.ArrayOfSubsurfacePoint`
     * :class:`~pyarts3.arts.ArrayOfSun`
     * :class:`~pyarts3.arts.ArrayOfVector3`
-    * :class:`~pyarts3.arts.ArrayOfXsecRecord`
     * :class:`~pyarts3.arts.AscendingGrid`
     * :class:`~pyarts3.arts.AtmField`
     * :class:`~pyarts3.arts.AtmKey`
     * :class:`~pyarts3.arts.AtmPoint`
-    * :class:`~pyarts3.arts.AzimuthGrid`
+    * :class:`~pyarts3.arts.AziGrid`
     * :class:`~pyarts3.arts.BlockMatrix`
     * :class:`~pyarts3.arts.CallbackOperator`
+    * :class:`~pyarts3.arts.CIARecords`
     * :class:`~pyarts3.arts.CovarianceMatrix`
     * :class:`~pyarts3.arts.DescendingGrid`
-    * :class:`~pyarts3.arts.disort_settings_agendaOperator`
     * :class:`~pyarts3.arts.disort_settings_downwelling_wrapper_agendaOperator`
     * :class:`~pyarts3.arts.DisortFlux`
     * :class:`~pyarts3.arts.DisortRadiance`
     * :class:`~pyarts3.arts.DisortSettings`
+    * :class:`~pyarts3.arts.DisortSettingsAgendaOperator`
     * :class:`~pyarts3.arts.GeodeticField2`
     * :class:`~pyarts3.arts.GriddedField2`
     * :class:`~pyarts3.arts.GriddedSpectralField6`
@@ -65,10 +65,8 @@
     * :class:`~pyarts3.arts.NumericTernaryOperator`
     * :class:`~pyarts3.arts.NumericUnaryOperator`
     * :class:`~pyarts3.arts.PredefinedModelData`
-    * :class:`~pyarts3.arts.propagation_matrix_agendaOperator`
-    * :class:`~pyarts3.arts.propagation_matrix_scattering_agendaOperator`
-    * :class:`~pyarts3.arts.propagation_matrix_scattering_spectral_agendaOperator`
     * :class:`~pyarts3.arts.PropagationPathPoint`
+    * :class:`~pyarts3.arts.Propmat`
     * :class:`~pyarts3.arts.PropmatMatrix`
     * :class:`~pyarts3.arts.PropmatVector`
     * :class:`~pyarts3.arts.QuantumIdentifier`
@@ -76,21 +74,31 @@
     * :class:`~pyarts3.arts.QuantumIdentifierVectorMap`
     * :class:`~pyarts3.arts.QuantumLevelIdentifier`
     * :class:`~pyarts3.arts.ray_path_observer_agendaOperator`
+    * :class:`~pyarts3.arts.ray_point_back_propagation_agendaOperator`
     * :class:`~pyarts3.arts.ScatteringSpeciesProperty`
+    * :class:`~pyarts3.arts.single_propmat_agendaOperator`
+    * :class:`~pyarts3.arts.single_rad_space_agendaOperator`
+    * :class:`~pyarts3.arts.single_rad_surface_agendaOperator`
     * :class:`~pyarts3.arts.SortedGriddedField1`
     * :class:`~pyarts3.arts.SortedGriddedField2`
     * :class:`~pyarts3.arts.SortedGriddedField3`
     * :class:`~pyarts3.arts.SortedGriddedField4`
     * :class:`~pyarts3.arts.SortedGriddedField5`
     * :class:`~pyarts3.arts.SortedGriddedField6`
+    * :class:`~pyarts3.arts.SourceVector`
     * :class:`~pyarts3.arts.SpeciesEnum`
     * :class:`~pyarts3.arts.SpeciesEnumVectors`
     * :class:`~pyarts3.arts.SpeciesIsotope`
     * :class:`~pyarts3.arts.SpecmatMatrix`
-    * :class:`~pyarts3.arts.spectral_radiance_observer_agendaOperator`
-    * :class:`~pyarts3.arts.spectral_radiance_space_agendaOperator`
-    * :class:`~pyarts3.arts.spectral_radiance_surface_agendaOperator`
+    * :class:`~pyarts3.arts.spectral_propmat_agendaOperator`
+    * :class:`~pyarts3.arts.spectral_propmat_and_atm_path_agendaOperator`
+    * :class:`~pyarts3.arts.spectral_propmat_scat_agendaOperator`
+    * :class:`~pyarts3.arts.spectral_propmat_scat_spectral_agendaOperator`
+    * :class:`~pyarts3.arts.spectral_rad_observer_agendaOperator`
+    * :class:`~pyarts3.arts.spectral_rad_space_agendaOperator`
+    * :class:`~pyarts3.arts.spectral_surf_refl_agendaOperator`
     * :class:`~pyarts3.arts.SpectralRadianceOperator`
+    * :class:`~pyarts3.arts.SpectralRadianceSurfaceAgendaOperator`
     * :class:`~pyarts3.arts.SpectralRadianceTransformOperator`
     * :class:`~pyarts3.arts.SpectralRadianceUnitType`
     * :class:`~pyarts3.arts.Stokvec`
@@ -101,20 +109,23 @@
     * :class:`~pyarts3.arts.StokvecSortedGriddedField4`
     * :class:`~pyarts3.arts.StokvecSortedGriddedField5`
     * :class:`~pyarts3.arts.StokvecSortedGriddedField6`
+    * :class:`~pyarts3.arts.StokvecTensor3`
     * :class:`~pyarts3.arts.StokvecVector`
     * :class:`~pyarts3.arts.String`
     * :class:`~pyarts3.arts.SubsurfaceField`
     * :class:`~pyarts3.arts.SubsurfaceKey`
     * :class:`~pyarts3.arts.SubsurfacePropertyTag`
     * :class:`~pyarts3.arts.Sun`
-    * :class:`~pyarts3.arts.surface_reflectance_agendaOperator`
     * :class:`~pyarts3.arts.SurfaceField`
     * :class:`~pyarts3.arts.SurfaceKey`
     * :class:`~pyarts3.arts.SurfacePropertyTag`
     * :class:`~pyarts3.arts.Time`
+    * :class:`~pyarts3.arts.TransmittanceMatrix`
+    * :class:`~pyarts3.arts.TransmittanceOption`
     * :class:`~pyarts3.arts.Vector`
     * :class:`~pyarts3.arts.Vector2`
     * :class:`~pyarts3.arts.Vector3`
-    * :class:`~pyarts3.arts.ZenithGrid`
-    * :class:`~pyarts3.arts.ZenithGriddedField1`
+    * :class:`~pyarts3.arts.XsecRecords`
+    * :class:`~pyarts3.arts.ZenGrid`
+    * :class:`~pyarts3.arts.ZenGriddedField1`
 

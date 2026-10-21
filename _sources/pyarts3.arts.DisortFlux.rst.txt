@@ -19,7 +19,7 @@ DisortFlux
       - :func:`~pyarts3.arts.DisortFlux.fromxml`
       - Create variable from file.
     * - :class:`DescendingGrid`
-      - :attr:`~pyarts3.arts.DisortFlux.altitude_grid`
+      - :attr:`~pyarts3.arts.DisortFlux.alt_grid`
       - Altitude grid of the fluxes (level values)
     * - :class:`Matrix`
       - :attr:`~pyarts3.arts.DisortFlux.down_diffuse`
@@ -28,7 +28,7 @@ DisortFlux
       - :attr:`~pyarts3.arts.DisortFlux.down_direct`
       - Downward direct flux (layer values)
     * - :class:`AscendingGrid`
-      - :attr:`~pyarts3.arts.DisortFlux.frequency_grid`
+      - :attr:`~pyarts3.arts.DisortFlux.freq_grid`
       - Frequency grid of the fluxes
     * - :class:`Matrix`
       - :attr:`~pyarts3.arts.DisortFlux.up`
@@ -42,9 +42,6 @@ DisortFlux
     * - Operator
       - :func:`~pyarts3.arts.DisortFlux.__ge__`
       - Return self>=value.
-    * - Operator
-      - :func:`~pyarts3.arts.DisortFlux.__getstate__`
-      - Helper for pickle.
     * - Operator
       - :func:`~pyarts3.arts.DisortFlux.__gt__`
       - Return self>value.
@@ -86,7 +83,7 @@ DisortFlux
 
   .. rubric:: Attributes
 
-  .. attribute:: DisortFlux.altitude_grid
+  .. attribute:: DisortFlux.alt_grid
      :type: DescendingGrid
 
      Altitude grid of the fluxes (level values)
@@ -110,7 +107,7 @@ DisortFlux
      .. :class:`Matrix`
 
 
-  .. attribute:: DisortFlux.frequency_grid
+  .. attribute:: DisortFlux.freq_grid
      :type: AscendingGrid
 
      Frequency grid of the fluxes
@@ -132,7 +129,6 @@ DisortFlux
   .. automethod:: DisortFlux.__eq__
   .. automethod:: DisortFlux.__format__
   .. automethod:: DisortFlux.__ge__
-  .. automethod:: DisortFlux.__getstate__
   .. automethod:: DisortFlux.__gt__
   .. automethod:: DisortFlux.__hash__
   .. automethod:: DisortFlux.__init__

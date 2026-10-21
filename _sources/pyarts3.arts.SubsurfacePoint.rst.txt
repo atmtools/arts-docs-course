@@ -25,11 +25,14 @@ SubsurfacePoint
       - :attr:`~pyarts3.arts.SubsurfacePoint.density`
       - Density [kg/m^3]
     * - :class:`dict`\[:class:`SubsurfacePropertyTag`, :class:`Numeric`\]
-      - :attr:`~pyarts3.arts.SubsurfacePoint.prop`
+      - :attr:`~pyarts3.arts.SubsurfacePoint.props`
       - Properties of the subsurface point
     * - :class:`Numeric`
       - :attr:`~pyarts3.arts.SubsurfacePoint.temperature`
       - Temperature [K]
+    * - Operator
+      - :func:`~pyarts3.arts.SubsurfacePoint.__contains__`
+      - __contains__(self, arg: pyarts3.arts.SubsurfaceKey | pyarts3.arts.SubsurfacePropertyTag, /) -> bool
     * - Operator
       - :func:`~pyarts3.arts.SubsurfacePoint.__eq__`
       - Return self==value.
@@ -42,9 +45,6 @@ SubsurfacePoint
     * - Operator
       - :func:`~pyarts3.arts.SubsurfacePoint.__getitem__`
       - __getitem__(self, arg: pyarts3.arts.SubsurfaceKey | pyarts3.arts.SubsurfacePropertyTag, /) -> float
-    * - Operator
-      - :func:`~pyarts3.arts.SubsurfacePoint.__getstate__`
-      - Helper for pickle.
     * - Operator
       - :func:`~pyarts3.arts.SubsurfacePoint.__gt__`
       - Return self>value.
@@ -98,7 +98,7 @@ SubsurfacePoint
      .. :class:`Numeric`
 
 
-  .. attribute:: SubsurfacePoint.prop
+  .. attribute:: SubsurfacePoint.props
      :type: dict[SubsurfacePropertyTag, Numeric]
 
      Properties of the subsurface point
@@ -117,11 +117,11 @@ SubsurfacePoint
 
   .. rubric:: Operators
 
+  .. automethod:: SubsurfacePoint.__contains__
   .. automethod:: SubsurfacePoint.__eq__
   .. automethod:: SubsurfacePoint.__format__
   .. automethod:: SubsurfacePoint.__ge__
   .. automethod:: SubsurfacePoint.__getitem__
-  .. automethod:: SubsurfacePoint.__getstate__
   .. automethod:: SubsurfacePoint.__gt__
   .. automethod:: SubsurfacePoint.__hash__
   .. automethod:: SubsurfacePoint.__init__

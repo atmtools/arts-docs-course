@@ -67,6 +67,9 @@ QuantumNumberType
       - ``pyarts3.arts.QuantumNumberType.F9``
       - "F9" (:class:`~QuantumNumberType`)
     * - Static Data
+      - ``pyarts3.arts.QuantumNumberType.G``
+      - "G" (:class:`~QuantumNumberType`)
+    * - Static Data
       - ``pyarts3.arts.QuantumNumberType.I``
       - "I" (:class:`~QuantumNumberType`)
     * - Static Data
@@ -102,6 +105,9 @@ QuantumNumberType
     * - Static Data
       - ``pyarts3.arts.QuantumNumberType.SpinComponentLabel``
       - "SpinComponentLabel" (:class:`~QuantumNumberType`)
+    * - Static Data
+      - ``pyarts3.arts.QuantumNumberType.U``
+      - "U" (:class:`~QuantumNumberType`)
     * - Static Data
       - ``pyarts3.arts.QuantumNumberType.alpha``
       - "alpha" (:class:`~QuantumNumberType`)
@@ -244,9 +250,6 @@ QuantumNumberType
       - :func:`~pyarts3.arts.QuantumNumberType.__ge__`
       - `self >= other`
     * - Operator
-      - :func:`~pyarts3.arts.QuantumNumberType.__getstate__`
-      - __getstate__(self) -> tuple[str]
-    * - Operator
       - :func:`~pyarts3.arts.QuantumNumberType.__gt__`
       - `self > other`
     * - Operator
@@ -267,9 +270,6 @@ QuantumNumberType
     * - Operator
       - :func:`~pyarts3.arts.QuantumNumberType.__repr__`
       - __repr__(self) -> str
-    * - Operator
-      - :func:`~pyarts3.arts.QuantumNumberType.__setstate__`
-      - __setstate__(self, arg: tuple[str], /) -> None
     * - Operator
       - :func:`~pyarts3.arts.QuantumNumberType.__str__`
       - __str__(self) -> str
@@ -295,7 +295,6 @@ QuantumNumberType
   .. automethod:: QuantumNumberType.__eq__
   .. automethod:: QuantumNumberType.__format__
   .. automethod:: QuantumNumberType.__ge__
-  .. automethod:: QuantumNumberType.__getstate__
   .. automethod:: QuantumNumberType.__gt__
   .. automethod:: QuantumNumberType.__hash__
   .. automethod:: QuantumNumberType.__init__
@@ -303,6 +302,5 @@ QuantumNumberType
   .. automethod:: QuantumNumberType.__lt__
   .. automethod:: QuantumNumberType.__ne__
   .. automethod:: QuantumNumberType.__repr__
-  .. automethod:: QuantumNumberType.__setstate__
   .. automethod:: QuantumNumberType.__str__
 

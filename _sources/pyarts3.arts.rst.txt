@@ -16,8 +16,11 @@ pyarts3.arts
   pyarts3.arts.math
   pyarts3.arts.path
   pyarts3.arts.physics
+  pyarts3.arts.planets
   pyarts3.arts.predef
+  pyarts3.arts.random
   pyarts3.arts.rtepack
+  pyarts3.arts.sensor
   pyarts3.arts.zeeman
   pyarts3.arts.AbsorptionBand
   pyarts3.arts.AbsorptionBandSortingOption
@@ -30,8 +33,10 @@ pyarts3.arts
   pyarts3.arts.AbsorptionVectorDataSpectralARO4
   pyarts3.arts.AbsorptionVectorDataSpectralTRO4
   pyarts3.arts.Agenda
+  pyarts3.arts.AntennaType
   pyarts3.arts.Any
   pyarts3.arts.ArrayOfAbsorptionLine
+  pyarts3.arts.ArrayOfAgenda
   pyarts3.arts.ArrayOfArrayOfArrayOfPropagationPathPoint
   pyarts3.arts.ArrayOfArrayOfGriddedField1
   pyarts3.arts.ArrayOfArrayOfGriddedField2
@@ -45,7 +50,6 @@ pyarts3.arts
   pyarts3.arts.ArrayOfArrayOfPropmatVector
   pyarts3.arts.ArrayOfArrayOfScatteringMetaData
   pyarts3.arts.ArrayOfArrayOfSingleScatteringData
-  pyarts3.arts.ArrayOfArrayOfSpeciesTag
   pyarts3.arts.ArrayOfArrayOfStokvecMatrix
   pyarts3.arts.ArrayOfArrayOfStokvecVector
   pyarts3.arts.ArrayOfArrayOfString
@@ -58,7 +62,6 @@ pyarts3.arts
   pyarts3.arts.ArrayOfAtmPoint
   pyarts3.arts.ArrayOfAtmTargets
   pyarts3.arts.ArrayOfBlock
-  pyarts3.arts.ArrayOfCIARecord
   pyarts3.arts.ArrayOfErrorTarget
   pyarts3.arts.ArrayOfGriddedField1
   pyarts3.arts.ArrayOfGriddedField1Named
@@ -82,10 +85,12 @@ pyarts3.arts
   pyarts3.arts.ArrayOfQuantumLevelIdentifier
   pyarts3.arts.ArrayOfScatteringMetaData
   pyarts3.arts.ArrayOfScatteringSpecies
+  pyarts3.arts.ArrayOfSensorMetaInfo
   pyarts3.arts.ArrayOfSensorObsel
   pyarts3.arts.ArrayOfSensorPosLosVector
   pyarts3.arts.ArrayOfSensorTarget
   pyarts3.arts.ArrayOfSingleScatteringData
+  pyarts3.arts.ArrayOfSortedGriddedField1
   pyarts3.arts.ArrayOfSparse
   pyarts3.arts.ArrayOfSpeciesEnum
   pyarts3.arts.ArrayOfSpeciesIsotope
@@ -111,22 +116,24 @@ pyarts3.arts
   pyarts3.arts.ArrayOfVector
   pyarts3.arts.ArrayOfVector2
   pyarts3.arts.ArrayOfVector3
-  pyarts3.arts.ArrayOfXsecRecord
   pyarts3.arts.AscendingGrid
   pyarts3.arts.AtmData
   pyarts3.arts.AtmField
   pyarts3.arts.AtmKey
   pyarts3.arts.AtmPoint
-  pyarts3.arts.AzimuthGrid
+  pyarts3.arts.AziGrid
   pyarts3.arts.BinnedPSD
   pyarts3.arts.Block
   pyarts3.arts.BlockMatrix
   pyarts3.arts.BulkScatteringPropertiesTROGridded4
   pyarts3.arts.BulkScatteringPropertiesTROSpectral4
   pyarts3.arts.CIARecord
+  pyarts3.arts.CIARecords
   pyarts3.arts.CallbackOperator
+  pyarts3.arts.CameraGriddedField
   pyarts3.arts.ComplexGriddedField2
   pyarts3.arts.ComplexMatrix
+  pyarts3.arts.ComplexMatrix44
   pyarts3.arts.ComplexTensor3
   pyarts3.arts.ComplexTensor4
   pyarts3.arts.ComplexVector
@@ -138,8 +145,10 @@ pyarts3.arts
   pyarts3.arts.DisortFlux
   pyarts3.arts.DisortRadiance
   pyarts3.arts.DisortSettings
+  pyarts3.arts.DisortSettingsAgendaOperator
   pyarts3.arts.DoubleGaussGrid
   pyarts3.arts.EarthEllipsoid
+  pyarts3.arts.EllipsoidGravity
   pyarts3.arts.ErrorKey
   pyarts3.arts.EuropaEllipsoid
   pyarts3.arts.ExtSSACallback
@@ -164,7 +173,9 @@ pyarts3.arts
   pyarts3.arts.GriddedField6
   pyarts3.arts.GriddedSpectralField6
   pyarts3.arts.HenyeyGreensteinScatterer
+  pyarts3.arts.HitranFileFormatType
   pyarts3.arts.HitranLineStrengthOption
+  pyarts3.arts.HitranSpeciesInfo
   pyarts3.arts.HydrostaticPressureOption
   pyarts3.arts.Index
   pyarts3.arts.IndexVector
@@ -180,6 +191,7 @@ pyarts3.arts
   pyarts3.arts.JacobianTargetType
   pyarts3.arts.JacobianTargets
   pyarts3.arts.JacobianTargetsDiagonalCovarianceMatrixMap
+  pyarts3.arts.JplSpeciesInfo
   pyarts3.arts.JupiterEllipsoid
   pyarts3.arts.LatGrid
   pyarts3.arts.LineByLineCutoffType
@@ -196,10 +208,14 @@ pyarts3.arts
   pyarts3.arts.LinemixingSpeciesEcsData
   pyarts3.arts.LobattoGrid
   pyarts3.arts.LonGrid
+  pyarts3.arts.MCAntenna
   pyarts3.arts.MGDSingleMoment
   pyarts3.arts.MarsEllipsoid
   pyarts3.arts.Matrix
+  pyarts3.arts.Matrix33
+  pyarts3.arts.Matrix44
   pyarts3.arts.MatrixOfDisortBDRF
+  pyarts3.arts.MeasurementVectorSumupKernel
   pyarts3.arts.Method
   pyarts3.arts.MissingFieldComponentError
   pyarts3.arts.MoonEllipsoid
@@ -240,6 +256,7 @@ pyarts3.arts
   pyarts3.arts.QuantumState
   pyarts3.arts.QuantumUpperLower
   pyarts3.arts.QuantumValue
+  pyarts3.arts.RandomNumberGenerator
   pyarts3.arts.Range
   pyarts3.arts.Rational
   pyarts3.arts.ScatteringGeneralSpectralTRO
@@ -248,8 +265,8 @@ pyarts3.arts
   pyarts3.arts.ScatteringMetaData
   pyarts3.arts.ScatteringSpeciesProperty
   pyarts3.arts.ScatteringTroSpectralVector
-  pyarts3.arts.SensorJacobianModelType
   pyarts3.arts.SensorKeyType
+  pyarts3.arts.SensorMetaInfo
   pyarts3.arts.SensorObsel
   pyarts3.arts.SensorPosLos
   pyarts3.arts.SensorPosLosVector
@@ -265,10 +282,15 @@ pyarts3.arts
   pyarts3.arts.SortedGriddedField4
   pyarts3.arts.SortedGriddedField5
   pyarts3.arts.SortedGriddedField6
+  pyarts3.arts.SourceVector
   pyarts3.arts.Sparse
+  pyarts3.arts.SparseStokvecMatrix
   pyarts3.arts.SpeciesEnum
+  pyarts3.arts.SpeciesEnumInfo
+  pyarts3.arts.SpeciesEnumPair
   pyarts3.arts.SpeciesEnumVectors
   pyarts3.arts.SpeciesIsotope
+  pyarts3.arts.SpeciesIsotopologueInfo
   pyarts3.arts.SpeciesIsotopologueRatios
   pyarts3.arts.SpeciesTag
   pyarts3.arts.SpeciesTagType
@@ -277,6 +299,7 @@ pyarts3.arts
   pyarts3.arts.SpecmatTensor3
   pyarts3.arts.SpecmatVector
   pyarts3.arts.SpectralRadianceOperator
+  pyarts3.arts.SpectralRadianceSurfaceAgendaOperator
   pyarts3.arts.SpectralRadianceTransformOperator
   pyarts3.arts.SpectralRadianceUnitType
   pyarts3.arts.Stokvec
@@ -313,19 +336,24 @@ pyarts3.arts
   pyarts3.arts.Tensor7
   pyarts3.arts.Time
   pyarts3.arts.TimeStepType
+  pyarts3.arts.TransmittanceMatrix
+  pyarts3.arts.TransmittanceOption
   pyarts3.arts.Vector
   pyarts3.arts.Vector2
   pyarts3.arts.Vector3
+  pyarts3.arts.Vector4
+  pyarts3.arts.Vector7
   pyarts3.arts.VenusEllipsoid
   pyarts3.arts.WorkspaceInitialization
   pyarts3.arts.Wsv
   pyarts3.arts.WsvMap
   pyarts3.arts.XsecRecord
+  pyarts3.arts.XsecRecords
   pyarts3.arts.ZeemanLineModel
-  pyarts3.arts.ZenithGrid
-  pyarts3.arts.ZenithGriddedField1
+  pyarts3.arts.ZeemanPolarization
+  pyarts3.arts.ZenGrid
+  pyarts3.arts.ZenGriddedField1
   pyarts3.arts.cppdisort
-  pyarts3.arts.disort_settings_agendaOperator
   pyarts3.arts.disort_settings_agenda_setup_layer_emission_type
   pyarts3.arts.disort_settings_agenda_setup_scattering_type
   pyarts3.arts.disort_settings_agenda_setup_space_type
@@ -334,15 +362,19 @@ pyarts3.arts
   pyarts3.arts.disort_settings_downwelling_wrapper_agendaOperator
   pyarts3.arts.inversion_iterate_agendaOperator
   pyarts3.arts.measurement_inversion_agendaOperator
-  pyarts3.arts.propagation_matrix_agendaOperator
-  pyarts3.arts.propagation_matrix_scattering_agendaOperator
-  pyarts3.arts.propagation_matrix_scattering_spectral_agendaOperator
   pyarts3.arts.ray_path_observer_agendaOperator
   pyarts3.arts.ray_path_observer_agendaSetGeometricMaxStep
-  pyarts3.arts.spectral_radiance_observer_agendaOperator
-  pyarts3.arts.spectral_radiance_space_agendaOperator
-  pyarts3.arts.spectral_radiance_surface_agendaOperator
-  pyarts3.arts.surface_reflectance_agendaOperator
+  pyarts3.arts.ray_point_back_propagation_agendaOperator
+  pyarts3.arts.single_propmat_agendaOperator
+  pyarts3.arts.single_rad_space_agendaOperator
+  pyarts3.arts.single_rad_surface_agendaOperator
+  pyarts3.arts.spectral_propmat_agendaOperator
+  pyarts3.arts.spectral_propmat_and_atm_path_agendaOperator
+  pyarts3.arts.spectral_propmat_scat_agendaOperator
+  pyarts3.arts.spectral_propmat_scat_spectral_agendaOperator
+  pyarts3.arts.spectral_rad_observer_agendaOperator
+  pyarts3.arts.spectral_rad_space_agendaOperator
+  pyarts3.arts.spectral_surf_refl_agendaOperator
   pyarts3.arts.frequency_shift
   pyarts3.arts.igrf
   pyarts3.arts.stringify_keys
@@ -379,10 +411,16 @@ pyarts3.arts
     - Submodule for path-related functionality
   * - :py:mod:`~pyarts3.arts.physics`
     - Contains simple physics functions in arts
+  * - :py:mod:`~pyarts3.arts.planets`
+    - Planetary constants
   * - :py:mod:`~pyarts3.arts.predef`
     - Contains predefined absorption models
+  * - :py:mod:`~pyarts3.arts.random`
+    - Random Number Interface
   * - :py:mod:`~pyarts3.arts.rtepack`
-    - Interface to some of the core RTE functionality
+    - Module for RTEPACK functionality
+  * - :py:mod:`~pyarts3.arts.sensor`
+    - Classes and functions to help create a sensor
   * - :py:mod:`~pyarts3.arts.zeeman`
     - Zeeman effect calculations
 
@@ -413,10 +451,14 @@ pyarts3.arts
     - Absorption vector data
   * - :class:`~pyarts3.arts.Agenda`
     - Describes a set of function calls and variable definitions
+  * - :class:`~pyarts3.arts.AntennaType`
+    - A switch controlling how monte carlo antenna patterns are handled.
   * - :class:`~pyarts3.arts.Any`
     - Meta type for any workspace group (see :doc:`workspace.groups`)
   * - :class:`~pyarts3.arts.ArrayOfAbsorptionLine`
     - A list of :class:`AbsorptionLine`
+  * - :class:`~pyarts3.arts.ArrayOfAgenda`
+    - A list of :class:`~pyarts3.arts.Agenda`
   * - :class:`~pyarts3.arts.ArrayOfArrayOfArrayOfPropagationPathPoint`
     - A list of :class:`~pyarts3.arts.ArrayOfArrayOfPropagationPathPoint`
   * - :class:`~pyarts3.arts.ArrayOfArrayOfGriddedField1`
@@ -443,8 +485,6 @@ pyarts3.arts
     - A list of :class:`~pyarts3.arts.ArrayOfScatteringMetaData`
   * - :class:`~pyarts3.arts.ArrayOfArrayOfSingleScatteringData`
     - A list of :class:`~pyarts3.arts.ArrayOfSingleScatteringData`
-  * - :class:`~pyarts3.arts.ArrayOfArrayOfSpeciesTag`
-    - A list of :class:`~pyarts3.arts.ArrayOfSpeciesTag`
   * - :class:`~pyarts3.arts.ArrayOfArrayOfStokvecMatrix`
     - A list of :class:`~pyarts3.arts.ArrayOfStokvecMatrix`
   * - :class:`~pyarts3.arts.ArrayOfArrayOfStokvecVector`
@@ -469,8 +509,6 @@ pyarts3.arts
     - List of atmospheric targets
   * - :class:`~pyarts3.arts.ArrayOfBlock`
     - A list of blocks
-  * - :class:`~pyarts3.arts.ArrayOfCIARecord`
-    - A list of :class:`~pyarts3.arts.CIARecord`
   * - :class:`~pyarts3.arts.ArrayOfErrorTarget`
     - List of error targets
   * - :class:`~pyarts3.arts.ArrayOfGriddedField1`
@@ -517,6 +555,8 @@ pyarts3.arts
     - A list of :class:`~pyarts3.arts.ScatteringMetaData`
   * - :class:`~pyarts3.arts.ArrayOfScatteringSpecies`
     - Represents species of scattering particles in the atmosphere.
+  * - :class:`~pyarts3.arts.ArrayOfSensorMetaInfo`
+    - A list of :class:`~pyarts3.arts.SensorMetaInfo`
   * - :class:`~pyarts3.arts.ArrayOfSensorObsel`
     - A list of :class:`~pyarts3.arts.SensorObsel`
   * - :class:`~pyarts3.arts.ArrayOfSensorPosLosVector`
@@ -525,6 +565,8 @@ pyarts3.arts
     - List of sensor targets
   * - :class:`~pyarts3.arts.ArrayOfSingleScatteringData`
     - A list of :class:`~pyarts3.arts.SingleScatteringData`
+  * - :class:`~pyarts3.arts.ArrayOfSortedGriddedField1`
+    - A list of :class:`~pyarts3.arts.SortedGriddedField1`
   * - :class:`~pyarts3.arts.ArrayOfSparse`
     - A list of :class:`~pyarts3.arts.Sparse`
   * - :class:`~pyarts3.arts.ArrayOfSpeciesEnum`
@@ -575,8 +617,6 @@ pyarts3.arts
     - A list of :class:`~pyarts3.arts.Vector2`
   * - :class:`~pyarts3.arts.ArrayOfVector3`
     - A list of :class:`~pyarts3.arts.Vector3`
-  * - :class:`~pyarts3.arts.ArrayOfXsecRecord`
-    - A list of :class:`~pyarts3.arts.XsecRecord`
   * - :class:`~pyarts3.arts.AscendingGrid`
     - A sorted :class:`~pyarts3.arts.Vector` of always ascending values.
   * - :class:`~pyarts3.arts.AtmData`
@@ -587,7 +627,7 @@ pyarts3.arts
     - A key to identify an atmospheric property.
   * - :class:`~pyarts3.arts.AtmPoint`
     - An atmospheric point.
-  * - :class:`~pyarts3.arts.AzimuthGrid`
+  * - :class:`~pyarts3.arts.AziGrid`
     - A 1-dimensional vector of :class:`~pyarts3.arts.Numeric` that are guaranteed to be within the range [0, 360).
   * - :class:`~pyarts3.arts.BinnedPSD`
     - Binned PSD returning a fixed particle concentration defined over a sequence of size bins with particle number zeros outside of size bins and temperature range.
@@ -601,12 +641,18 @@ pyarts3.arts
     - Bulk scattering properties
   * - :class:`~pyarts3.arts.CIARecord`
     - Contains information to compute collision induced absorption (CIA) for a pair of species.
+  * - :class:`~pyarts3.arts.CIARecords`
+    - A map from :class:`~pyarts3.arts.SpeciesEnumPair` to :class:`~pyarts3.arts.CIARecord`
   * - :class:`~pyarts3.arts.CallbackOperator`
     - Used to inject custom code into :class:`~pyarts3.arts.Agenda`.
+  * - :class:`~pyarts3.arts.CameraGriddedField`
+    - A gridded field for camera sensors
   * - :class:`~pyarts3.arts.ComplexGriddedField2`
     - A 2 dimensional gridded set of complex data
   * - :class:`~pyarts3.arts.ComplexMatrix`
     - A complex matrix
+  * - :class:`~pyarts3.arts.ComplexMatrix44`
+    - Fixed size matrix of shape [4, 4]
   * - :class:`~pyarts3.arts.ComplexTensor3`
     - A complex tensor3
   * - :class:`~pyarts3.arts.ComplexTensor4`
@@ -629,10 +675,14 @@ pyarts3.arts
     - The radiance result variable for Disort.
   * - :class:`~pyarts3.arts.DisortSettings`
     - The settings required to run Disort.
+  * - :class:`~pyarts3.arts.DisortSettingsAgendaOperator`
+    - This is the operator for free customization of the agenda.  See :attr:`~pyarts3.arts.DisortSettingsAgendaOperator` for more information.
   * - :class:`~pyarts3.arts.DoubleGaussGrid`
     - Double Gaussian grid
   * - :class:`~pyarts3.arts.EarthEllipsoid`
     - Choice of ellipsoid.
+  * - :class:`~pyarts3.arts.EllipsoidGravity`
+    - Ellipsoid gravity operator - allows calculation of gravity on ellipsoidal bodies
   * - :class:`~pyarts3.arts.ErrorKey`
     - Error key
   * - :class:`~pyarts3.arts.EuropaEllipsoid`
@@ -658,7 +708,7 @@ pyarts3.arts
   * - :class:`~pyarts3.arts.GaussLegendreGrid`
     - Gaussian Legendre grid
   * - :class:`~pyarts3.arts.GeodeticField2`
-    - A 2-dimensional gridof :class:`~pyarts3.arts.Numeric`.
+    - A 2-dimensional grid of :class:`~pyarts3.arts.Numeric`.
   * - :class:`~pyarts3.arts.GeodeticField3`
     - A 3-dimensional gridof :class:`~pyarts3.arts.Numeric`.
   * - :class:`~pyarts3.arts.GridType`
@@ -678,11 +728,15 @@ pyarts3.arts
   * - :class:`~pyarts3.arts.GriddedField6`
     - A 6 dimensional gridded set of :class:`~pyarts3.arts.Numeric` data
   * - :class:`~pyarts3.arts.GriddedSpectralField6`
-    - A 6-dimensional gridof :class:`~pyarts3.arts.Stokvec`.
+    - A 6-dimensional grid of :class:`~pyarts3.arts.Stokvec`.
   * - :class:`~pyarts3.arts.HenyeyGreensteinScatterer`
     - Henyey-Greenstein scatterer
+  * - :class:`~pyarts3.arts.HitranFileFormatType`
+    - A file format used to generate an entry in a Hitran-format file.
   * - :class:`~pyarts3.arts.HitranLineStrengthOption`
     - The way line strength is computed in ARTS when reading Hitran data.
+  * - :class:`~pyarts3.arts.HitranSpeciesInfo`
+    - Information about a HITRAN species
   * - :class:`~pyarts3.arts.HydrostaticPressureOption`
     - These options control how the hydrostatic pressure is computed in ARTS.
   * - :class:`~pyarts3.arts.Index`
@@ -713,6 +767,8 @@ pyarts3.arts
     - A list of targets for use in Jacobian Matrix calculations
   * - :class:`~pyarts3.arts.JacobianTargetsDiagonalCovarianceMatrixMap`
     - A map target types to matrix and inverse matrix pairs of :class:`~pyarts3.arts.BlockMatrix`
+  * - :class:`~pyarts3.arts.JplSpeciesInfo`
+    - Information about a JPL species
   * - :class:`~pyarts3.arts.JupiterEllipsoid`
     - Choice of ellipsoid.
   * - :class:`~pyarts3.arts.LatGrid`
@@ -745,14 +801,22 @@ pyarts3.arts
     - Lobatto grid
   * - :class:`~pyarts3.arts.LonGrid`
     - A 1-dimensional vector of :class:`~pyarts3.arts.Numeric` that are guaranteed to be within the range [-180, 180).
+  * - :class:`~pyarts3.arts.MCAntenna`
+    - Monte Carlo Antenna pattern class
   * - :class:`~pyarts3.arts.MGDSingleMoment`
     - Modified gamma PSD single moment
   * - :class:`~pyarts3.arts.MarsEllipsoid`
     - Choice of ellipsoid.
   * - :class:`~pyarts3.arts.Matrix`
     - A 2 dimensional array of :class:`~pyarts3.arts.Numeric`.
+  * - :class:`~pyarts3.arts.Matrix33`
+    - Fixed size matrix of shape [3, 3]
+  * - :class:`~pyarts3.arts.Matrix44`
+    - Fixed size matrix of shape [4, 4]
   * - :class:`~pyarts3.arts.MatrixOfDisortBDRF`
     - A 2 dimensional array of :class:`~pyarts3.arts.DisortBDRF`
+  * - :class:`~pyarts3.arts.MeasurementVectorSumupKernel`
+    - The kernel to use for summing up the measurement vectors.
   * - :class:`~pyarts3.arts.Method`
     - The method class of ARTS
   * - :class:`~pyarts3.arts.MissingFieldComponentError`
@@ -833,6 +897,8 @@ pyarts3.arts
     - Upper and lower quantum number values
   * - :class:`~pyarts3.arts.QuantumValue`
     - A single quantum number value
+  * - :class:`~pyarts3.arts.RandomNumberGenerator`
+    - Random number generator interface. Create an instance of this class and call the distribution methods to get a function that generates random numbers following the specified distribution.
   * - :class:`~pyarts3.arts.Range`
     - A range, used to select parts of a matpack type
   * - :class:`~pyarts3.arts.Rational`
@@ -846,13 +912,13 @@ pyarts3.arts
   * - :class:`~pyarts3.arts.ScatteringMetaData`
     - Holds meta data about the scattering
   * - :class:`~pyarts3.arts.ScatteringSpeciesProperty`
-    - Meta data for scattering spefcies.
+    - Meta data for scattering species.
   * - :class:`~pyarts3.arts.ScatteringTroSpectralVector`
     - Scattering TRO spectral vector
-  * - :class:`~pyarts3.arts.SensorJacobianModelType`
-    - How to model the sensor Jacobian model target.
   * - :class:`~pyarts3.arts.SensorKeyType`
     - A key for identifying a sensor property
+  * - :class:`~pyarts3.arts.SensorMetaInfo`
+    - Metadata describing a sensor's mapping from measurement_vec to a gridded field.
   * - :class:`~pyarts3.arts.SensorObsel`
     - A single observation element.
   * - :class:`~pyarts3.arts.SensorPosLos`
@@ -872,25 +938,35 @@ pyarts3.arts
   * - :class:`~pyarts3.arts.SizeParameter`
     - Parameters used to represent the size of particles.
   * - :class:`~pyarts3.arts.SortedGriddedField1`
-    - A 1-dimensional gridof :class:`~pyarts3.arts.Numeric`.
+    - A 1-dimensional grid of :class:`~pyarts3.arts.Numeric`.
   * - :class:`~pyarts3.arts.SortedGriddedField2`
-    - A 2-dimensional gridof :class:`~pyarts3.arts.Numeric`.
+    - A 2-dimensional grid of :class:`~pyarts3.arts.Numeric`.
   * - :class:`~pyarts3.arts.SortedGriddedField3`
-    - A 3-dimensional gridof :class:`~pyarts3.arts.Numeric`.
+    - A 3-dimensional grid of :class:`~pyarts3.arts.Numeric`.
   * - :class:`~pyarts3.arts.SortedGriddedField4`
-    - A 4-dimensional gridof :class:`~pyarts3.arts.Numeric`.
+    - A 4-dimensional grid of :class:`~pyarts3.arts.Numeric`.
   * - :class:`~pyarts3.arts.SortedGriddedField5`
-    - A 5-dimensional gridof :class:`~pyarts3.arts.Numeric`.
+    - A 5-dimensional grid of :class:`~pyarts3.arts.Numeric`.
   * - :class:`~pyarts3.arts.SortedGriddedField6`
-    - A 6-dimensional gridof :class:`~pyarts3.arts.Numeric`.
+    - A 6-dimensional grid of :class:`~pyarts3.arts.Numeric`.
+  * - :class:`~pyarts3.arts.SourceVector`
+    - Source vector and derivatives.
   * - :class:`~pyarts3.arts.Sparse`
     - A sparse version of :class:`~pyarts3.arts.Matrix`
+  * - :class:`~pyarts3.arts.SparseStokvecMatrix`
+    - A sparse matrix of Stokvec
   * - :class:`~pyarts3.arts.SpeciesEnum`
     - The valid species for the ARTS system.
+  * - :class:`~pyarts3.arts.SpeciesEnumInfo`
+    - Information about a species enum
+  * - :class:`~pyarts3.arts.SpeciesEnumPair`
+    - Contains a pair of :class:`~pyarts3.arts.SpeciesEnum`
   * - :class:`~pyarts3.arts.SpeciesEnumVectors`
     - A map of :class:`~pyarts3.arts.SpeciesEnum` to :class:`~pyarts3.arts.Vector`
   * - :class:`~pyarts3.arts.SpeciesIsotope`
     - Contains name and data about an isotope.
+  * - :class:`~pyarts3.arts.SpeciesIsotopologueInfo`
+    - Information about an isotopologue
   * - :class:`~pyarts3.arts.SpeciesIsotopologueRatios`
     - Isotopologue ratios for a species
   * - :class:`~pyarts3.arts.SpeciesTag`
@@ -906,9 +982,11 @@ pyarts3.arts
   * - :class:`~pyarts3.arts.SpecmatVector`
     - A vector of :class:`~pyarts3.arts.Specmat`
   * - :class:`~pyarts3.arts.SpectralRadianceOperator`
-    - An operator for getting the :attr:`~pyarts3.workspace.Workspace.spectral_radiance`
+    - An operator for getting the :attr:`~pyarts3.workspace.Workspace.spectral_rad`
+  * - :class:`~pyarts3.arts.SpectralRadianceSurfaceAgendaOperator`
+    - This is the operator for free customization of the agenda.  See :attr:`~pyarts3.arts.SpectralRadianceSurfaceAgendaOperator` for more information.
   * - :class:`~pyarts3.arts.SpectralRadianceTransformOperator`
-    - Transformation of :attr:`~pyarts3.workspace.Workspace.spectral_radiance` and :attr:`~pyarts3.workspace.Workspace.spectral_radiance_jacobian`
+    - Transformation of :attr:`~pyarts3.workspace.Workspace.spectral_rad` and :attr:`~pyarts3.workspace.Workspace.spectral_rad_jac`
   * - :class:`~pyarts3.arts.SpectralRadianceUnitType`
     - Choice of spectral radiance unit in conversions.
   * - :class:`~pyarts3.arts.Stokvec`
@@ -926,7 +1004,7 @@ pyarts3.arts
   * - :class:`~pyarts3.arts.StokvecSortedGriddedField5`
     - A 5-dimensional grid of :class:`~pyarts3.arts.Stokvec`.
   * - :class:`~pyarts3.arts.StokvecSortedGriddedField6`
-    - A 6-dimensional gridof :class:`~pyarts3.arts.Stokvec`.
+    - A 6-dimensional grid of :class:`~pyarts3.arts.Stokvec`.
   * - :class:`~pyarts3.arts.StokvecTensor3`
     - A :class:`~pyarts3.arts.Tensor3` but holds :class:`~pyarts3.arts.Stokvec`.
   * - :class:`~pyarts3.arts.StokvecTensor4`
@@ -979,12 +1057,20 @@ pyarts3.arts
     - Represents a time stamp
   * - :class:`~pyarts3.arts.TimeStepType`
     - Time step for the integration.  Is often accompanied by a value.
+  * - :class:`~pyarts3.arts.TransmittanceMatrix`
+    - Transmittance matrix and derivatives.
+  * - :class:`~pyarts3.arts.TransmittanceOption`
+    - A flag for the transmittance model for a layer.
   * - :class:`~pyarts3.arts.Vector`
     - A 1 dimensional array of :class:`~pyarts3.arts.Numeric`.
   * - :class:`~pyarts3.arts.Vector2`
     - A fixed-size 2D version of :class:`~pyarts3.arts.Vector`.
   * - :class:`~pyarts3.arts.Vector3`
     - A fixed-size 3D version of :class:`~pyarts3.arts.Vector`.
+  * - :class:`~pyarts3.arts.Vector4`
+    - Fixed size vector of shape [4]
+  * - :class:`~pyarts3.arts.Vector7`
+    - Fixed size vector of shape [7]
   * - :class:`~pyarts3.arts.VenusEllipsoid`
     - Choice of ellipsoid.
   * - :class:`~pyarts3.arts.WorkspaceInitialization`
@@ -995,16 +1081,18 @@ pyarts3.arts
     - A map from :class:`~pyarts3.arts.String` to :class:`~pyarts3.arts.Wsv`
   * - :class:`~pyarts3.arts.XsecRecord`
     - A single cross-section record.
+  * - :class:`~pyarts3.arts.XsecRecords`
+    - A map from :class:`~pyarts3.arts.SpeciesEnum` to :class:`~pyarts3.arts.XsecRecord`
   * - :class:`~pyarts3.arts.ZeemanLineModel`
     - Zeeman model
-  * - :class:`~pyarts3.arts.ZenithGrid`
+  * - :class:`~pyarts3.arts.ZeemanPolarization`
+    - A flag for the Zeeman polarization state.
+  * - :class:`~pyarts3.arts.ZenGrid`
     - A 1-dimensional vector of :class:`~pyarts3.arts.Numeric` that are guaranteed to be within the range [0, 180].
-  * - :class:`~pyarts3.arts.ZenithGriddedField1`
-    - A 1-dimensional gridof :class:`~pyarts3.arts.Numeric`.
+  * - :class:`~pyarts3.arts.ZenGriddedField1`
+    - A 1-dimensional grid of :class:`~pyarts3.arts.Numeric`.
   * - :class:`~pyarts3.arts.cppdisort`
     - A DISORT object.
-  * - :class:`~pyarts3.arts.disort_settings_agendaOperator`
-    - This is the operator for free customization of the agenda: :attr:`~pyarts3.workspace.Workspace.disort_settings_agenda`.
   * - :class:`~pyarts3.arts.disort_settings_agenda_setup_layer_emission_type`
     - For atmospheric emission settings with :func:`~pyarts3.workspace.Workspace.disort_settings_agendaSetup`.
   * - :class:`~pyarts3.arts.disort_settings_agenda_setup_scattering_type`
@@ -1016,29 +1104,37 @@ pyarts3.arts
   * - :class:`~pyarts3.arts.disort_settings_agenda_setup_surface_type`
     - For surface boundary settings with :func:`~pyarts3.workspace.Workspace.disort_settings_agendaSetup`.
   * - :class:`~pyarts3.arts.disort_settings_downwelling_wrapper_agendaOperator`
-    - This is the operator for free customization of the agenda: :attr:`~pyarts3.workspace.Workspace.disort_settings_downwelling_wrapper_agenda`.
+    - This is the operator for free customization of the agenda.  See :attr:`~pyarts3.arts.disort_settings_downwelling_wrapper_agendaOperator` for more information.
   * - :class:`~pyarts3.arts.inversion_iterate_agendaOperator`
-    - This is the operator for free customization of the agenda: :attr:`~pyarts3.workspace.Workspace.inversion_iterate_agenda`.
+    - This is the operator for free customization of the agenda.  See :attr:`~pyarts3.arts.inversion_iterate_agendaOperator` for more information.
   * - :class:`~pyarts3.arts.measurement_inversion_agendaOperator`
-    - This is the operator for free customization of the agenda: :attr:`~pyarts3.workspace.Workspace.measurement_inversion_agenda`.
-  * - :class:`~pyarts3.arts.propagation_matrix_agendaOperator`
-    - This is the operator for free customization of the agenda: :attr:`~pyarts3.workspace.Workspace.propagation_matrix_agenda`.
-  * - :class:`~pyarts3.arts.propagation_matrix_scattering_agendaOperator`
-    - This is the operator for free customization of the agenda: :attr:`~pyarts3.workspace.Workspace.propagation_matrix_scattering_agenda`.
-  * - :class:`~pyarts3.arts.propagation_matrix_scattering_spectral_agendaOperator`
-    - This is the operator for free customization of the agenda: :attr:`~pyarts3.workspace.Workspace.propagation_matrix_scattering_spectral_agenda`.
+    - This is the operator for free customization of the agenda.  See :attr:`~pyarts3.arts.measurement_inversion_agendaOperator` for more information.
   * - :class:`~pyarts3.arts.ray_path_observer_agendaOperator`
-    - This is the operator for free customization of the agenda: :attr:`~pyarts3.workspace.Workspace.ray_path_observer_agenda`.
+    - This is the operator for free customization of the agenda.  See :attr:`~pyarts3.arts.ray_path_observer_agendaOperator` for more information.
   * - :class:`~pyarts3.arts.ray_path_observer_agendaSetGeometricMaxStep`
     - For use with :func:`~pyarts3.workspace.Workspace.ray_path_observer_agendaSetGeometric`.  Determines how to densify the geometric path.
-  * - :class:`~pyarts3.arts.spectral_radiance_observer_agendaOperator`
-    - This is the operator for free customization of the agenda: :attr:`~pyarts3.workspace.Workspace.spectral_radiance_observer_agenda`.
-  * - :class:`~pyarts3.arts.spectral_radiance_space_agendaOperator`
-    - This is the operator for free customization of the agenda: :attr:`~pyarts3.workspace.Workspace.spectral_radiance_space_agenda`.
-  * - :class:`~pyarts3.arts.spectral_radiance_surface_agendaOperator`
-    - This is the operator for free customization of the agenda: :attr:`~pyarts3.workspace.Workspace.spectral_radiance_surface_agenda`.
-  * - :class:`~pyarts3.arts.surface_reflectance_agendaOperator`
-    - This is the operator for free customization of the agenda: :attr:`~pyarts3.workspace.Workspace.surface_reflectance_agenda`.
+  * - :class:`~pyarts3.arts.ray_point_back_propagation_agendaOperator`
+    - This is the operator for free customization of the agenda.  See :attr:`~pyarts3.arts.ray_point_back_propagation_agendaOperator` for more information.
+  * - :class:`~pyarts3.arts.single_propmat_agendaOperator`
+    - This is the operator for free customization of the agenda.  See :attr:`~pyarts3.arts.single_propmat_agendaOperator` for more information.
+  * - :class:`~pyarts3.arts.single_rad_space_agendaOperator`
+    - This is the operator for free customization of the agenda.  See :attr:`~pyarts3.arts.single_rad_space_agendaOperator` for more information.
+  * - :class:`~pyarts3.arts.single_rad_surface_agendaOperator`
+    - This is the operator for free customization of the agenda.  See :attr:`~pyarts3.arts.single_rad_surface_agendaOperator` for more information.
+  * - :class:`~pyarts3.arts.spectral_propmat_agendaOperator`
+    - This is the operator for free customization of the agenda.  See :attr:`~pyarts3.arts.spectral_propmat_agendaOperator` for more information.
+  * - :class:`~pyarts3.arts.spectral_propmat_and_atm_path_agendaOperator`
+    - This is the operator for free customization of the agenda.  See :attr:`~pyarts3.arts.spectral_propmat_and_atm_path_agendaOperator` for more information.
+  * - :class:`~pyarts3.arts.spectral_propmat_scat_agendaOperator`
+    - This is the operator for free customization of the agenda.  See :attr:`~pyarts3.arts.spectral_propmat_scat_agendaOperator` for more information.
+  * - :class:`~pyarts3.arts.spectral_propmat_scat_spectral_agendaOperator`
+    - This is the operator for free customization of the agenda.  See :attr:`~pyarts3.arts.spectral_propmat_scat_spectral_agendaOperator` for more information.
+  * - :class:`~pyarts3.arts.spectral_rad_observer_agendaOperator`
+    - This is the operator for free customization of the agenda.  See :attr:`~pyarts3.arts.spectral_rad_observer_agendaOperator` for more information.
+  * - :class:`~pyarts3.arts.spectral_rad_space_agendaOperator`
+    - This is the operator for free customization of the agenda.  See :attr:`~pyarts3.arts.spectral_rad_space_agendaOperator` for more information.
+  * - :class:`~pyarts3.arts.spectral_surf_refl_agendaOperator`
+    - This is the operator for free customization of the agenda.  See :attr:`~pyarts3.arts.spectral_surf_refl_agendaOperator` for more information.
 
 .. rubric:: Functions
 

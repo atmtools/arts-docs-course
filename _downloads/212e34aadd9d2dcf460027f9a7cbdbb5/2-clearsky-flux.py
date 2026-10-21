@@ -1,5 +1,7 @@
 import numpy as np
 import pyarts3 as pyarts
+import matplotlib.pyplot as plt
+import os
 
 # Download catalogs
 pyarts.data.download()
@@ -13,34 +15,34 @@ ws = pyarts.Workspace()
 
 # %% Sampled frequency range
 line_f0 = 118750348044.712
-ws.frequency_grid = [line_f0]
-ws.frequency_grid = np.linspace(-20e9, 2e6, 5) + line_f0
+ws.freq_grid = [line_f0]
+ws.freq_grid = np.linspace(-20e9, 2e6, 5) + line_f0
 
 # %% Species and line absorption
-ws.absorption_speciesSet(species=["O2-66"])
+ws.abs_speciesSet(species=["O2-66"])
 ws.ReadCatalogData()
 
 # %% Use the automatic agenda setter for propagation matrix calculations
-ws.propagation_matrix_agendaAuto()
+ws.spectral_propmat_agendaAuto()
 
 # %% Grids and planet
-ws.surface_fieldPlanet(option="Earth")
-ws.surface_field[pyarts.arts.SurfaceKey("t")] = 295.0
-ws.atmospheric_fieldRead(
+ws.surf_fieldPlanet(option="Earth")
+ws.surf_field[pyarts.arts.SurfaceKey("t")] = 295.0
+ws.atm_fieldRead(
     toa=toa, basename="planets/Earth/afgl/tropical/", missing_is_zero=1
 )
-ws.atmospheric_fieldIGRF(time="2000-03-11 14:39:37")
-# ws.atmospheric_field[pyarts.arts.AtmKey.t] = 300.0
+ws.atm_fieldIGRF(time="2000-03-11 14:39:37")
+# ws.atm_field[pyarts.arts.AtmKey.t] = 300.0
 
 # %% Checks and settings
-ws.spectral_radiance_transform_operatorSet(option="Tb")
-ws.spectral_radiance_space_agendaSet(option="UniformCosmicBackground")
-ws.spectral_radiance_surface_agendaSet(option="Blackbody")
+ws.spectral_rad_transform_operatorSet(option="Tb")
+ws.spectral_rad_space_agendaSet(option="UniformCosmicBackground")
+ws.spectral_rad_surface_agendaSet(option="Blackbody")
 
 # %% Core Disort calculations
 ws.disort_settings_agendaSetup()
 
-ws.ray_pathGeometricDownlooking(longitude=lon, latitude=lat, max_step=40_000)
+ws.ray_pathGeometricDownlooking(lon=lon, lat=lat, max_stepsize=40_000)
 
 ws.disort_spectral_flux_fieldFromAgenda(
     disort_quadrature_dimension=NQuad,
@@ -54,39 +56,28 @@ assert np.allclose(
         ws.disort_spectral_flux_field.down_diffuse,
         axis=1,
     ).flatten()
-    / np.array(
-        [
-            2.65924430e-15,
-            2.66162733e-15,
-            2.75440515e-15,
-            9.57958182e-18,
-            2.08076327e-17,
-            5.39749082e-16,
-            2.93074072e-15,
-            2.93357370e-15,
-            3.03918211e-15,
-            9.99616600e-18,
-            2.34511632e-17,
-            6.12773186e-16,
-            3.19264874e-15,
-            3.19665668e-15,
-            3.33784028e-15,
-            1.03768102e-17,
-            3.05943372e-17,
-            8.07853130e-16,
-            3.35251230e-15,
-            3.36075470e-15,
-            3.65036247e-15,
-            1.07209025e-17,
-            6.78926741e-17,
-            1.56163327e-15,
-            3.37235023e-15,
-            2.86992821e-15,
-            3.97673151e-15,
-            1.52446216e-15,
-            2.80896759e-15,
-            3.94566396e-15,
-        ]
-    ),
+    / np.array([2.65924817e-15, 2.66163119e-15, 2.75440515e-15, 9.50591876e-18,
+                2.07341384e-17, 5.39671159e-16, 2.93074462e-15, 2.93357757e-15,
+                3.03918211e-15, 9.91684543e-18, 2.33720596e-17, 6.12691389e-16,
+                3.19265273e-15, 3.19666066e-15, 3.33784028e-15, 1.02918879e-17,
+                3.05098113e-17, 8.07770847e-16, 3.35251628e-15, 3.36075873e-15,
+                3.65036247e-15, 1.06304639e-17, 6.78038039e-17, 1.56156808e-15,
+                3.37235046e-15, 2.86992793e-15, 3.97673151e-15, 1.52441686e-15,
+                2.80896736e-15, 3.94566425e-15]),
     1,
 ), "Mismatch from historical Disort spectral fluxes"
+
+fig = plt.figure(figsize=(16, 5))
+fig, ax = pyarts.plot(ws.disort_spectral_flux_field, fig=fig, levels=50)
+fig.suptitle("Disort clearsky spectral fluxes")
+[a.set_ylabel("Altitude [km]") for a in ax]
+[a.set_xlabel("Frequency [GHz]") for a in ax]
+[fig.colorbar(a.get_children()[0], ax=a,
+              label="Spectral flux [W m$^{-2}$ Hz$^{-1}$]") for a in ax]
+ax[0].set_title("Upwelling spectral flux")
+ax[1].set_title("Downwelling diffuse spectral flux")
+ax[2].set_title("Downwelling direct spectral flux")
+
+if "ARTS_HEADLESS" not in os.environ:
+    plt.tight_layout()
+    plt.show()

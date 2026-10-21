@@ -13,6 +13,9 @@ ArrayOfTensor3
       - :func:`~pyarts3.arts.ArrayOfTensor3.append`
       - Append `arg` to the end of the list.
     * - Method
+      - :func:`~pyarts3.arts.ArrayOfTensor3.appendxml`
+      - Append variable from file.
+    * - Method
       - :func:`~pyarts3.arts.ArrayOfTensor3.clear`
       - Remove all items from list.
     * - Method
@@ -21,6 +24,9 @@ ArrayOfTensor3
     * - Method
       - :func:`~pyarts3.arts.ArrayOfTensor3.extend`
       - Extend `self` by appending elements from `arg`.
+    * - Method
+      - :func:`~pyarts3.arts.ArrayOfTensor3.extendxml`
+      - Extend variable from file.
     * - Method
       - :func:`~pyarts3.arts.ArrayOfTensor3.insert`
       - Insert object `arg1` before index `arg0`.
@@ -61,9 +67,6 @@ ArrayOfTensor3
       - :func:`~pyarts3.arts.ArrayOfTensor3.__getitem__`
       - __getitem__(self, arg: slice, /) -> pyarts3.arts.ArrayOfTensor3
     * - Operator
-      - :func:`~pyarts3.arts.ArrayOfTensor3.__getstate__`
-      - __getstate__(self) -> tuple[pyarts3.arts.ArrayOfTensor3]
-    * - Operator
       - :func:`~pyarts3.arts.ArrayOfTensor3.__gt__`
       - Return self>value.
     * - Operator
@@ -94,9 +97,6 @@ ArrayOfTensor3
       - :func:`~pyarts3.arts.ArrayOfTensor3.__setitem__`
       - __setitem__(self, arg0: slice, arg1: pyarts3.arts.ArrayOfTensor3, /) -> None
     * - Operator
-      - :func:`~pyarts3.arts.ArrayOfTensor3.__setstate__`
-      - __setstate__(self, arg: tuple[pyarts3.arts.ArrayOfTensor3]) -> None
-    * - Operator
       - :func:`~pyarts3.arts.ArrayOfTensor3.__str__`
       - __str__(self) -> str
 
@@ -108,9 +108,11 @@ ArrayOfTensor3
   .. rubric:: Methods
 
   .. automethod:: ArrayOfTensor3.append
+  .. automethod:: ArrayOfTensor3.appendxml
   .. automethod:: ArrayOfTensor3.clear
   .. automethod:: ArrayOfTensor3.count
   .. automethod:: ArrayOfTensor3.extend
+  .. automethod:: ArrayOfTensor3.extendxml
   .. automethod:: ArrayOfTensor3.insert
   .. automethod:: ArrayOfTensor3.pop
   .. automethod:: ArrayOfTensor3.readxml
@@ -130,7 +132,6 @@ ArrayOfTensor3
   .. automethod:: ArrayOfTensor3.__format__
   .. automethod:: ArrayOfTensor3.__ge__
   .. automethod:: ArrayOfTensor3.__getitem__
-  .. automethod:: ArrayOfTensor3.__getstate__
   .. automethod:: ArrayOfTensor3.__gt__
   .. automethod:: ArrayOfTensor3.__hash__
   .. automethod:: ArrayOfTensor3.__init__
@@ -141,6 +142,5 @@ ArrayOfTensor3
   .. automethod:: ArrayOfTensor3.__ne__
   .. automethod:: ArrayOfTensor3.__repr__
   .. automethod:: ArrayOfTensor3.__setitem__
-  .. automethod:: ArrayOfTensor3.__setstate__
   .. automethod:: ArrayOfTensor3.__str__
 

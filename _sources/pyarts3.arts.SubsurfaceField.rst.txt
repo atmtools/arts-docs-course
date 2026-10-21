@@ -28,11 +28,14 @@ SubsurfaceField
       - :attr:`~pyarts3.arts.SubsurfaceField.other`
       - Other data in the subsurface field
     * - :class:`dict`\[:class:`SubsurfacePropertyTag`, :class:`SubsurfaceData`\]
-      - :attr:`~pyarts3.arts.SubsurfaceField.prop`
+      - :attr:`~pyarts3.arts.SubsurfaceField.props`
       - Properties of the subsurface field
     * - Operator
       - :func:`~pyarts3.arts.SubsurfaceField.__call__`
       - Overloaded function.
+    * - Operator
+      - :func:`~pyarts3.arts.SubsurfaceField.__contains__`
+      - __contains__(self, arg: pyarts3.arts.SubsurfaceKey | pyarts3.arts.SubsurfacePropertyTag, /) -> bool
     * - Operator
       - :func:`~pyarts3.arts.SubsurfaceField.__eq__`
       - Return self==value.
@@ -45,9 +48,6 @@ SubsurfaceField
     * - Operator
       - :func:`~pyarts3.arts.SubsurfaceField.__getitem__`
       - __getitem__(self, arg: pyarts3.arts.SubsurfaceKey | pyarts3.arts.SubsurfacePropertyTag, /) -> pyarts3.arts.SubsurfaceData
-    * - Operator
-      - :func:`~pyarts3.arts.SubsurfaceField.__getstate__`
-      - Helper for pickle.
     * - Operator
       - :func:`~pyarts3.arts.SubsurfaceField.__gt__`
       - Return self>value.
@@ -109,7 +109,7 @@ SubsurfaceField
      .. :class:`dict[SubsurfaceKey, SubsurfaceData]`
 
 
-  .. attribute:: SubsurfaceField.prop
+  .. attribute:: SubsurfaceField.props
      :type: dict[SubsurfacePropertyTag, SubsurfaceData]
 
      Properties of the subsurface field
@@ -121,11 +121,11 @@ SubsurfaceField
   .. rubric:: Operators
 
   .. automethod:: SubsurfaceField.__call__
+  .. automethod:: SubsurfaceField.__contains__
   .. automethod:: SubsurfaceField.__eq__
   .. automethod:: SubsurfaceField.__format__
   .. automethod:: SubsurfaceField.__ge__
   .. automethod:: SubsurfaceField.__getitem__
-  .. automethod:: SubsurfaceField.__getstate__
   .. automethod:: SubsurfaceField.__gt__
   .. automethod:: SubsurfaceField.__hash__
   .. automethod:: SubsurfaceField.__init__

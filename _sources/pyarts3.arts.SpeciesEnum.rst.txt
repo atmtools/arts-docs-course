@@ -34,6 +34,12 @@ SpeciesEnum
       - ``pyarts3.arts.SpeciesEnum.Acetylene``
       - "C2H2" (:class:`~SpeciesEnum`)
     * - Static Data
+      - ``pyarts3.arts.SpeciesEnum.AlO``
+      - "AlO" (:class:`~SpeciesEnum`)
+    * - Static Data
+      - ``pyarts3.arts.SpeciesEnum.AluminiumMonoxide``
+      - "AlO" (:class:`~SpeciesEnum`)
+    * - Static Data
       - ``pyarts3.arts.SpeciesEnum.Ammonia``
       - "NH3" (:class:`~SpeciesEnum`)
     * - Static Data
@@ -43,8 +49,17 @@ SpeciesEnum
       - ``pyarts3.arts.SpeciesEnum.Argon``
       - "Ar" (:class:`~SpeciesEnum`)
     * - Static Data
+      - ``pyarts3.arts.SpeciesEnum.Arsine``
+      - "AsH3" (:class:`~SpeciesEnum`)
+    * - Static Data
+      - ``pyarts3.arts.SpeciesEnum.AsH3``
+      - "AsH3" (:class:`~SpeciesEnum`)
+    * - Static Data
       - ``pyarts3.arts.SpeciesEnum.Bath``
       - "AIR" (:class:`~SpeciesEnum`)
+    * - Static Data
+      - ``pyarts3.arts.SpeciesEnum.Benzene``
+      - "C6H6" (:class:`~SpeciesEnum`)
     * - Static Data
       - ``pyarts3.arts.SpeciesEnum.BrO``
       - "BrO" (:class:`~SpeciesEnum`)
@@ -96,6 +111,9 @@ SpeciesEnum
     * - Static Data
       - ``pyarts3.arts.SpeciesEnum.C6F14``
       - "C6F14" (:class:`~SpeciesEnum`)
+    * - Static Data
+      - ``pyarts3.arts.SpeciesEnum.C6H6``
+      - "C6H6" (:class:`~SpeciesEnum`)
     * - Static Data
       - ``pyarts3.arts.SpeciesEnum.C8F18``
       - "C8F18" (:class:`~SpeciesEnum`)
@@ -169,6 +187,9 @@ SpeciesEnum
       - ``pyarts3.arts.SpeciesEnum.COF2``
       - "COF2" (:class:`~SpeciesEnum`)
     * - Static Data
+      - ``pyarts3.arts.SpeciesEnum.COFCl``
+      - "COFCl" (:class:`~SpeciesEnum`)
+    * - Static Data
       - ``pyarts3.arts.SpeciesEnum.CS``
       - "CS" (:class:`~SpeciesEnum`)
     * - Static Data
@@ -193,6 +214,9 @@ SpeciesEnum
       - ``pyarts3.arts.SpeciesEnum.CarbonTetrafluoride``
       - "CF4" (:class:`~SpeciesEnum`)
     * - Static Data
+      - ``pyarts3.arts.SpeciesEnum.CarbonylChlorofluoride``
+      - "COFCl" (:class:`~SpeciesEnum`)
+    * - Static Data
       - ``pyarts3.arts.SpeciesEnum.CarbonylFluoride``
       - "COF2" (:class:`~SpeciesEnum`)
     * - Static Data
@@ -216,6 +240,9 @@ SpeciesEnum
     * - Static Data
       - ``pyarts3.arts.SpeciesEnum.Cl2O2``
       - "Cl2O2" (:class:`~SpeciesEnum`)
+    * - Static Data
+      - ``pyarts3.arts.SpeciesEnum.ClNO2``
+      - "ClNO2" (:class:`~SpeciesEnum`)
     * - Static Data
       - ``pyarts3.arts.SpeciesEnum.ClO``
       - "ClO" (:class:`~SpeciesEnum`)
@@ -373,6 +400,9 @@ SpeciesEnum
       - ``pyarts3.arts.SpeciesEnum.HOCl``
       - "HOCl" (:class:`~SpeciesEnum`)
     * - Static Data
+      - ``pyarts3.arts.SpeciesEnum.HONO``
+      - "HONO" (:class:`~SpeciesEnum`)
+    * - Static Data
       - ``pyarts3.arts.SpeciesEnum.Halon1211``
       - "Halon1211" (:class:`~SpeciesEnum`)
     * - Static Data
@@ -493,6 +523,12 @@ SpeciesEnum
       - ``pyarts3.arts.SpeciesEnum.NitrogenTrifluoride``
       - "NF3" (:class:`~SpeciesEnum`)
     * - Static Data
+      - ``pyarts3.arts.SpeciesEnum.NitrousAcid``
+      - "HONO" (:class:`~SpeciesEnum`)
+    * - Static Data
+      - ``pyarts3.arts.SpeciesEnum.NitrylChloride``
+      - "ClNO2" (:class:`~SpeciesEnum`)
+    * - Static Data
       - ``pyarts3.arts.SpeciesEnum.O``
       - "O" (:class:`~SpeciesEnum`)
     * - Static Data
@@ -553,6 +589,9 @@ SpeciesEnum
       - ``pyarts3.arts.SpeciesEnum.RightHeavyFormicAcid``
       - "HCOOD" (:class:`~SpeciesEnum`)
     * - Static Data
+      - ``pyarts3.arts.SpeciesEnum.S2``
+      - "S2" (:class:`~SpeciesEnum`)
+    * - Static Data
       - ``pyarts3.arts.SpeciesEnum.SF6``
       - "SF6" (:class:`~SpeciesEnum`)
     * - Static Data
@@ -567,6 +606,9 @@ SpeciesEnum
     * - Static Data
       - ``pyarts3.arts.SpeciesEnum.SO3``
       - "SO3" (:class:`~SpeciesEnum`)
+    * - Static Data
+      - ``pyarts3.arts.SpeciesEnum.SulfurDimer``
+      - "S2" (:class:`~SpeciesEnum`)
     * - Static Data
       - ``pyarts3.arts.SpeciesEnum.SulfurDioxide``
       - "SO2" (:class:`~SpeciesEnum`)
@@ -591,6 +633,9 @@ SpeciesEnum
     * - Static Data
       - ``pyarts3.arts.SpeciesEnum.Trichloromethane``
       - "CHCl3" (:class:`~SpeciesEnum`)
+    * - Static Data
+      - ``pyarts3.arts.SpeciesEnum.TrihydrogenCation``
+      - "H3+" (:class:`~SpeciesEnum`)
     * - Static Data
       - ``pyarts3.arts.SpeciesEnum.VeryHeavyFormaldehyde``
       - "D2CO" (:class:`~SpeciesEnum`)
@@ -628,9 +673,6 @@ SpeciesEnum
       - :func:`~pyarts3.arts.SpeciesEnum.__ge__`
       - `self >= other`
     * - Operator
-      - :func:`~pyarts3.arts.SpeciesEnum.__getstate__`
-      - __getstate__(self) -> tuple[str]
-    * - Operator
       - :func:`~pyarts3.arts.SpeciesEnum.__gt__`
       - `self > other`
     * - Operator
@@ -651,9 +693,6 @@ SpeciesEnum
     * - Operator
       - :func:`~pyarts3.arts.SpeciesEnum.__repr__`
       - __repr__(self) -> str
-    * - Operator
-      - :func:`~pyarts3.arts.SpeciesEnum.__setstate__`
-      - __setstate__(self, arg: tuple[str], /) -> None
     * - Operator
       - :func:`~pyarts3.arts.SpeciesEnum.__str__`
       - __str__(self) -> str
@@ -679,7 +718,6 @@ SpeciesEnum
   .. automethod:: SpeciesEnum.__eq__
   .. automethod:: SpeciesEnum.__format__
   .. automethod:: SpeciesEnum.__ge__
-  .. automethod:: SpeciesEnum.__getstate__
   .. automethod:: SpeciesEnum.__gt__
   .. automethod:: SpeciesEnum.__hash__
   .. automethod:: SpeciesEnum.__init__
@@ -687,6 +725,5 @@ SpeciesEnum
   .. automethod:: SpeciesEnum.__lt__
   .. automethod:: SpeciesEnum.__ne__
   .. automethod:: SpeciesEnum.__repr__
-  .. automethod:: SpeciesEnum.__setstate__
   .. automethod:: SpeciesEnum.__str__
 

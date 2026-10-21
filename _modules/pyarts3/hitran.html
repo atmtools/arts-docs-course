@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>pyarts3.hitran &mdash; ARTS 3.0.0dev8 documentation</title>
+  <title>pyarts3.hitran &mdash; ARTS 3.0.0dev10 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -14,9 +14,10 @@
       <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=73457b95" />
 
   
+    <link rel="canonical" href="https://atmtools.github.io/arts-docs-master/_modules/pyarts3/hitran.html" />
       <script src="../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../_static/documentation_options.js?v=3afc90f3"></script>
+      <script src="../../_static/documentation_options.js?v=abe3498d"></script>
       <script src="../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -97,26 +98,35 @@
 <span class="p">}</span>
 
 
-<div class="viewcode-block" id="gen_latest_molparam_map">
-<a class="viewcode-back" href="../../pyarts3.hitran.html#pyarts3.hitran.gen_latest_molparam_map">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">gen_latest_molparam_map</span><span class="p">(</span><span class="n">molparam_txt_file</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="pos2char">
+<a class="viewcode-back" href="../../pyarts3.hitran.html#pyarts3.hitran.pos2char">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">pos2char</span><span class="p">(</span><span class="n">ind</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Convert an isotoplogue index to a HITRAN char for that index &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">ind</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;&#39;</span><span class="si">{}</span><span class="s2">&#39;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ind</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">ind</span> <span class="o">==</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;&#39;0&#39;&quot;</span>
+    <span class="k">elif</span> <span class="n">ind</span> <span class="o">==</span> <span class="mi">11</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;&#39;A&#39;&quot;</span>
+    <span class="k">elif</span> <span class="n">ind</span> <span class="o">==</span> <span class="mi">12</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;&#39;B&#39;&quot;</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Invalid isotopologue index: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ind</span><span class="p">))</span></div>
+
+
+
+<div class="viewcode-block" id="get_latest_molparam_map">
+<a class="viewcode-back" href="../../pyarts3.hitran.html#pyarts3.hitran.get_latest_molparam_map">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_latest_molparam_map</span><span class="p">(</span><span class="n">molparam_txt_file</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Generates a version of latest_molparam_map used in hitran_species.cc</span>
 
-<span class="sd">    The variable is simply printed to stream with print() as the intent is</span>
-<span class="sd">    to use this output in ARTS directly.  ARTS does not use AFGL notation</span>
-<span class="sd">    internally, but species names that are different from Hitran are mapped to</span>
-<span class="sd">    ARTS names in the output.</span>
+<span class="sd">    The variable is returned as a dictionary mapping species to a list of</span>
+<span class="sd">    isotopologues. Each isotopologue is represented as a list of four items:</span>
+<span class="sd">    [specnum, pos, isotopologue string, abundance]</span>
+<span class="sd">    1. specnum: HITRAN species number</span>
+<span class="sd">    2. pos: position index in HITRAN notation</span>
+<span class="sd">    3. isotopologue string: isotopologue identifier in HITRAN notation</span>
+<span class="sd">    4. abundance: natural abundance of the isotopologue</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">pos2char</span><span class="p">(</span><span class="n">ind</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; Convert an isotoplogue index to a HITRAN char for that index &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">ind</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
-            <span class="k">return</span> <span class="s2">&quot;&#39;</span><span class="si">{}</span><span class="s2">&#39;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ind</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="n">ind</span> <span class="o">==</span> <span class="mi">10</span><span class="p">:</span>
-            <span class="k">return</span> <span class="s2">&quot;&#39;0&#39;&quot;</span>
-        <span class="k">elif</span> <span class="n">ind</span> <span class="o">==</span> <span class="mi">11</span><span class="p">:</span>
-            <span class="k">return</span> <span class="s2">&quot;&#39;A&#39;&quot;</span>
-        <span class="k">elif</span> <span class="n">ind</span> <span class="o">==</span> <span class="mi">12</span><span class="p">:</span>
-            <span class="k">return</span> <span class="s2">&quot;&#39;B&#39;&quot;</span>
 
     <span class="k">if</span> <span class="n">molparam_txt_file</span><span class="p">:</span>
         <span class="n">molparam_txt</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">molparam_txt_file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
@@ -135,24 +145,62 @@
             <span class="n">spec</span> <span class="o">=</span> <span class="n">vec</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
             <span class="n">specnum</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">eval</span><span class="p">(</span><span class="n">vec</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
             <span class="n">pos</span> <span class="o">=</span> <span class="mi">1</span>
-            <span class="n">out</span> <span class="p">[</span><span class="n">spec</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">out</span><span class="p">[</span><span class="n">spec</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">out</span><span class="p">[</span><span class="n">spec</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">specnum</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">vec</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">vec</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
             <span class="n">pos</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">out</span></div>
 
-    <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;const HitranMap molparam_map{&#39;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="to_cat_data">
+<a class="viewcode-back" href="../../pyarts3.hitran.html#pyarts3.hitran.to_cat_data">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">to_cat_data</span><span class="p">(</span><span class="n">molparam_txt_file</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Converts the molparam.txt file to a format suitable for catdatabase input.</span>
+
+<span class="sd">    The output is printed to stream with print() as the intent is to use this</span>
+<span class="sd">    output in ARTS directly.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="kn">import</span><span class="w"> </span><span class="nn">pyarts3</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pyarts</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">get_latest_molparam_map</span><span class="p">(</span><span class="n">molparam_txt_file</span><span class="p">)</span>
+
+    <span class="n">out</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">spec</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="n">spec</span><span class="p">]:</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">pyarts</span><span class="o">.</span><span class="n">arts</span><span class="o">.</span><span class="n">HitranSpeciesInfo</span><span class="p">()</span>
+            <span class="n">x</span><span class="o">.</span><span class="n">spec</span> <span class="o">=</span> <span class="n">pyarts</span><span class="o">.</span><span class="n">arts</span><span class="o">.</span><span class="n">SpeciesIsotope</span><span class="p">(</span><span class="n">spec</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="n">entry</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+            <span class="n">x</span><span class="o">.</span><span class="n">hitind</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">entry</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">x</span><span class="o">.</span><span class="n">hitchar</span> <span class="o">=</span> <span class="n">pos2char</span><span class="p">(</span><span class="n">entry</span><span class="p">[</span><span class="mi">1</span><span class="p">])[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">x</span><span class="o">.</span><span class="n">ratio</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">entry</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+            <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">out</span></div>
+
+
+
+<div class="viewcode-block" id="gen_latest_molparam_map">
+<a class="viewcode-back" href="../../pyarts3.hitran.html#pyarts3.hitran.gen_latest_molparam_map">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">gen_latest_molparam_map</span><span class="p">(</span><span class="n">molparam_txt_file</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Generates a version of latest_molparam_map used in hitran_species.cc</span>
+
+<span class="sd">    The variable is simply printed to stream with print() as the intent is</span>
+<span class="sd">    to use this output in ARTS directly.  ARTS does not use AFGL notation</span>
+<span class="sd">    internally, but species names that are different from Hitran are mapped to</span>
+<span class="sd">    ARTS names in the output.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">get_latest_molparam_map</span><span class="p">(</span><span class="n">molparam_txt_file</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;const HitranMap molparam_map{&#39;</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">spec</span> <span class="ow">in</span> <span class="n">out</span><span class="p">:</span>
-        <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;{&#39;</span><span class="p">,</span><span class="n">out</span><span class="p">[</span><span class="n">spec</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;, {  // &#39;</span><span class="p">,</span> <span class="n">spec</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;{&#39;</span><span class="p">,</span> <span class="n">out</span><span class="p">[</span><span class="n">spec</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;, {  // &#39;</span><span class="p">,</span> <span class="n">spec</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">isot</span> <span class="ow">in</span> <span class="n">out</span><span class="p">[</span><span class="n">spec</span><span class="p">]:</span>
             <span class="n">isoname</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">spec</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">isot</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
             <span class="k">if</span> <span class="n">isoname</span> <span class="ow">in</span> <span class="n">_HITRAN_TO_ARTS_NAMES</span><span class="p">:</span>
                 <span class="n">isoname</span> <span class="o">=</span> <span class="n">_HITRAN_TO_ARTS_NAMES</span><span class="p">[</span><span class="n">isoname</span><span class="p">]</span>
-            <span class="n">s</span><span class="p">,</span><span class="n">i</span> <span class="o">=</span> <span class="n">isoname</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
-            <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;{&#39;</span><span class="p">,</span> <span class="n">pos2char</span><span class="p">(</span><span class="n">isot</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="s1">&#39;, {Species::find_species_index(&quot;&#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="s1">&#39;&quot;, &quot;&#39;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="s1">&#39;&quot;), &#39;</span><span class="p">,</span> <span class="n">isot</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="s1">&#39;}},&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-        <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;}},&#39;</span><span class="p">)</span>
-    <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;};&#39;</span><span class="p">)</span></div>
-
-
+            <span class="n">s</span><span class="p">,</span> <span class="n">i</span> <span class="o">=</span> <span class="n">isoname</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;{&#39;</span><span class="p">,</span> <span class="n">pos2char</span><span class="p">(</span>
+                <span class="n">isot</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="s1">&#39;, {Species::find_species_index(&quot;&#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="s1">&#39;&quot;, &quot;&#39;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="s1">&#39;&quot;), &#39;</span><span class="p">,</span> <span class="n">isot</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="s1">&#39;}},&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;}},&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;};&#39;</span><span class="p">)</span></div>
 
 
 
@@ -184,7 +232,7 @@
             <span class="n">spec</span> <span class="o">=</span> <span class="n">vec</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
             <span class="n">specnum</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">eval</span><span class="p">(</span><span class="n">vec</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
             <span class="n">pos</span> <span class="o">=</span> <span class="mi">1</span>
-            <span class="n">out</span> <span class="p">[</span><span class="n">spec</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">out</span><span class="p">[</span><span class="n">spec</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">out</span><span class="p">[</span><span class="n">spec</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">specnum</span><span class="p">,</span> <span class="n">vec</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">vec</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">vec</span><span class="p">[</span><span class="mi">4</span><span class="p">]])</span>
             <span class="n">pos</span> <span class="o">+=</span> <span class="mi">1</span>
@@ -196,10 +244,9 @@
             <span class="k">if</span> <span class="n">isoname</span> <span class="ow">in</span> <span class="n">_HITRAN_TO_ARTS_NAMES</span><span class="p">:</span>
                 <span class="n">isoname</span> <span class="o">=</span> <span class="n">_HITRAN_TO_ARTS_NAMES</span><span class="p">[</span><span class="n">isoname</span><span class="p">]</span>
             <span class="n">spec</span><span class="p">,</span> <span class="n">isotnum</span> <span class="o">=</span> <span class="n">isoname</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;IsotopeRecord(fromShortName(&quot;</span><span class="si">{</span><span class="n">spec</span><span class="si">}</span><span class="s1">&quot;), &quot;</span><span class="si">{</span><span class="n">isotnum</span><span class="si">}</span><span class="s1">&quot;, </span><span class="si">{</span><span class="n">isot</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="si">}</span><span class="s1">, </span><span class="si">{</span><span class="n">isot</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">}</span><span class="s1">),&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;IsotopeRecord(&quot;</span><span class="si">{</span><span class="n">spec</span><span class="si">}</span><span class="s1">&quot;_spec, &quot;</span><span class="si">{</span><span class="n">isotnum</span><span class="si">}</span><span class="s1">&quot;, </span><span class="si">{</span><span class="n">isot</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="si">}</span><span class="s1">, </span><span class="si">{</span><span class="n">isot</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">}</span><span class="s1">),&#39;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;/** AUTO-GENERATED FROM HITRAN **/&quot;</span><span class="p">)</span></div>
 
-        
 </pre></div>
 
            </div>

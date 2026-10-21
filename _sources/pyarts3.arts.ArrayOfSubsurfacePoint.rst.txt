@@ -13,11 +13,17 @@ ArrayOfSubsurfacePoint
       - :func:`~pyarts3.arts.ArrayOfSubsurfacePoint.append`
       - Append `arg` to the end of the list.
     * - Method
+      - :func:`~pyarts3.arts.ArrayOfSubsurfacePoint.appendxml`
+      - Append variable from file.
+    * - Method
       - :func:`~pyarts3.arts.ArrayOfSubsurfacePoint.clear`
       - Remove all items from list.
     * - Method
       - :func:`~pyarts3.arts.ArrayOfSubsurfacePoint.extend`
       - Extend `self` by appending elements from `arg`.
+    * - Method
+      - :func:`~pyarts3.arts.ArrayOfSubsurfacePoint.extendxml`
+      - Extend variable from file.
     * - Method
       - :func:`~pyarts3.arts.ArrayOfSubsurfacePoint.insert`
       - Insert object `arg1` before index `arg0`.
@@ -52,9 +58,6 @@ ArrayOfSubsurfacePoint
       - :func:`~pyarts3.arts.ArrayOfSubsurfacePoint.__getitem__`
       - __getitem__(self, arg: slice, /) -> pyarts3.arts.ArrayOfSubsurfacePoint
     * - Operator
-      - :func:`~pyarts3.arts.ArrayOfSubsurfacePoint.__getstate__`
-      - __getstate__(self) -> tuple[pyarts3.arts.ArrayOfSubsurfacePoint]
-    * - Operator
       - :func:`~pyarts3.arts.ArrayOfSubsurfacePoint.__gt__`
       - Return self>value.
     * - Operator
@@ -85,9 +88,6 @@ ArrayOfSubsurfacePoint
       - :func:`~pyarts3.arts.ArrayOfSubsurfacePoint.__setitem__`
       - __setitem__(self, arg0: slice, arg1: pyarts3.arts.ArrayOfSubsurfacePoint, /) -> None
     * - Operator
-      - :func:`~pyarts3.arts.ArrayOfSubsurfacePoint.__setstate__`
-      - __setstate__(self, arg: tuple[pyarts3.arts.ArrayOfSubsurfacePoint]) -> None
-    * - Operator
       - :func:`~pyarts3.arts.ArrayOfSubsurfacePoint.__str__`
       - __str__(self) -> str
 
@@ -99,8 +99,10 @@ ArrayOfSubsurfacePoint
   .. rubric:: Methods
 
   .. automethod:: ArrayOfSubsurfacePoint.append
+  .. automethod:: ArrayOfSubsurfacePoint.appendxml
   .. automethod:: ArrayOfSubsurfacePoint.clear
   .. automethod:: ArrayOfSubsurfacePoint.extend
+  .. automethod:: ArrayOfSubsurfacePoint.extendxml
   .. automethod:: ArrayOfSubsurfacePoint.insert
   .. automethod:: ArrayOfSubsurfacePoint.pop
   .. automethod:: ArrayOfSubsurfacePoint.readxml
@@ -118,7 +120,6 @@ ArrayOfSubsurfacePoint
   .. automethod:: ArrayOfSubsurfacePoint.__format__
   .. automethod:: ArrayOfSubsurfacePoint.__ge__
   .. automethod:: ArrayOfSubsurfacePoint.__getitem__
-  .. automethod:: ArrayOfSubsurfacePoint.__getstate__
   .. automethod:: ArrayOfSubsurfacePoint.__gt__
   .. automethod:: ArrayOfSubsurfacePoint.__hash__
   .. automethod:: ArrayOfSubsurfacePoint.__init__
@@ -129,6 +130,5 @@ ArrayOfSubsurfacePoint
   .. automethod:: ArrayOfSubsurfacePoint.__ne__
   .. automethod:: ArrayOfSubsurfacePoint.__repr__
   .. automethod:: ArrayOfSubsurfacePoint.__setitem__
-  .. automethod:: ArrayOfSubsurfacePoint.__setstate__
   .. automethod:: ArrayOfSubsurfacePoint.__str__
 

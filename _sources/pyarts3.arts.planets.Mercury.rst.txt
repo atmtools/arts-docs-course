@@ -1,0 +1,33 @@
+pyarts3.arts.planets.Mercury
+============================
+
+.. toctree::
+  :hidden:
+
+  pyarts3.arts.planets.Mercury.gravity_operator
+
+.. automodule:: pyarts3.arts.planets.Mercury
+
+
+.. rubric:: Functions
+
+
+.. list-table:: 
+
+  * - :func:`~pyarts3.arts.planets.Mercury.gravity_operator`
+    - Get Mercury's gravity object.
+
+.. rubric:: Static Data
+
+
+.. list-table::
+
+    * - ``pyarts3.arts.planets.Mercury.GM``
+      - :class:`~float`
+      - 22031868551000.0
+    * - ``pyarts3.arts.planets.Mercury.day``
+      - :class:`~float`
+      - 5067014.399999999
+    * - ``pyarts3.arts.planets.Mercury.ellipsoid``
+      - :class:`~Vector2`
+      - [2439700, 2439700]

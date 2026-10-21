@@ -1,0 +1,33 @@
+pyarts3.arts.planets.Moon
+=========================
+
+.. toctree::
+  :hidden:
+
+  pyarts3.arts.planets.Moon.gravity_operator
+
+.. automodule:: pyarts3.arts.planets.Moon
+
+
+.. rubric:: Functions
+
+
+.. list-table:: 
+
+  * - :func:`~pyarts3.arts.planets.Moon.gravity_operator`
+    - Get Moon's gravity object.
+
+.. rubric:: Static Data
+
+
+.. list-table::
+
+    * - ``pyarts3.arts.planets.Moon.GM``
+      - :class:`~float`
+      - 4902800118000.0
+    * - ``pyarts3.arts.planets.Moon.day``
+      - :class:`~float`
+      - 2548800.0
+    * - ``pyarts3.arts.planets.Moon.ellipsoid``
+      - :class:`~Vector2`
+      - [1738100, 1736000]

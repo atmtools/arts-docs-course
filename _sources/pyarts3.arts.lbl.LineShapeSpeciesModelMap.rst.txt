@@ -13,6 +13,9 @@ LineShapeSpeciesModelMap
       - :func:`~pyarts3.arts.lbl.LineShapeSpeciesModelMap.clear`
       - Remove all items
     * - Method
+      - :func:`~pyarts3.arts.lbl.LineShapeSpeciesModelMap.extendxml`
+      - Extend variable from file.
+    * - Method
       - :func:`~pyarts3.arts.lbl.LineShapeSpeciesModelMap.items`
       - Returns an iterable view of the map's items.
     * - Method
@@ -61,9 +64,6 @@ LineShapeSpeciesModelMap
       - :func:`~pyarts3.arts.lbl.LineShapeSpeciesModelMap.__getitem__`
       - __getitem__(self, arg: pyarts3.arts.LineShapeModelVariable, /) -> pyarts3.arts.TemperatureModel
     * - Operator
-      - :func:`~pyarts3.arts.lbl.LineShapeSpeciesModelMap.__getstate__`
-      - Helper for pickle.
-    * - Operator
       - :func:`~pyarts3.arts.lbl.LineShapeSpeciesModelMap.__gt__`
       - Return self>value.
     * - Operator
@@ -105,6 +105,7 @@ LineShapeSpeciesModelMap
   .. rubric:: Methods
 
   .. automethod:: LineShapeSpeciesModelMap.clear
+  .. automethod:: LineShapeSpeciesModelMap.extendxml
   .. automethod:: LineShapeSpeciesModelMap.items
   .. automethod:: LineShapeSpeciesModelMap.keys
   .. automethod:: LineShapeSpeciesModelMap.readxml
@@ -124,7 +125,6 @@ LineShapeSpeciesModelMap
   .. automethod:: LineShapeSpeciesModelMap.__format__
   .. automethod:: LineShapeSpeciesModelMap.__ge__
   .. automethod:: LineShapeSpeciesModelMap.__getitem__
-  .. automethod:: LineShapeSpeciesModelMap.__getstate__
   .. automethod:: LineShapeSpeciesModelMap.__gt__
   .. automethod:: LineShapeSpeciesModelMap.__hash__
   .. automethod:: LineShapeSpeciesModelMap.__init__

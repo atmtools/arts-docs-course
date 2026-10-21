@@ -10,17 +10,38 @@ ArrayOfPropagationPathPoint
   .. list-table::
 
     * - Method
+      - :func:`~pyarts3.arts.ArrayOfPropagationPathPoint.altitudes`
+      - Get all the altitudes in the path
+    * - Method
       - :func:`~pyarts3.arts.ArrayOfPropagationPathPoint.append`
       - Append `arg` to the end of the list.
+    * - Method
+      - :func:`~pyarts3.arts.ArrayOfPropagationPathPoint.appendxml`
+      - Append variable from file.
+    * - Method
+      - :func:`~pyarts3.arts.ArrayOfPropagationPathPoint.azimuths`
+      - Get all the azimuths in the path
     * - Method
       - :func:`~pyarts3.arts.ArrayOfPropagationPathPoint.clear`
       - Remove all items from list.
     * - Method
+      - :func:`~pyarts3.arts.ArrayOfPropagationPathPoint.distances`
+      - Calculate distances between neighboring points in the path
+    * - Method
       - :func:`~pyarts3.arts.ArrayOfPropagationPathPoint.extend`
       - Extend `self` by appending elements from `arg`.
     * - Method
+      - :func:`~pyarts3.arts.ArrayOfPropagationPathPoint.extendxml`
+      - Extend variable from file.
+    * - Method
       - :func:`~pyarts3.arts.ArrayOfPropagationPathPoint.insert`
       - Insert object `arg1` before index `arg0`.
+    * - Method
+      - :func:`~pyarts3.arts.ArrayOfPropagationPathPoint.latitudes`
+      - Get all the latitudes in the path
+    * - Method
+      - :func:`~pyarts3.arts.ArrayOfPropagationPathPoint.longitudes`
+      - Get all the longitudes in the path
     * - Method
       - :func:`~pyarts3.arts.ArrayOfPropagationPathPoint.pop`
       - Remove and return item at `index` (default last).
@@ -30,6 +51,12 @@ ArrayOfPropagationPathPoint
     * - Method
       - :func:`~pyarts3.arts.ArrayOfPropagationPathPoint.savexml`
       - Saves variable to file.
+    * - Method
+      - :func:`~pyarts3.arts.ArrayOfPropagationPathPoint.to_ecef`
+      - Get all the ECEF positions in the path
+    * - Method
+      - :func:`~pyarts3.arts.ArrayOfPropagationPathPoint.zeniths`
+      - Get all the zeniths in the path
     * - Static Method
       - :func:`~pyarts3.arts.ArrayOfPropagationPathPoint.fromxml`
       - Create variable from file.
@@ -51,9 +78,6 @@ ArrayOfPropagationPathPoint
     * - Operator
       - :func:`~pyarts3.arts.ArrayOfPropagationPathPoint.__getitem__`
       - __getitem__(self, arg: slice, /) -> pyarts3.arts.ArrayOfPropagationPathPoint
-    * - Operator
-      - :func:`~pyarts3.arts.ArrayOfPropagationPathPoint.__getstate__`
-      - __getstate__(self) -> tuple[pyarts3.arts.ArrayOfPropagationPathPoint]
     * - Operator
       - :func:`~pyarts3.arts.ArrayOfPropagationPathPoint.__gt__`
       - Return self>value.
@@ -85,9 +109,6 @@ ArrayOfPropagationPathPoint
       - :func:`~pyarts3.arts.ArrayOfPropagationPathPoint.__setitem__`
       - __setitem__(self, arg0: slice, arg1: pyarts3.arts.ArrayOfPropagationPathPoint, /) -> None
     * - Operator
-      - :func:`~pyarts3.arts.ArrayOfPropagationPathPoint.__setstate__`
-      - __setstate__(self, arg: tuple[pyarts3.arts.ArrayOfPropagationPathPoint]) -> None
-    * - Operator
       - :func:`~pyarts3.arts.ArrayOfPropagationPathPoint.__str__`
       - __str__(self) -> str
 
@@ -98,13 +119,22 @@ ArrayOfPropagationPathPoint
 
   .. rubric:: Methods
 
+  .. automethod:: ArrayOfPropagationPathPoint.altitudes
   .. automethod:: ArrayOfPropagationPathPoint.append
+  .. automethod:: ArrayOfPropagationPathPoint.appendxml
+  .. automethod:: ArrayOfPropagationPathPoint.azimuths
   .. automethod:: ArrayOfPropagationPathPoint.clear
+  .. automethod:: ArrayOfPropagationPathPoint.distances
   .. automethod:: ArrayOfPropagationPathPoint.extend
+  .. automethod:: ArrayOfPropagationPathPoint.extendxml
   .. automethod:: ArrayOfPropagationPathPoint.insert
+  .. automethod:: ArrayOfPropagationPathPoint.latitudes
+  .. automethod:: ArrayOfPropagationPathPoint.longitudes
   .. automethod:: ArrayOfPropagationPathPoint.pop
   .. automethod:: ArrayOfPropagationPathPoint.readxml
   .. automethod:: ArrayOfPropagationPathPoint.savexml
+  .. automethod:: ArrayOfPropagationPathPoint.to_ecef
+  .. automethod:: ArrayOfPropagationPathPoint.zeniths
 
   .. rubric:: Static Methods
 
@@ -118,7 +148,6 @@ ArrayOfPropagationPathPoint
   .. automethod:: ArrayOfPropagationPathPoint.__format__
   .. automethod:: ArrayOfPropagationPathPoint.__ge__
   .. automethod:: ArrayOfPropagationPathPoint.__getitem__
-  .. automethod:: ArrayOfPropagationPathPoint.__getstate__
   .. automethod:: ArrayOfPropagationPathPoint.__gt__
   .. automethod:: ArrayOfPropagationPathPoint.__hash__
   .. automethod:: ArrayOfPropagationPathPoint.__init__
@@ -129,6 +158,5 @@ ArrayOfPropagationPathPoint
   .. automethod:: ArrayOfPropagationPathPoint.__ne__
   .. automethod:: ArrayOfPropagationPathPoint.__repr__
   .. automethod:: ArrayOfPropagationPathPoint.__setitem__
-  .. automethod:: ArrayOfPropagationPathPoint.__setstate__
   .. automethod:: ArrayOfPropagationPathPoint.__str__
 

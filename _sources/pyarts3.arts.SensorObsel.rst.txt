@@ -10,6 +10,9 @@ SensorObsel
   .. list-table::
 
     * - Method
+      - :func:`~pyarts3.arts.SensorObsel.normalize`
+      - Normalize the weights so that they sum to pol.
+    * - Method
       - :func:`~pyarts3.arts.SensorObsel.readxml`
       - Read variable from file.
     * - Method
@@ -24,7 +27,7 @@ SensorObsel
     * - :class:`SensorPosLosVector`
       - :attr:`~pyarts3.arts.SensorObsel.poslos`
       - Position and line of sight grid
-    * - :class:`StokvecMatrix`
+    * - :class:`SparseStokvecMatrix`
       - :attr:`~pyarts3.arts.SensorObsel.weight_matrix`
       - Weights matrix
     * - Operator
@@ -36,9 +39,6 @@ SensorObsel
     * - Operator
       - :func:`~pyarts3.arts.SensorObsel.__ge__`
       - Return self>=value.
-    * - Operator
-      - :func:`~pyarts3.arts.SensorObsel.__getstate__`
-      - Helper for pickle.
     * - Operator
       - :func:`~pyarts3.arts.SensorObsel.__gt__`
       - Return self>value.
@@ -71,6 +71,7 @@ SensorObsel
 
   .. rubric:: Methods
 
+  .. automethod:: SensorObsel.normalize
   .. automethod:: SensorObsel.readxml
   .. automethod:: SensorObsel.savexml
 
@@ -97,11 +98,11 @@ SensorObsel
 
 
   .. attribute:: SensorObsel.weight_matrix
-     :type: StokvecMatrix
+     :type: SparseStokvecMatrix
 
      Weights matrix
 
-     .. :class:`StokvecMatrix`
+     .. :class:`SparseStokvecMatrix`
 
 
 
@@ -110,7 +111,6 @@ SensorObsel
   .. automethod:: SensorObsel.__eq__
   .. automethod:: SensorObsel.__format__
   .. automethod:: SensorObsel.__ge__
-  .. automethod:: SensorObsel.__getstate__
   .. automethod:: SensorObsel.__gt__
   .. automethod:: SensorObsel.__hash__
   .. automethod:: SensorObsel.__init__

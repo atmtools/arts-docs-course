@@ -13,6 +13,9 @@ ArrayOfString
       - :func:`~pyarts3.arts.ArrayOfString.append`
       - Append `arg` to the end of the list.
     * - Method
+      - :func:`~pyarts3.arts.ArrayOfString.appendxml`
+      - Append variable from file.
+    * - Method
       - :func:`~pyarts3.arts.ArrayOfString.clear`
       - Remove all items from list.
     * - Method
@@ -21,6 +24,9 @@ ArrayOfString
     * - Method
       - :func:`~pyarts3.arts.ArrayOfString.extend`
       - Extend `self` by appending elements from `arg`.
+    * - Method
+      - :func:`~pyarts3.arts.ArrayOfString.extendxml`
+      - Extend variable from file.
     * - Method
       - :func:`~pyarts3.arts.ArrayOfString.index`
       - Return first occurence of value between `start` and `end` - defaults to full range
@@ -64,9 +70,6 @@ ArrayOfString
       - :func:`~pyarts3.arts.ArrayOfString.__getitem__`
       - Overloaded function.
     * - Operator
-      - :func:`~pyarts3.arts.ArrayOfString.__getstate__`
-      - __getstate__(self) -> tuple[pyarts3.arts.ArrayOfString]
-    * - Operator
       - :func:`~pyarts3.arts.ArrayOfString.__gt__`
       - __gt__(self, arg: pyarts3.arts.ArrayOfString, /) -> bool
     * - Operator
@@ -97,9 +100,6 @@ ArrayOfString
       - :func:`~pyarts3.arts.ArrayOfString.__setitem__`
       - Overloaded function.
     * - Operator
-      - :func:`~pyarts3.arts.ArrayOfString.__setstate__`
-      - __setstate__(self, arg: tuple[pyarts3.arts.ArrayOfString]) -> None
-    * - Operator
       - :func:`~pyarts3.arts.ArrayOfString.__str__`
       - __str__(self) -> str
 
@@ -111,9 +111,11 @@ ArrayOfString
   .. rubric:: Methods
 
   .. automethod:: ArrayOfString.append
+  .. automethod:: ArrayOfString.appendxml
   .. automethod:: ArrayOfString.clear
   .. automethod:: ArrayOfString.count
   .. automethod:: ArrayOfString.extend
+  .. automethod:: ArrayOfString.extendxml
   .. automethod:: ArrayOfString.index
   .. automethod:: ArrayOfString.insert
   .. automethod:: ArrayOfString.pop
@@ -134,7 +136,6 @@ ArrayOfString
   .. automethod:: ArrayOfString.__format__
   .. automethod:: ArrayOfString.__ge__
   .. automethod:: ArrayOfString.__getitem__
-  .. automethod:: ArrayOfString.__getstate__
   .. automethod:: ArrayOfString.__gt__
   .. automethod:: ArrayOfString.__hash__
   .. automethod:: ArrayOfString.__init__
@@ -145,6 +146,5 @@ ArrayOfString
   .. automethod:: ArrayOfString.__ne__
   .. automethod:: ArrayOfString.__repr__
   .. automethod:: ArrayOfString.__setitem__
-  .. automethod:: ArrayOfString.__setstate__
   .. automethod:: ArrayOfString.__str__
 

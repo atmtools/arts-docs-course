@@ -13,11 +13,17 @@ ArrayOfSparse
       - :func:`~pyarts3.arts.ArrayOfSparse.append`
       - Append `arg` to the end of the list.
     * - Method
+      - :func:`~pyarts3.arts.ArrayOfSparse.appendxml`
+      - Append variable from file.
+    * - Method
       - :func:`~pyarts3.arts.ArrayOfSparse.clear`
       - Remove all items from list.
     * - Method
       - :func:`~pyarts3.arts.ArrayOfSparse.extend`
       - Extend `self` by appending elements from `arg`.
+    * - Method
+      - :func:`~pyarts3.arts.ArrayOfSparse.extendxml`
+      - Extend variable from file.
     * - Method
       - :func:`~pyarts3.arts.ArrayOfSparse.insert`
       - Insert object `arg1` before index `arg0`.
@@ -52,9 +58,6 @@ ArrayOfSparse
       - :func:`~pyarts3.arts.ArrayOfSparse.__getitem__`
       - __getitem__(self, arg: slice, /) -> pyarts3.arts.ArrayOfSparse
     * - Operator
-      - :func:`~pyarts3.arts.ArrayOfSparse.__getstate__`
-      - __getstate__(self) -> tuple[pyarts3.arts.ArrayOfSparse]
-    * - Operator
       - :func:`~pyarts3.arts.ArrayOfSparse.__gt__`
       - Return self>value.
     * - Operator
@@ -85,9 +88,6 @@ ArrayOfSparse
       - :func:`~pyarts3.arts.ArrayOfSparse.__setitem__`
       - __setitem__(self, arg0: slice, arg1: pyarts3.arts.ArrayOfSparse, /) -> None
     * - Operator
-      - :func:`~pyarts3.arts.ArrayOfSparse.__setstate__`
-      - __setstate__(self, arg: tuple[pyarts3.arts.ArrayOfSparse]) -> None
-    * - Operator
       - :func:`~pyarts3.arts.ArrayOfSparse.__str__`
       - __str__(self) -> str
 
@@ -99,8 +99,10 @@ ArrayOfSparse
   .. rubric:: Methods
 
   .. automethod:: ArrayOfSparse.append
+  .. automethod:: ArrayOfSparse.appendxml
   .. automethod:: ArrayOfSparse.clear
   .. automethod:: ArrayOfSparse.extend
+  .. automethod:: ArrayOfSparse.extendxml
   .. automethod:: ArrayOfSparse.insert
   .. automethod:: ArrayOfSparse.pop
   .. automethod:: ArrayOfSparse.readxml
@@ -118,7 +120,6 @@ ArrayOfSparse
   .. automethod:: ArrayOfSparse.__format__
   .. automethod:: ArrayOfSparse.__ge__
   .. automethod:: ArrayOfSparse.__getitem__
-  .. automethod:: ArrayOfSparse.__getstate__
   .. automethod:: ArrayOfSparse.__gt__
   .. automethod:: ArrayOfSparse.__hash__
   .. automethod:: ArrayOfSparse.__init__
@@ -129,6 +130,5 @@ ArrayOfSparse
   .. automethod:: ArrayOfSparse.__ne__
   .. automethod:: ArrayOfSparse.__repr__
   .. automethod:: ArrayOfSparse.__setitem__
-  .. automethod:: ArrayOfSparse.__setstate__
   .. automethod:: ArrayOfSparse.__str__
 

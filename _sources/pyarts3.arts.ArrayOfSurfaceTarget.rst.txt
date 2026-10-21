@@ -13,11 +13,17 @@ ArrayOfSurfaceTarget
       - :func:`~pyarts3.arts.ArrayOfSurfaceTarget.append`
       - Append `arg` to the end of the list.
     * - Method
+      - :func:`~pyarts3.arts.ArrayOfSurfaceTarget.appendxml`
+      - Append variable from file.
+    * - Method
       - :func:`~pyarts3.arts.ArrayOfSurfaceTarget.clear`
       - Remove all items from list.
     * - Method
       - :func:`~pyarts3.arts.ArrayOfSurfaceTarget.extend`
       - Extend `self` by appending elements from `arg`.
+    * - Method
+      - :func:`~pyarts3.arts.ArrayOfSurfaceTarget.extendxml`
+      - Extend variable from file.
     * - Method
       - :func:`~pyarts3.arts.ArrayOfSurfaceTarget.insert`
       - Insert object `arg1` before index `arg0`.
@@ -48,9 +54,6 @@ ArrayOfSurfaceTarget
     * - Operator
       - :func:`~pyarts3.arts.ArrayOfSurfaceTarget.__getitem__`
       - __getitem__(self, arg: slice, /) -> pyarts3.arts.ArrayOfSurfaceTarget
-    * - Operator
-      - :func:`~pyarts3.arts.ArrayOfSurfaceTarget.__getstate__`
-      - Helper for pickle.
     * - Operator
       - :func:`~pyarts3.arts.ArrayOfSurfaceTarget.__gt__`
       - Return self>value.
@@ -93,8 +96,10 @@ ArrayOfSurfaceTarget
   .. rubric:: Methods
 
   .. automethod:: ArrayOfSurfaceTarget.append
+  .. automethod:: ArrayOfSurfaceTarget.appendxml
   .. automethod:: ArrayOfSurfaceTarget.clear
   .. automethod:: ArrayOfSurfaceTarget.extend
+  .. automethod:: ArrayOfSurfaceTarget.extendxml
   .. automethod:: ArrayOfSurfaceTarget.insert
   .. automethod:: ArrayOfSurfaceTarget.pop
   .. automethod:: ArrayOfSurfaceTarget.readxml
@@ -111,7 +116,6 @@ ArrayOfSurfaceTarget
   .. automethod:: ArrayOfSurfaceTarget.__format__
   .. automethod:: ArrayOfSurfaceTarget.__ge__
   .. automethod:: ArrayOfSurfaceTarget.__getitem__
-  .. automethod:: ArrayOfSurfaceTarget.__getstate__
   .. automethod:: ArrayOfSurfaceTarget.__gt__
   .. automethod:: ArrayOfSurfaceTarget.__hash__
   .. automethod:: ArrayOfSurfaceTarget.__init__

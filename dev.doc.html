@@ -8,7 +8,7 @@
     <link href="_static/favicon-32x32.png" sizes="32x32" rel="icon" type="image/png">
     <link rel="apple-touch-icon" sizes="180x180" href="_static/apple-touch-icon.png" type="image/png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Documentation &mdash; ARTS 3.0.0dev8 documentation</title>
+  <title>Documentation &mdash; ARTS 3.0.0dev10 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -17,9 +17,10 @@
       <link rel="stylesheet" type="text/css" href="_static/custom.css?v=73457b95" />
 
   
+    <link rel="canonical" href="https://atmtools.github.io/arts-docs-master/dev.doc.html" />
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=3afc90f3"></script>
+      <script src="_static/documentation_options.js?v=abe3498d"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -30,7 +31,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="XML IO" href="dev.xml.html" />
-    <link rel="prev" title="Workspace variables" href="dev.workspace.variables.html" /> 
+    <link rel="prev" title="Plot GUI architecture" href="dev.gui.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -65,12 +66,16 @@
 <li class="toctree-l2"><a class="reference internal" href="dev.error.html">Errors inside the C++ code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dev.matpack.html">Matpack</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dev.workspace.html">Workspace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev.plots.html">Plot Modules for GUI Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev.edit.html">Editor modules for GUI integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev.gui.html">Plot GUI architecture</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Documentation</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#examples-folder">Examples folder</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#the-workspace-documentation">The Workspace documentation</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="dev.xml.html">XML IO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev.species.html">Adding new species to ARTS</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="indices.html">Indices</a></li>
@@ -119,7 +124,7 @@ The code responsible for this is the <code class="docutils literal notranslate">
 in the generation of the documentation.
 The basic idea is that every <code class="docutils literal notranslate"><span class="pre">rst</span></code>, <code class="docutils literal notranslate"><span class="pre">py</span></code>,
 and <code class="docutils literal notranslate"><span class="pre">ipynb</span></code> file in the <code class="docutils literal notranslate"><span class="pre">examples/</span></code> directory
-is considered a documentation file and will some how.</p>
+is considered a documentation file and will be processed.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">py</span></code> and <code class="docutils literal notranslate"><span class="pre">ipynb</span></code> files are also considered tests and will run during the CI.</p>
@@ -131,7 +136,7 @@ We want a 1-to-1 translation so that the examples are easy to find.
 Capitalization of the title is done automatically for the first letter.
 The rest of the title is kept as is.</p></li>
 <li><p>The sorting of all the content is alphanumerical.  Put <code class="docutils literal notranslate"><span class="pre">1*</span></code>, <code class="docutils literal notranslate"><span class="pre">2*</span></code>,
-etc., in front of the filenames to control the order if oyu think it
+etc., in front of the filenames to control the order if you think it
 matters.</p>
 <ol class="loweralpha simple">
 <li><p>Using <code class="docutils literal notranslate"><span class="pre">N-</span></code> leaves the numbering in the title and TOC.
@@ -176,7 +181,7 @@ a confusing layout in the generated documentation.</p></li>
 <section id="the-workspace-documentation">
 <h2>The Workspace documentation<a class="headerlink" href="#the-workspace-documentation" title="Link to this heading"></a></h2>
 <p>The <a class="reference internal" href="workspace.html"><span class="doc">Workspace</span></a> tab is generated by wrapping automatically
-generateddocumentation for the workspace variables, methods, agendas, and
+generated documentation for the workspace variables, methods, agendas, and
 groups. These automatic documentation are generated by
 <code class="docutils literal notranslate"><span class="pre">python/doc/gen_overview_list.py</span></code>,
 which simply creates a <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">hlist::</span></code>-list of all the above.
@@ -208,7 +213,7 @@ variables.</p></li>
 documentation.  Also generates several methods based on
 agendas and meta methods.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">src/workspace_meta_methods.cc</span></code> - contain workspace methods’
-documentation that composed by calling other methods.</p></li>
+documentation that is composed by calling other methods.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">src/workspace_method_extra_doc.cc</span></code> - contains extra
 documentation for workspace methods when this must be
 generated at a later stage, when other generated information
@@ -217,11 +222,11 @@ that are called by a combination of various pre-selected options.
 Do not use this file unless you know what you are doing.
 Do use it for options-combining tasks though.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">src/workspace_agendas.cc</span></code> - contains workspace agendas’
-documentation. This includes contraints that are both documentation
+documentation. This includes constraints that are both documentation
 and executed code by verbatim copy-pasting, so be careful.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">src/core/options/arts_options.cc</span></code> - contains the documentation
 for the ARTS options that are used to configure various parts
-of ARTS.  These workspace groups but they will generate
+of ARTS.  These are workspace groups, but they will generate
 documentation based on the information within this file.</p></li>
 <li><p>Every file in <code class="docutils literal notranslate"><span class="pre">src/python_interface/py_*.cpp</span></code> that contains
 a raw string.  Every class and method defined in these files must
@@ -253,7 +258,7 @@ the groups’ public methods (static and non-static),
 attributes, and a selection of double-underscore methods,
 like <code class="docutils literal notranslate"><span class="pre">__getitem__</span></code> and <code class="docutils literal notranslate"><span class="pre">__setitem__</span></code>, among others.
 See <code class="docutils literal notranslate"><span class="pre">python/doc/gen_pyarts_arts_autoclass_rst.py</span></code> and
-expand it for the choosen double-underscore methods.</p></li>
+expand it for the chosen double-underscore methods.</p></li>
 <li><p>This table view is followed by an <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">automethod::</span></code>
 or <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">autoattribute</span></code> Sphinx directive for the
 appropriate content.</p></li>
@@ -263,7 +268,7 @@ appropriate content.</p></li>
 their parameter lists.  The parameter lists show in bold
 text whether the parameter is an output (<strong>[OUT]</strong>) an
 input (<strong>[IN]</strong>), or both (<strong>[INOUT]</strong>).</p></li>
-<li><p>Workspace methods’ builtin documention states whether or not
+<li><p>Workspace methods’ builtin documentation states whether or not
 they are used by a meta method.  Meta methods in turn
 document which methods they use and in what order.</p></li>
 <li><p>Workspace variables’ builtin documentation states which
@@ -290,7 +295,7 @@ are defined in the
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="dev.workspace.variables.html" class="btn btn-neutral float-left" title="Workspace variables" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="dev.gui.html" class="btn btn-neutral float-left" title="Plot GUI architecture" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="dev.xml.html" class="btn btn-neutral float-right" title="XML IO" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

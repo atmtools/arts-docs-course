@@ -13,11 +13,17 @@ ArrayOfBlock
       - :func:`~pyarts3.arts.ArrayOfBlock.append`
       - Append `arg` to the end of the list.
     * - Method
+      - :func:`~pyarts3.arts.ArrayOfBlock.appendxml`
+      - Append variable from file.
+    * - Method
       - :func:`~pyarts3.arts.ArrayOfBlock.clear`
       - Remove all items from list.
     * - Method
       - :func:`~pyarts3.arts.ArrayOfBlock.extend`
       - Extend `self` by appending elements from `arg`.
+    * - Method
+      - :func:`~pyarts3.arts.ArrayOfBlock.extendxml`
+      - Extend variable from file.
     * - Method
       - :func:`~pyarts3.arts.ArrayOfBlock.insert`
       - Insert object `arg1` before index `arg0`.
@@ -52,9 +58,6 @@ ArrayOfBlock
       - :func:`~pyarts3.arts.ArrayOfBlock.__getitem__`
       - __getitem__(self, arg: slice, /) -> pyarts3.arts.ArrayOfBlock
     * - Operator
-      - :func:`~pyarts3.arts.ArrayOfBlock.__getstate__`
-      - __getstate__(self) -> tuple[pyarts3.arts.ArrayOfBlock]
-    * - Operator
       - :func:`~pyarts3.arts.ArrayOfBlock.__gt__`
       - Return self>value.
     * - Operator
@@ -85,9 +88,6 @@ ArrayOfBlock
       - :func:`~pyarts3.arts.ArrayOfBlock.__setitem__`
       - __setitem__(self, arg0: slice, arg1: pyarts3.arts.ArrayOfBlock, /) -> None
     * - Operator
-      - :func:`~pyarts3.arts.ArrayOfBlock.__setstate__`
-      - __setstate__(self, arg: tuple[pyarts3.arts.ArrayOfBlock]) -> None
-    * - Operator
       - :func:`~pyarts3.arts.ArrayOfBlock.__str__`
       - Return str(self).
 
@@ -99,8 +99,10 @@ ArrayOfBlock
   .. rubric:: Methods
 
   .. automethod:: ArrayOfBlock.append
+  .. automethod:: ArrayOfBlock.appendxml
   .. automethod:: ArrayOfBlock.clear
   .. automethod:: ArrayOfBlock.extend
+  .. automethod:: ArrayOfBlock.extendxml
   .. automethod:: ArrayOfBlock.insert
   .. automethod:: ArrayOfBlock.pop
   .. automethod:: ArrayOfBlock.readxml
@@ -118,7 +120,6 @@ ArrayOfBlock
   .. automethod:: ArrayOfBlock.__format__
   .. automethod:: ArrayOfBlock.__ge__
   .. automethod:: ArrayOfBlock.__getitem__
-  .. automethod:: ArrayOfBlock.__getstate__
   .. automethod:: ArrayOfBlock.__gt__
   .. automethod:: ArrayOfBlock.__hash__
   .. automethod:: ArrayOfBlock.__init__
@@ -129,6 +130,5 @@ ArrayOfBlock
   .. automethod:: ArrayOfBlock.__ne__
   .. automethod:: ArrayOfBlock.__repr__
   .. automethod:: ArrayOfBlock.__setitem__
-  .. automethod:: ArrayOfBlock.__setstate__
   .. automethod:: ArrayOfBlock.__str__
 

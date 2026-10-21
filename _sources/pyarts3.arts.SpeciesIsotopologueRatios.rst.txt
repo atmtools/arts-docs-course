@@ -9,12 +9,18 @@ SpeciesIsotopologueRatios
 
   .. list-table::
 
+    * - Method
+      - :func:`~pyarts3.arts.SpeciesIsotopologueRatios.valueless_isotopes`
+      - Get a list of isotopologues without defined ratio
+    * - Static Method
+      - :func:`~pyarts3.arts.SpeciesIsotopologueRatios.builtin`
+      - Builtin values
     * - :class:`list`\[:class:`Numeric`\]
       - :attr:`~pyarts3.arts.SpeciesIsotopologueRatios.data`
       - The isotopologue ratios
     * - Static Data
       - ``pyarts3.arts.SpeciesIsotopologueRatios.maxsize``
-      - 319 (:class:`~int`)
+      - 340 (:class:`~int`)
     * - Operator
       - :func:`~pyarts3.arts.SpeciesIsotopologueRatios.__eq__`
       - Return self==value.
@@ -25,9 +31,6 @@ SpeciesIsotopologueRatios
       - :func:`~pyarts3.arts.SpeciesIsotopologueRatios.__ge__`
       - Return self>=value.
     * - Operator
-      - :func:`~pyarts3.arts.SpeciesIsotopologueRatios.__getstate__`
-      - __getstate__(self) -> tuple[list[float]]
-    * - Operator
       - :func:`~pyarts3.arts.SpeciesIsotopologueRatios.__gt__`
       - Return self>value.
     * - Operator
@@ -35,7 +38,7 @@ SpeciesIsotopologueRatios
       - Return hash(self).
     * - Operator
       - :func:`~pyarts3.arts.SpeciesIsotopologueRatios.__init__`
-      - Overloaded function.
+      - __init__(self, arg: pyarts3.arts.SpeciesIsotopologueRatios) -> None
     * - Operator
       - :func:`~pyarts3.arts.SpeciesIsotopologueRatios.__le__`
       - Return self<=value.
@@ -49,9 +52,6 @@ SpeciesIsotopologueRatios
       - :func:`~pyarts3.arts.SpeciesIsotopologueRatios.__repr__`
       - __repr__(self) -> str
     * - Operator
-      - :func:`~pyarts3.arts.SpeciesIsotopologueRatios.__setstate__`
-      - __setstate__(self, arg: tuple[collections.abc.Sequence[float]], /) -> None
-    * - Operator
       - :func:`~pyarts3.arts.SpeciesIsotopologueRatios.__str__`
       - __str__(self) -> str
 
@@ -59,6 +59,14 @@ SpeciesIsotopologueRatios
 
   .. automethod:: __init__
      :noindex:
+
+  .. rubric:: Methods
+
+  .. automethod:: SpeciesIsotopologueRatios.valueless_isotopes
+
+  .. rubric:: Static Methods
+
+  .. automethod:: SpeciesIsotopologueRatios.builtin
 
   .. rubric:: Attributes
 
@@ -76,7 +84,6 @@ SpeciesIsotopologueRatios
   .. automethod:: SpeciesIsotopologueRatios.__eq__
   .. automethod:: SpeciesIsotopologueRatios.__format__
   .. automethod:: SpeciesIsotopologueRatios.__ge__
-  .. automethod:: SpeciesIsotopologueRatios.__getstate__
   .. automethod:: SpeciesIsotopologueRatios.__gt__
   .. automethod:: SpeciesIsotopologueRatios.__hash__
   .. automethod:: SpeciesIsotopologueRatios.__init__
@@ -84,6 +91,5 @@ SpeciesIsotopologueRatios
   .. automethod:: SpeciesIsotopologueRatios.__lt__
   .. automethod:: SpeciesIsotopologueRatios.__ne__
   .. automethod:: SpeciesIsotopologueRatios.__repr__
-  .. automethod:: SpeciesIsotopologueRatios.__setstate__
   .. automethod:: SpeciesIsotopologueRatios.__str__
 

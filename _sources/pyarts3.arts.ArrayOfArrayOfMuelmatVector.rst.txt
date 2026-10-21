@@ -13,6 +13,9 @@ ArrayOfArrayOfMuelmatVector
       - :func:`~pyarts3.arts.ArrayOfArrayOfMuelmatVector.append`
       - Append `arg` to the end of the list.
     * - Method
+      - :func:`~pyarts3.arts.ArrayOfArrayOfMuelmatVector.appendxml`
+      - Append variable from file.
+    * - Method
       - :func:`~pyarts3.arts.ArrayOfArrayOfMuelmatVector.clear`
       - Remove all items from list.
     * - Method
@@ -21,6 +24,9 @@ ArrayOfArrayOfMuelmatVector
     * - Method
       - :func:`~pyarts3.arts.ArrayOfArrayOfMuelmatVector.extend`
       - Extend `self` by appending elements from `arg`.
+    * - Method
+      - :func:`~pyarts3.arts.ArrayOfArrayOfMuelmatVector.extendxml`
+      - Extend variable from file.
     * - Method
       - :func:`~pyarts3.arts.ArrayOfArrayOfMuelmatVector.insert`
       - Insert object `arg1` before index `arg0`.
@@ -61,9 +67,6 @@ ArrayOfArrayOfMuelmatVector
       - :func:`~pyarts3.arts.ArrayOfArrayOfMuelmatVector.__getitem__`
       - __getitem__(self, arg: slice, /) -> pyarts3.arts.ArrayOfArrayOfMuelmatVector
     * - Operator
-      - :func:`~pyarts3.arts.ArrayOfArrayOfMuelmatVector.__getstate__`
-      - __getstate__(self) -> tuple[pyarts3.arts.ArrayOfArrayOfMuelmatVector]
-    * - Operator
       - :func:`~pyarts3.arts.ArrayOfArrayOfMuelmatVector.__gt__`
       - Return self>value.
     * - Operator
@@ -94,9 +97,6 @@ ArrayOfArrayOfMuelmatVector
       - :func:`~pyarts3.arts.ArrayOfArrayOfMuelmatVector.__setitem__`
       - __setitem__(self, arg0: slice, arg1: pyarts3.arts.ArrayOfArrayOfMuelmatVector, /) -> None
     * - Operator
-      - :func:`~pyarts3.arts.ArrayOfArrayOfMuelmatVector.__setstate__`
-      - __setstate__(self, arg: tuple[pyarts3.arts.ArrayOfArrayOfMuelmatVector]) -> None
-    * - Operator
       - :func:`~pyarts3.arts.ArrayOfArrayOfMuelmatVector.__str__`
       - __str__(self) -> str
 
@@ -108,9 +108,11 @@ ArrayOfArrayOfMuelmatVector
   .. rubric:: Methods
 
   .. automethod:: ArrayOfArrayOfMuelmatVector.append
+  .. automethod:: ArrayOfArrayOfMuelmatVector.appendxml
   .. automethod:: ArrayOfArrayOfMuelmatVector.clear
   .. automethod:: ArrayOfArrayOfMuelmatVector.count
   .. automethod:: ArrayOfArrayOfMuelmatVector.extend
+  .. automethod:: ArrayOfArrayOfMuelmatVector.extendxml
   .. automethod:: ArrayOfArrayOfMuelmatVector.insert
   .. automethod:: ArrayOfArrayOfMuelmatVector.pop
   .. automethod:: ArrayOfArrayOfMuelmatVector.readxml
@@ -130,7 +132,6 @@ ArrayOfArrayOfMuelmatVector
   .. automethod:: ArrayOfArrayOfMuelmatVector.__format__
   .. automethod:: ArrayOfArrayOfMuelmatVector.__ge__
   .. automethod:: ArrayOfArrayOfMuelmatVector.__getitem__
-  .. automethod:: ArrayOfArrayOfMuelmatVector.__getstate__
   .. automethod:: ArrayOfArrayOfMuelmatVector.__gt__
   .. automethod:: ArrayOfArrayOfMuelmatVector.__hash__
   .. automethod:: ArrayOfArrayOfMuelmatVector.__init__
@@ -141,6 +142,5 @@ ArrayOfArrayOfMuelmatVector
   .. automethod:: ArrayOfArrayOfMuelmatVector.__ne__
   .. automethod:: ArrayOfArrayOfMuelmatVector.__repr__
   .. automethod:: ArrayOfArrayOfMuelmatVector.__setitem__
-  .. automethod:: ArrayOfArrayOfMuelmatVector.__setstate__
   .. automethod:: ArrayOfArrayOfMuelmatVector.__str__
 

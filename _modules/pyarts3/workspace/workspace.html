@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>pyarts3.workspace.workspace &mdash; ARTS 3.0.0dev8 documentation</title>
+  <title>pyarts3.workspace.workspace &mdash; ARTS 3.0.0dev10 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
@@ -14,9 +14,10 @@
       <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=73457b95" />
 
   
+    <link rel="canonical" href="https://atmtools.github.io/arts-docs-master/_modules/pyarts3/workspace/workspace.html" />
       <script src="../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../_static/documentation_options.js?v=3afc90f3"></script>
+      <script src="../../../_static/documentation_options.js?v=abe3498d"></script>
       <script src="../../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -167,18 +168,6 @@
         <span class="n">out</span> <span class="o">=</span> <span class="n">Workspace</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
         <span class="n">out</span><span class="o">.</span><span class="n">swap</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">out</span>
-
-<div class="viewcode-block" id="Workspace.__getstate__">
-<a class="viewcode-back" href="../../../pyarts3.workspace.Workspace.__getstate__.html#pyarts3.workspace.Workspace.__getstate__">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">__getstate__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;Workspace&quot;</span><span class="p">:</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__getstate__</span><span class="p">()}</span></div>
-
-
-<div class="viewcode-block" id="Workspace.__setstate__">
-<a class="viewcode-back" href="../../../pyarts3.workspace.Workspace.__setstate__.html#pyarts3.workspace.Workspace.__setstate__">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">__setstate__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">d</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__setstate__</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s2">&quot;Workspace&quot;</span><span class="p">])</span></div>
-
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">fromxml</span><span class="p">(</span><span class="n">file</span><span class="p">):</span>
@@ -628,6 +617,24 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">_arts_agenda</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">ws</span><span class="p">,</span> <span class="n">fix</span><span class="p">)</span></div>
 
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">in_parallel</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">ws</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Parses the decorated function into an Agenda and executes it immediately</span>
+<span class="sd">    using the provided workspace.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">execute</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">ws</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Workspace &#39;ws&#39; must be provided to in_parallel&quot;</span><span class="p">)</span>
+        <span class="n">agenda</span> <span class="o">=</span> <span class="n">_arts_agenda</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="n">agenda</span><span class="o">.</span><span class="n">_set_name</span><span class="p">(</span><span class="n">getsource</span><span class="p">(</span><span class="n">fn</span><span class="p">))</span>
+        <span class="n">agenda</span><span class="o">.</span><span class="n">par_execute</span><span class="p">(</span><span class="n">ws</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">agenda</span>
+
+    <span class="k">if</span> <span class="n">func</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">execute</span>
+    <span class="k">return</span> <span class="n">execute</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
 </pre></div>
 
            </div>

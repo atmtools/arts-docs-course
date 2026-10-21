@@ -21,6 +21,9 @@ Method
     * - :class:`str`
       - :attr:`~pyarts3.arts.Method.name`
       - The name of the method.
+    * - :class:`list`
+      - :attr:`~pyarts3.arts.Method.output`
+      - The output variables of the method.
     * - :class:`~pyarts3.arts.Wsv` or :attr:`None`
       - :attr:`~pyarts3.arts.Method.val`
       - The value (if any) of a set method.
@@ -33,9 +36,6 @@ Method
     * - Operator
       - :func:`~pyarts3.arts.Method.__ge__`
       - Return self>=value.
-    * - Operator
-      - :func:`~pyarts3.arts.Method.__getstate__`
-      - Helper for pickle.
     * - Operator
       - :func:`~pyarts3.arts.Method.__gt__`
       - Return self>value.
@@ -85,6 +85,14 @@ Method
      .. :class:`str`
 
 
+  .. attribute:: Method.output
+     :type: list
+
+     The output variables of the method.
+
+     .. :class:`list` of :class:`str`
+
+
   .. attribute:: Method.val
      :type: ~pyarts3.arts.Wsv | None
 
@@ -101,7 +109,6 @@ Method
   .. automethod:: Method.__eq__
   .. automethod:: Method.__format__
   .. automethod:: Method.__ge__
-  .. automethod:: Method.__getstate__
   .. automethod:: Method.__gt__
   .. automethod:: Method.__hash__
   .. automethod:: Method.__init__

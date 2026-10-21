@@ -1,0 +1,33 @@
+pyarts3.arts.planets.Mars
+=========================
+
+.. toctree::
+  :hidden:
+
+  pyarts3.arts.planets.Mars.gravity_operator
+
+.. automodule:: pyarts3.arts.planets.Mars
+
+
+.. rubric:: Functions
+
+
+.. list-table:: 
+
+  * - :func:`~pyarts3.arts.planets.Mars.gravity_operator`
+    - Get Mars's gravity object.
+
+.. rubric:: Static Data
+
+
+.. list-table::
+
+    * - ``pyarts3.arts.planets.Mars.GM``
+      - :class:`~float`
+      - 42828375816000.0
+    * - ``pyarts3.arts.planets.Mars.day``
+      - :class:`~float`
+      - 88646.40000000001
+    * - ``pyarts3.arts.planets.Mars.ellipsoid``
+      - :class:`~Vector2`
+      - [3396190, 3376200]

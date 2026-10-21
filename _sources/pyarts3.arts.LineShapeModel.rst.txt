@@ -11,26 +11,50 @@ LineShapeModel
 
     * - Method
       - :func:`~pyarts3.arts.LineShapeModel.D0`
-      - The D0 coefficient
+      - Computes the D0 coefficient
+    * - Method
+      - :func:`~pyarts3.arts.LineShapeModel.D2`
+      - Computes the D2 coefficient
+    * - Method
+      - :func:`~pyarts3.arts.LineShapeModel.DV`
+      - Computes the DV coefficient
+    * - Method
+      - :func:`~pyarts3.arts.LineShapeModel.ETA`
+      - Computes the ETA coefficient
+    * - Method
+      - :func:`~pyarts3.arts.LineShapeModel.FVC`
+      - Computes the FVC coefficient
+    * - Method
+      - :func:`~pyarts3.arts.LineShapeModel.G`
+      - Computes the G coefficient
     * - Method
       - :func:`~pyarts3.arts.LineShapeModel.G0`
-      - The G0 coefficient
+      - Computes the G0 coefficient
+    * - Method
+      - :func:`~pyarts3.arts.LineShapeModel.G2`
+      - Computes the G2 coefficient
     * - Method
       - :func:`~pyarts3.arts.LineShapeModel.Y`
-      - The Y coefficient
+      - Computes the Y coefficient
+    * - Method
+      - :func:`~pyarts3.arts.LineShapeModel.readxml`
+      - Read variable from file.
     * - Method
       - :func:`~pyarts3.arts.LineShapeModel.remove`
-      - Remove a variable
+      - Remove a type of variable from the line shape model.
     * - Method
       - :func:`~pyarts3.arts.LineShapeModel.remove_zeros`
-      - Remove zero coefficients
+      - Remove zero coefficients from the line shape model
+    * - Method
+      - :func:`~pyarts3.arts.LineShapeModel.savexml`
+      - Saves variable to file.
+    * - Static Method
+      - :func:`~pyarts3.arts.LineShapeModel.fromxml`
+      - Create variable from file.
     * - :class:`Numeric`
       - :attr:`~pyarts3.arts.LineShapeModel.T0`
-      - The reference temperature
-    * - :class:`bool`
-      - :attr:`~pyarts3.arts.LineShapeModel.one_by_one`
-      - If true, the lines are treated one by one
-    * - :class:`list`\[:class:`LineShapeSpeciesModel`\]
+      - The reference temperature [K]
+    * - :class:`dict`\[:class:`SpeciesEnum`, :class:`LineShapeSpeciesModel`\]
       - :attr:`~pyarts3.arts.LineShapeModel.single_models`
       - The single models
     * - Operator
@@ -42,9 +66,6 @@ LineShapeModel
     * - Operator
       - :func:`~pyarts3.arts.LineShapeModel.__ge__`
       - Return self>=value.
-    * - Operator
-      - :func:`~pyarts3.arts.LineShapeModel.__getstate__`
-      - Helper for pickle.
     * - Operator
       - :func:`~pyarts3.arts.LineShapeModel.__gt__`
       - Return self>value.
@@ -78,35 +99,39 @@ LineShapeModel
   .. rubric:: Methods
 
   .. automethod:: LineShapeModel.D0
+  .. automethod:: LineShapeModel.D2
+  .. automethod:: LineShapeModel.DV
+  .. automethod:: LineShapeModel.ETA
+  .. automethod:: LineShapeModel.FVC
+  .. automethod:: LineShapeModel.G
   .. automethod:: LineShapeModel.G0
+  .. automethod:: LineShapeModel.G2
   .. automethod:: LineShapeModel.Y
+  .. automethod:: LineShapeModel.readxml
   .. automethod:: LineShapeModel.remove
   .. automethod:: LineShapeModel.remove_zeros
+  .. automethod:: LineShapeModel.savexml
+
+  .. rubric:: Static Methods
+
+  .. automethod:: LineShapeModel.fromxml
 
   .. rubric:: Attributes
 
   .. attribute:: LineShapeModel.T0
      :type: Numeric
 
-     The reference temperature
+     The reference temperature [K]
 
      .. :class:`Numeric`
 
 
-  .. attribute:: LineShapeModel.one_by_one
-     :type: bool
-
-     If true, the lines are treated one by one
-
-     .. :class:`bool`
-
-
   .. attribute:: LineShapeModel.single_models
-     :type: list[LineShapeSpeciesModel]
+     :type: dict[SpeciesEnum, LineShapeSpeciesModel]
 
      The single models
 
-     .. :class:`list[LineShapeSpeciesModel]`
+     .. :class:`dict[SpeciesEnum, LineShapeSpeciesModel]`
 
 
 
@@ -115,7 +140,6 @@ LineShapeModel
   .. automethod:: LineShapeModel.__eq__
   .. automethod:: LineShapeModel.__format__
   .. automethod:: LineShapeModel.__ge__
-  .. automethod:: LineShapeModel.__getstate__
   .. automethod:: LineShapeModel.__gt__
   .. automethod:: LineShapeModel.__hash__
   .. automethod:: LineShapeModel.__init__

@@ -8,7 +8,7 @@
     <link href="_static/favicon-32x32.png" sizes="32x32" rel="icon" type="image/png">
     <link rel="apple-touch-icon" sizes="180x180" href="_static/apple-touch-icon.png" type="image/png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Scattering calculations &mdash; ARTS 3.0.0dev8 documentation</title>
+  <title>Scattering calculations &mdash; ARTS 3.0.0dev10 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -17,9 +17,10 @@
       <link rel="stylesheet" type="text/css" href="_static/custom.css?v=73457b95" />
 
   
+    <link rel="canonical" href="https://atmtools.github.io/arts-docs-master/examples.4-scattering-properties.2-scattering-calculations.html" />
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=3afc90f3"></script>
+      <script src="_static/documentation_options.js?v=abe3498d"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -66,6 +67,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="examples.5-absorption.html">Absorption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.6-satellite-sensors.html">Satellite sensors</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="users.html">Guide</a></li>
@@ -127,12 +129,12 @@
 
 <span class="c1"># %% Set up a 1D atmosphere</span>
 <span class="n">ws</span> <span class="o">=</span> <span class="n">pyarts</span><span class="o">.</span><span class="n">Workspace</span><span class="p">()</span>
-<span class="n">ws</span><span class="o">.</span><span class="n">surface_fieldPlanet</span><span class="p">(</span><span class="n">option</span><span class="o">=</span><span class="s2">&quot;Earth&quot;</span><span class="p">)</span>
-<span class="n">ws</span><span class="o">.</span><span class="n">surface_field</span><span class="p">[</span><span class="n">pyarts</span><span class="o">.</span><span class="n">arts</span><span class="o">.</span><span class="n">SurfaceKey</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">)]</span> <span class="o">=</span> <span class="mf">295.0</span>
-<span class="n">ws</span><span class="o">.</span><span class="n">atmospheric_fieldRead</span><span class="p">(</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">surf_fieldPlanet</span><span class="p">(</span><span class="n">option</span><span class="o">=</span><span class="s2">&quot;Earth&quot;</span><span class="p">)</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">surf_field</span><span class="p">[</span><span class="n">pyarts</span><span class="o">.</span><span class="n">arts</span><span class="o">.</span><span class="n">SurfaceKey</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">)]</span> <span class="o">=</span> <span class="mf">295.0</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">atm_fieldRead</span><span class="p">(</span>
     <span class="n">toa</span><span class="o">=</span><span class="mf">100e3</span><span class="p">,</span> <span class="n">basename</span><span class="o">=</span><span class="s2">&quot;planets/Earth/afgl/tropical/&quot;</span><span class="p">,</span> <span class="n">missing_is_zero</span><span class="o">=</span><span class="mi">1</span>
 <span class="p">)</span>
-<span class="n">ws</span><span class="o">.</span><span class="n">atmospheric_fieldIGRF</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s2">&quot;2000-03-11 14:39:37&quot;</span><span class="p">)</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">atm_fieldIGRF</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s2">&quot;2000-03-11 14:39:37&quot;</span><span class="p">)</span>
 
 <span class="c1"># %% Add a field of scattering species properties</span>
 <span class="c1">#</span>
@@ -151,21 +153,21 @@
 
 <span class="c1"># We then define a GriddedField3 representing the ice extinction and</span>
 <span class="c1"># single-scattering albedo and add it to ``atm_field`` of the workspace.</span>
-<span class="n">grids</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">atmospheric_field</span><span class="p">[</span><span class="s2">&quot;t&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">grids</span>
+<span class="n">grids</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">atm_field</span><span class="p">[</span><span class="s2">&quot;t&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">grids</span>
 <span class="n">z</span> <span class="o">=</span> <span class="n">grids</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">ice_extinction_profile</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
 <span class="n">ice_extinction_profile</span><span class="p">[(</span><span class="n">z</span> <span class="o">&gt;</span> <span class="mf">5e3</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">z</span> <span class="o">&lt;</span> <span class="mf">15e3</span><span class="p">)]</span> <span class="o">=</span> <span class="mf">1.0</span>
 <span class="n">ice_extinction_profile</span> <span class="o">=</span> <span class="n">pyarts</span><span class="o">.</span><span class="n">arts</span><span class="o">.</span><span class="n">GriddedField3</span><span class="p">(</span>
     <span class="n">data</span><span class="o">=</span><span class="n">ice_extinction_profile</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span> <span class="n">grids</span><span class="o">=</span><span class="n">grids</span>
 <span class="p">)</span>
-<span class="n">ws</span><span class="o">.</span><span class="n">atmospheric_field</span><span class="p">[</span><span class="n">ice_extinction</span><span class="p">]</span> <span class="o">=</span> <span class="n">ice_extinction_profile</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">atm_field</span><span class="p">[</span><span class="n">ice_extinction</span><span class="p">]</span> <span class="o">=</span> <span class="n">ice_extinction_profile</span>
 
 <span class="n">ice_ssa_profile</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
 <span class="n">ice_ssa_profile</span><span class="p">[(</span><span class="n">z</span> <span class="o">&gt;</span> <span class="mf">5e3</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">z</span> <span class="o">&lt;</span> <span class="mf">15e3</span><span class="p">)]</span> <span class="o">=</span> <span class="mf">0.5</span>
 <span class="n">ice_ssa_profile</span> <span class="o">=</span> <span class="n">pyarts</span><span class="o">.</span><span class="n">arts</span><span class="o">.</span><span class="n">GriddedField3</span><span class="p">(</span>
     <span class="n">data</span><span class="o">=</span><span class="n">ice_ssa_profile</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span> <span class="n">grids</span><span class="o">=</span><span class="n">grids</span>
 <span class="p">)</span>
-<span class="n">ws</span><span class="o">.</span><span class="n">atmospheric_field</span><span class="p">[</span><span class="n">ice_ssa</span><span class="p">]</span> <span class="o">=</span> <span class="n">ice_ssa_profile</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">atm_field</span><span class="p">[</span><span class="n">ice_ssa</span><span class="p">]</span> <span class="o">=</span> <span class="n">ice_ssa_profile</span>
 
 <span class="c1"># %% Rain</span>
 <span class="n">rain_extinction</span> <span class="o">=</span> <span class="n">pyarts</span><span class="o">.</span><span class="n">arts</span><span class="o">.</span><span class="n">ScatteringSpeciesProperty</span><span class="p">(</span>
@@ -180,14 +182,14 @@
 <span class="n">rain_extinction_profile</span> <span class="o">=</span> <span class="n">pyarts</span><span class="o">.</span><span class="n">arts</span><span class="o">.</span><span class="n">GriddedField3</span><span class="p">(</span>
     <span class="n">data</span><span class="o">=</span><span class="n">rain_extinction_profile</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span> <span class="n">grids</span><span class="o">=</span><span class="n">grids</span>
 <span class="p">)</span>
-<span class="n">ws</span><span class="o">.</span><span class="n">atmospheric_field</span><span class="p">[</span><span class="n">rain_extinction</span><span class="p">]</span> <span class="o">=</span> <span class="n">rain_extinction_profile</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">atm_field</span><span class="p">[</span><span class="n">rain_extinction</span><span class="p">]</span> <span class="o">=</span> <span class="n">rain_extinction_profile</span>
 
 <span class="n">rain_ssa_profile</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
 <span class="n">rain_ssa_profile</span><span class="p">[</span><span class="n">z</span> <span class="o">&lt;</span> <span class="mf">5e3</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.5</span>
 <span class="n">rain_ssa_profile</span> <span class="o">=</span> <span class="n">pyarts</span><span class="o">.</span><span class="n">arts</span><span class="o">.</span><span class="n">GriddedField3</span><span class="p">(</span>
     <span class="n">data</span><span class="o">=</span><span class="n">rain_ssa_profile</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span> <span class="n">grids</span><span class="o">=</span><span class="n">grids</span>
 <span class="p">)</span>
-<span class="n">ws</span><span class="o">.</span><span class="n">atmospheric_field</span><span class="p">[</span><span class="n">rain_ssa</span><span class="p">]</span> <span class="o">=</span> <span class="n">rain_ssa_profile</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">atm_field</span><span class="p">[</span><span class="n">rain_ssa</span><span class="p">]</span> <span class="o">=</span> <span class="n">rain_ssa_profile</span>
 
 <span class="c1"># %% Create the scattering species</span>
 
@@ -209,7 +211,7 @@
 <span class="c1"># check the consistency of the Henyey-Greenstein scatterer, we extract the data</span>
 <span class="c1"># in gridded and spectral representation and ensure that they are the same when</span>
 <span class="c1"># both are converted to gridded representation.</span>
-<span class="n">atm_pt</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">atmospheric_field</span><span class="p">(</span><span class="mf">11e3</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="n">atm_pt</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">atm_field</span><span class="p">(</span><span class="mf">11e3</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
 <span class="n">f_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">89e9</span><span class="p">])</span>
 <span class="n">bsp</span> <span class="o">=</span> <span class="n">scattering_species</span><span class="o">.</span><span class="n">get_bulk_scattering_properties_tro_spectral</span><span class="p">(</span><span class="n">atm_pt</span><span class="p">,</span> <span class="n">f_grid</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
 <span class="n">pm_spectral</span> <span class="o">=</span> <span class="n">bsp</span><span class="o">.</span><span class="n">phase_matrix</span>
@@ -236,7 +238,7 @@
 <span class="c1">#</span>
 <span class="c1"># Similarly, we can extract the phase function for rain by calculating the</span>
 <span class="c1"># bulk-scattering properties at a lower point in the atmosphere.</span>
-<span class="n">atm_pt</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">atmospheric_field</span><span class="p">(</span><span class="mf">4e3</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="n">atm_pt</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">atm_field</span><span class="p">(</span><span class="mf">4e3</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
 <span class="n">bsp</span> <span class="o">=</span> <span class="n">scattering_species</span><span class="o">.</span><span class="n">get_bulk_scattering_properties_tro_spectral</span><span class="p">(</span><span class="n">atm_pt</span><span class="p">,</span> <span class="n">f_grid</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
 <span class="n">pm_spectral</span> <span class="o">=</span> <span class="n">bsp</span><span class="o">.</span><span class="n">phase_matrix</span>
 
@@ -266,13 +268,13 @@
 <figure class="align-default" id="id1">
 <img alt="_images/1-scattering_species-sht_00.svg" class="plot-directive" src="_images/1-scattering_species-sht_00.svg" />
 <figcaption>
-<p><span class="caption-number">Fig. 7 </span><span class="caption-text">(<a class="reference download internal" download="" href="_downloads/609f2ae43be5b86d83f492a4a4a04f7c/1-scattering_species-sht_00.svg"><code class="xref download docutils literal notranslate"><span class="pre">svg</span></code></a>, <a class="reference download internal" download="" href="_downloads/9a96addb27cdd3ca7befc42b4814f125/1-scattering_species-sht_00.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">(<a class="reference download internal" download="" href="_downloads/609f2ae43be5b86d83f492a4a4a04f7c/1-scattering_species-sht_00.svg"><code class="xref download docutils literal notranslate"><span class="pre">svg</span></code></a>, <a class="reference download internal" download="" href="_downloads/9a96addb27cdd3ca7befc42b4814f125/1-scattering_species-sht_00.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id2">
 <img alt="_images/1-scattering_species-sht_01.svg" class="plot-directive" src="_images/1-scattering_species-sht_01.svg" />
 <figcaption>
-<p><span class="caption-number">Fig. 8 </span><span class="caption-text">(<a class="reference download internal" download="" href="_downloads/102379d0903aeb06532b91a138301fe1/1-scattering_species-sht_01.svg"><code class="xref download docutils literal notranslate"><span class="pre">svg</span></code></a>, <a class="reference download internal" download="" href="_downloads/45a96a5f287e8a6e596dfc6c1b05048a/1-scattering_species-sht_01.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">(<a class="reference download internal" download="" href="_downloads/102379d0903aeb06532b91a138301fe1/1-scattering_species-sht_01.svg"><code class="xref download docutils literal notranslate"><span class="pre">svg</span></code></a>, <a class="reference download internal" download="" href="_downloads/45a96a5f287e8a6e596dfc6c1b05048a/1-scattering_species-sht_01.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 </section>

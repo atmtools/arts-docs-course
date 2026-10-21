@@ -13,11 +13,17 @@ ArrayOfArrayOfScatteringMetaData
       - :func:`~pyarts3.arts.ArrayOfArrayOfScatteringMetaData.append`
       - Append `arg` to the end of the list.
     * - Method
+      - :func:`~pyarts3.arts.ArrayOfArrayOfScatteringMetaData.appendxml`
+      - Append variable from file.
+    * - Method
       - :func:`~pyarts3.arts.ArrayOfArrayOfScatteringMetaData.clear`
       - Remove all items from list.
     * - Method
       - :func:`~pyarts3.arts.ArrayOfArrayOfScatteringMetaData.extend`
       - Extend `self` by appending elements from `arg`.
+    * - Method
+      - :func:`~pyarts3.arts.ArrayOfArrayOfScatteringMetaData.extendxml`
+      - Extend variable from file.
     * - Method
       - :func:`~pyarts3.arts.ArrayOfArrayOfScatteringMetaData.insert`
       - Insert object `arg1` before index `arg0`.
@@ -52,9 +58,6 @@ ArrayOfArrayOfScatteringMetaData
       - :func:`~pyarts3.arts.ArrayOfArrayOfScatteringMetaData.__getitem__`
       - __getitem__(self, arg: slice, /) -> pyarts3.arts.ArrayOfArrayOfScatteringMetaData
     * - Operator
-      - :func:`~pyarts3.arts.ArrayOfArrayOfScatteringMetaData.__getstate__`
-      - __getstate__(self) -> tuple[pyarts3.arts.ArrayOfArrayOfScatteringMetaData]
-    * - Operator
       - :func:`~pyarts3.arts.ArrayOfArrayOfScatteringMetaData.__gt__`
       - Return self>value.
     * - Operator
@@ -85,9 +88,6 @@ ArrayOfArrayOfScatteringMetaData
       - :func:`~pyarts3.arts.ArrayOfArrayOfScatteringMetaData.__setitem__`
       - __setitem__(self, arg0: slice, arg1: pyarts3.arts.ArrayOfArrayOfScatteringMetaData, /) -> None
     * - Operator
-      - :func:`~pyarts3.arts.ArrayOfArrayOfScatteringMetaData.__setstate__`
-      - __setstate__(self, arg: tuple[pyarts3.arts.ArrayOfArrayOfScatteringMetaData]) -> None
-    * - Operator
       - :func:`~pyarts3.arts.ArrayOfArrayOfScatteringMetaData.__str__`
       - __str__(self) -> str
 
@@ -99,8 +99,10 @@ ArrayOfArrayOfScatteringMetaData
   .. rubric:: Methods
 
   .. automethod:: ArrayOfArrayOfScatteringMetaData.append
+  .. automethod:: ArrayOfArrayOfScatteringMetaData.appendxml
   .. automethod:: ArrayOfArrayOfScatteringMetaData.clear
   .. automethod:: ArrayOfArrayOfScatteringMetaData.extend
+  .. automethod:: ArrayOfArrayOfScatteringMetaData.extendxml
   .. automethod:: ArrayOfArrayOfScatteringMetaData.insert
   .. automethod:: ArrayOfArrayOfScatteringMetaData.pop
   .. automethod:: ArrayOfArrayOfScatteringMetaData.readxml
@@ -118,7 +120,6 @@ ArrayOfArrayOfScatteringMetaData
   .. automethod:: ArrayOfArrayOfScatteringMetaData.__format__
   .. automethod:: ArrayOfArrayOfScatteringMetaData.__ge__
   .. automethod:: ArrayOfArrayOfScatteringMetaData.__getitem__
-  .. automethod:: ArrayOfArrayOfScatteringMetaData.__getstate__
   .. automethod:: ArrayOfArrayOfScatteringMetaData.__gt__
   .. automethod:: ArrayOfArrayOfScatteringMetaData.__hash__
   .. automethod:: ArrayOfArrayOfScatteringMetaData.__init__
@@ -129,6 +130,5 @@ ArrayOfArrayOfScatteringMetaData
   .. automethod:: ArrayOfArrayOfScatteringMetaData.__ne__
   .. automethod:: ArrayOfArrayOfScatteringMetaData.__repr__
   .. automethod:: ArrayOfArrayOfScatteringMetaData.__setitem__
-  .. automethod:: ArrayOfArrayOfScatteringMetaData.__setstate__
   .. automethod:: ArrayOfArrayOfScatteringMetaData.__str__
 

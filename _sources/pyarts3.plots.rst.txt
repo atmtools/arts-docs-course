@@ -4,48 +4,187 @@ pyarts3.plots
 .. currentmodule:: pyarts3.plots
 
 .. automodule:: pyarts3.plots
-   :members:
-   :imported-members:
-   :undoc-members:
-   :special-members: __init__, __call__
+   :no-members:
+
+Generic Plot Function
+---------------------
+
+.. autofunction:: plot
+
+Plotting Functions by Type
+---------------------------
 
 
-.. rubric:: ArrayOfPropagationPathPoint
+AbsorptionBands.plot
+~~~~~~~~~~~~~~~~~~~~
 
-.. automodule:: pyarts3.plots.ArrayOfPropagationPathPoint
-   :members:
-   :imported-members:
-   :undoc-members:
-   :special-members: __init__, __call__
+.. autofunction:: pyarts3.plots.AbsorptionBands.plot
 
-.. rubric:: ArrayOfSensorObsel
 
-.. automodule:: pyarts3.plots.ArrayOfSensorObsel
-   :members:
-   :imported-members:
-   :undoc-members:
-   :special-members: __init__, __call__
+ArrayOfPropagationPathPoint.plot
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. rubric:: AtmField
+.. autofunction:: pyarts3.plots.ArrayOfPropagationPathPoint.plot
 
-.. automodule:: pyarts3.plots.AtmField
-   :members:
-   :imported-members:
-   :undoc-members:
-   :special-members: __init__, __call__
 
-.. rubric:: MuelmatVector
+ArrayOfSensorObsel.plot
+~~~~~~~~~~~~~~~~~~~~~~~
 
-.. automodule:: pyarts3.plots.MuelmatVector
-   :members:
-   :imported-members:
-   :undoc-members:
-   :special-members: __init__, __call__
+.. autofunction:: pyarts3.plots.ArrayOfSensorObsel.plot
 
-.. rubric:: SubsurfaceField
 
-.. automodule:: pyarts3.plots.SubsurfaceField
-   :members:
-   :imported-members:
-   :undoc-members:
-   :special-members: __init__, __call__
+AscendingGrid.plot
+~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: pyarts3.plots.AscendingGrid.plot
+
+
+AtmField.plot
+~~~~~~~~~~~~~
+
+.. autofunction:: pyarts3.plots.AtmField.plot
+
+
+AziGrid.plot
+~~~~~~~~~~~~
+
+.. autofunction:: pyarts3.plots.AziGrid.plot
+
+
+CIARecord.plot
+~~~~~~~~~~~~~~
+
+.. autofunction:: pyarts3.plots.CIARecord.plot
+
+
+CIARecords.plot
+~~~~~~~~~~~~~~~
+
+.. autofunction:: pyarts3.plots.CIARecords.plot
+
+
+DisortFlux.plot
+~~~~~~~~~~~~~~~
+
+.. autofunction:: pyarts3.plots.DisortFlux.plot
+
+
+DisortRadiance.plot
+~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: pyarts3.plots.DisortRadiance.plot
+
+
+GeodeticField2.plot
+~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: pyarts3.plots.GeodeticField2.plot
+
+
+GriddedField2.plot
+~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: pyarts3.plots.GriddedField2.plot
+
+
+LatGrid.plot
+~~~~~~~~~~~~
+
+.. autofunction:: pyarts3.plots.LatGrid.plot
+
+
+LonGrid.plot
+~~~~~~~~~~~~
+
+.. autofunction:: pyarts3.plots.LonGrid.plot
+
+
+MagneticAngles.plot
+~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: pyarts3.plots.MagneticAngles.plot
+
+
+Matrix.plot
+~~~~~~~~~~~
+
+.. autofunction:: pyarts3.plots.Matrix.plot
+
+
+MuelmatVector.plot
+~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: pyarts3.plots.MuelmatVector.plot
+
+
+PropmatMatrix.plot
+~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: pyarts3.plots.PropmatMatrix.plot
+
+
+PropmatVector.plot
+~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: pyarts3.plots.PropmatVector.plot
+
+
+SensorObsel.plot
+~~~~~~~~~~~~~~~~
+
+.. autofunction:: pyarts3.plots.SensorObsel.plot
+
+
+SortedGriddedField1.plot
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: pyarts3.plots.SortedGriddedField1.plot
+
+
+SortedGriddedField2.plot
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: pyarts3.plots.SortedGriddedField2.plot
+
+
+StokvecMatrix.plot
+~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: pyarts3.plots.StokvecMatrix.plot
+
+
+StokvecVector.plot
+~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: pyarts3.plots.StokvecVector.plot
+
+
+SubsurfaceField.plot
+~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: pyarts3.plots.SubsurfaceField.plot
+
+
+Sun.plot
+~~~~~~~~
+
+.. autofunction:: pyarts3.plots.Sun.plot
+
+
+SurfaceField.plot
+~~~~~~~~~~~~~~~~~
+
+.. autofunction:: pyarts3.plots.SurfaceField.plot
+
+
+Vector.plot
+~~~~~~~~~~~
+
+.. autofunction:: pyarts3.plots.Vector.plot
+
+
+ZenGrid.plot
+~~~~~~~~~~~~
+
+.. autofunction:: pyarts3.plots.ZenGrid.plot
+

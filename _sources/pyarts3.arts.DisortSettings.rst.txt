@@ -19,11 +19,14 @@ DisortSettings
       - :func:`~pyarts3.arts.DisortSettings.fromxml`
       - Create variable from file.
     * - :class:`DescendingGrid`
-      - :attr:`~pyarts3.arts.DisortSettings.altitude_grid`
+      - :attr:`~pyarts3.arts.DisortSettings.alt_grid`
       - .. :class:`DescendingGrid`
     * - :class:`MatrixOfDisortBDRF`
       - :attr:`~pyarts3.arts.DisortSettings.bidirectional_reflectance_distribution_functions`
       - .. :class:`MatrixOfDisortBDRF`
+    * - :class:`Tensor3`
+      - :attr:`~pyarts3.arts.DisortSettings.downward_boundary_condition`
+      - .. :class:`Tensor3`
     * - :class:`Index`
       - :attr:`~pyarts3.arts.DisortSettings.fourier_mode_dimension`
       - .. :class:`Index`
@@ -31,7 +34,7 @@ DisortSettings
       - :attr:`~pyarts3.arts.DisortSettings.fractional_scattering`
       - .. :class:`Matrix`
     * - :class:`AscendingGrid`
-      - :attr:`~pyarts3.arts.DisortSettings.frequency_grid`
+      - :attr:`~pyarts3.arts.DisortSettings.freq_grid`
       - .. :class:`AscendingGrid`
     * - :class:`Tensor3`
       - :attr:`~pyarts3.arts.DisortSettings.legendre_coefficients`
@@ -39,15 +42,9 @@ DisortSettings
     * - :class:`Index`
       - :attr:`~pyarts3.arts.DisortSettings.legendre_polynomial_dimension`
       - .. :class:`Index`
-    * - :class:`Tensor3`
-      - :attr:`~pyarts3.arts.DisortSettings.negative_boundary_condition`
-      - .. :class:`Tensor3`
     * - :class:`Matrix`
       - :attr:`~pyarts3.arts.DisortSettings.optical_thicknesses`
       - .. :class:`Matrix`
-    * - :class:`Tensor3`
-      - :attr:`~pyarts3.arts.DisortSettings.positive_boundary_condition`
-      - .. :class:`Tensor3`
     * - :class:`Index`
       - :attr:`~pyarts3.arts.DisortSettings.quadrature_dimension`
       - .. :class:`Index`
@@ -66,6 +63,9 @@ DisortSettings
     * - :class:`Tensor3`
       - :attr:`~pyarts3.arts.DisortSettings.source_polynomial`
       - .. :class:`Tensor3`
+    * - :class:`Tensor3`
+      - :attr:`~pyarts3.arts.DisortSettings.upward_boundary_condition`
+      - .. :class:`Tensor3`
     * - Operator
       - :func:`~pyarts3.arts.DisortSettings.__eq__`
       - Return self==value.
@@ -75,9 +75,6 @@ DisortSettings
     * - Operator
       - :func:`~pyarts3.arts.DisortSettings.__ge__`
       - Return self>=value.
-    * - Operator
-      - :func:`~pyarts3.arts.DisortSettings.__getstate__`
-      - Helper for pickle.
     * - Operator
       - :func:`~pyarts3.arts.DisortSettings.__gt__`
       - Return self>value.
@@ -119,7 +116,7 @@ DisortSettings
 
   .. rubric:: Attributes
 
-  .. attribute:: DisortSettings.altitude_grid
+  .. attribute:: DisortSettings.alt_grid
      :type: DescendingGrid
 
      .. :class:`DescendingGrid`
@@ -129,6 +126,12 @@ DisortSettings
      :type: MatrixOfDisortBDRF
 
      .. :class:`MatrixOfDisortBDRF`
+
+
+  .. attribute:: DisortSettings.downward_boundary_condition
+     :type: Tensor3
+
+     .. :class:`Tensor3`
 
 
   .. attribute:: DisortSettings.fourier_mode_dimension
@@ -143,7 +146,7 @@ DisortSettings
      .. :class:`Matrix`
 
 
-  .. attribute:: DisortSettings.frequency_grid
+  .. attribute:: DisortSettings.freq_grid
      :type: AscendingGrid
 
      .. :class:`AscendingGrid`
@@ -161,22 +164,10 @@ DisortSettings
      .. :class:`Index`
 
 
-  .. attribute:: DisortSettings.negative_boundary_condition
-     :type: Tensor3
-
-     .. :class:`Tensor3`
-
-
   .. attribute:: DisortSettings.optical_thicknesses
      :type: Matrix
 
      .. :class:`Matrix`
-
-
-  .. attribute:: DisortSettings.positive_boundary_condition
-     :type: Tensor3
-
-     .. :class:`Tensor3`
 
 
   .. attribute:: DisortSettings.quadrature_dimension
@@ -215,13 +206,18 @@ DisortSettings
      .. :class:`Tensor3`
 
 
+  .. attribute:: DisortSettings.upward_boundary_condition
+     :type: Tensor3
+
+     .. :class:`Tensor3`
+
+
 
   .. rubric:: Operators
 
   .. automethod:: DisortSettings.__eq__
   .. automethod:: DisortSettings.__format__
   .. automethod:: DisortSettings.__ge__
-  .. automethod:: DisortSettings.__getstate__
   .. automethod:: DisortSettings.__gt__
   .. automethod:: DisortSettings.__hash__
   .. automethod:: DisortSettings.__init__

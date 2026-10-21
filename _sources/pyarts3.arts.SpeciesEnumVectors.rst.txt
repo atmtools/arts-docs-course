@@ -13,6 +13,9 @@ SpeciesEnumVectors
       - :func:`~pyarts3.arts.SpeciesEnumVectors.clear`
       - Remove all items
     * - Method
+      - :func:`~pyarts3.arts.SpeciesEnumVectors.extendxml`
+      - Extend variable from file.
+    * - Method
       - :func:`~pyarts3.arts.SpeciesEnumVectors.items`
       - Returns an iterable view of the map's items.
     * - Method
@@ -61,9 +64,6 @@ SpeciesEnumVectors
       - :func:`~pyarts3.arts.SpeciesEnumVectors.__getitem__`
       - __getitem__(self, arg: pyarts3.arts.SpeciesEnum, /) -> pyarts3.arts.Vector
     * - Operator
-      - :func:`~pyarts3.arts.SpeciesEnumVectors.__getstate__`
-      - Helper for pickle.
-    * - Operator
       - :func:`~pyarts3.arts.SpeciesEnumVectors.__gt__`
       - Return self>value.
     * - Operator
@@ -105,6 +105,7 @@ SpeciesEnumVectors
   .. rubric:: Methods
 
   .. automethod:: SpeciesEnumVectors.clear
+  .. automethod:: SpeciesEnumVectors.extendxml
   .. automethod:: SpeciesEnumVectors.items
   .. automethod:: SpeciesEnumVectors.keys
   .. automethod:: SpeciesEnumVectors.readxml
@@ -124,7 +125,6 @@ SpeciesEnumVectors
   .. automethod:: SpeciesEnumVectors.__format__
   .. automethod:: SpeciesEnumVectors.__ge__
   .. automethod:: SpeciesEnumVectors.__getitem__
-  .. automethod:: SpeciesEnumVectors.__getstate__
   .. automethod:: SpeciesEnumVectors.__gt__
   .. automethod:: SpeciesEnumVectors.__hash__
   .. automethod:: SpeciesEnumVectors.__init__

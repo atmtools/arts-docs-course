@@ -8,7 +8,7 @@
     <link href="_static/favicon-32x32.png" sizes="32x32" rel="icon" type="image/png">
     <link rel="apple-touch-icon" sizes="180x180" href="_static/apple-touch-icon.png" type="image/png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Physical grids &mdash; ARTS 3.0.0dev8 documentation</title>
+  <title>Physical grids &mdash; ARTS 3.0.0dev10 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -17,9 +17,10 @@
       <link rel="stylesheet" type="text/css" href="_static/custom.css?v=73457b95" />
 
   
+    <link rel="canonical" href="https://atmtools.github.io/arts-docs-master/concept.physical_grids.html" />
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=3afc90f3"></script>
+      <script src="_static/documentation_options.js?v=abe3498d"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -58,9 +59,9 @@
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="users.html">Guide</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="user.atmospheric_field.html">The atmosphere</a></li>
-<li class="toctree-l2"><a class="reference internal" href="user.surface_field.html">The surface and planet</a></li>
-<li class="toctree-l2"><a class="reference internal" href="user.subsurface_field.html">The subsurface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user.atm_field.html">The atmosphere</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user.surf_field.html">The surface and planet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user.subsurf_field.html">The subsurface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="user.sensors.html">Sensor description</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="concepts.html">Underpinning concepts and background</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="concept.absorption.html">Absorption</a></li>
@@ -126,33 +127,33 @@ descending order.  The range is regardless of sorting [-inf, inf].</p>
 </li>
 <li><p>Latitude grid.</p>
 <p>The latitude grid is a vector of latitudes, in degrees,
-that defines a horizontal coordinate upon a ellipsoid.
+that defines a horizontal coordinate upon an ellipsoid.
 It is always in ascending order, and its range is [-90, 90].</p>
 <p>Use these methods to check the latitude grid for correctness:</p>
 <ul class="simple">
-<li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">atmospheric_fieldCheck()</span></code></p></li>
-<li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">surface_fieldCheck()</span></code></p></li>
-<li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">subsurface_fieldCheck()</span></code></p></li>
+<li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">atm_fieldCheck()</span></code></p></li>
+<li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">surf_fieldCheck()</span></code></p></li>
+<li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">subsurf_fieldCheck()</span></code></p></li>
 </ul>
 <p>The only way to fix this if the grid is not valid is
 to regrid the data manually.</p>
 </li>
 <li><p>Longitude grid.</p>
 <p>The longitude grid is a vector of longitudes, in degrees,
-that defines a horizontal coordinate upon a ellipsoid.
+that defines a horizontal coordinate upon an ellipsoid.
 It is always in ascending order, and its range is [-180, 180).</p>
 <p>Use these methods to check the longitudes grid for correctness:</p>
 <ul class="simple">
-<li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">atmospheric_fieldCheck()</span></code></p></li>
-<li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">surface_fieldCheck()</span></code></p></li>
-<li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">subsurface_fieldCheck()</span></code></p></li>
+<li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">atm_fieldCheck()</span></code></p></li>
+<li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">surf_fieldCheck()</span></code></p></li>
+<li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">subsurf_fieldCheck()</span></code></p></li>
 </ul>
 <p>If these fail because of the longitude grid,
 there are methods to fix the cyclicity of the grid:</p>
 <ul class="simple">
-<li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">atmospheric_fieldFixCyclicity()</span></code></p></li>
-<li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">surface_fieldFixCyclicity()</span></code></p></li>
-<li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">subsurface_fieldFixCyclicity()</span></code></p></li>
+<li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">atm_fieldFixCyclicity()</span></code></p></li>
+<li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">surf_fieldFixCyclicity()</span></code></p></li>
+<li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">subsurf_fieldFixCyclicity()</span></code></p></li>
 </ul>
 </li>
 <li><p>Frequency grid.</p>

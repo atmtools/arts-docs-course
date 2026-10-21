@@ -13,11 +13,17 @@ ArrayOfLineTarget
       - :func:`~pyarts3.arts.ArrayOfLineTarget.append`
       - Append `arg` to the end of the list.
     * - Method
+      - :func:`~pyarts3.arts.ArrayOfLineTarget.appendxml`
+      - Append variable from file.
+    * - Method
       - :func:`~pyarts3.arts.ArrayOfLineTarget.clear`
       - Remove all items from list.
     * - Method
       - :func:`~pyarts3.arts.ArrayOfLineTarget.extend`
       - Extend `self` by appending elements from `arg`.
+    * - Method
+      - :func:`~pyarts3.arts.ArrayOfLineTarget.extendxml`
+      - Extend variable from file.
     * - Method
       - :func:`~pyarts3.arts.ArrayOfLineTarget.insert`
       - Insert object `arg1` before index `arg0`.
@@ -48,9 +54,6 @@ ArrayOfLineTarget
     * - Operator
       - :func:`~pyarts3.arts.ArrayOfLineTarget.__getitem__`
       - __getitem__(self, arg: slice, /) -> pyarts3.arts.ArrayOfLineTarget
-    * - Operator
-      - :func:`~pyarts3.arts.ArrayOfLineTarget.__getstate__`
-      - Helper for pickle.
     * - Operator
       - :func:`~pyarts3.arts.ArrayOfLineTarget.__gt__`
       - Return self>value.
@@ -93,8 +96,10 @@ ArrayOfLineTarget
   .. rubric:: Methods
 
   .. automethod:: ArrayOfLineTarget.append
+  .. automethod:: ArrayOfLineTarget.appendxml
   .. automethod:: ArrayOfLineTarget.clear
   .. automethod:: ArrayOfLineTarget.extend
+  .. automethod:: ArrayOfLineTarget.extendxml
   .. automethod:: ArrayOfLineTarget.insert
   .. automethod:: ArrayOfLineTarget.pop
   .. automethod:: ArrayOfLineTarget.readxml
@@ -111,7 +116,6 @@ ArrayOfLineTarget
   .. automethod:: ArrayOfLineTarget.__format__
   .. automethod:: ArrayOfLineTarget.__ge__
   .. automethod:: ArrayOfLineTarget.__getitem__
-  .. automethod:: ArrayOfLineTarget.__getstate__
   .. automethod:: ArrayOfLineTarget.__gt__
   .. automethod:: ArrayOfLineTarget.__hash__
   .. automethod:: ArrayOfLineTarget.__init__

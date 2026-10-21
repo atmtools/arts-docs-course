@@ -13,6 +13,9 @@ ArrayOfTensor6
       - :func:`~pyarts3.arts.ArrayOfTensor6.append`
       - Append `arg` to the end of the list.
     * - Method
+      - :func:`~pyarts3.arts.ArrayOfTensor6.appendxml`
+      - Append variable from file.
+    * - Method
       - :func:`~pyarts3.arts.ArrayOfTensor6.clear`
       - Remove all items from list.
     * - Method
@@ -21,6 +24,9 @@ ArrayOfTensor6
     * - Method
       - :func:`~pyarts3.arts.ArrayOfTensor6.extend`
       - Extend `self` by appending elements from `arg`.
+    * - Method
+      - :func:`~pyarts3.arts.ArrayOfTensor6.extendxml`
+      - Extend variable from file.
     * - Method
       - :func:`~pyarts3.arts.ArrayOfTensor6.insert`
       - Insert object `arg1` before index `arg0`.
@@ -61,9 +67,6 @@ ArrayOfTensor6
       - :func:`~pyarts3.arts.ArrayOfTensor6.__getitem__`
       - __getitem__(self, arg: slice, /) -> pyarts3.arts.ArrayOfTensor6
     * - Operator
-      - :func:`~pyarts3.arts.ArrayOfTensor6.__getstate__`
-      - __getstate__(self) -> tuple[pyarts3.arts.ArrayOfTensor6]
-    * - Operator
       - :func:`~pyarts3.arts.ArrayOfTensor6.__gt__`
       - Return self>value.
     * - Operator
@@ -94,9 +97,6 @@ ArrayOfTensor6
       - :func:`~pyarts3.arts.ArrayOfTensor6.__setitem__`
       - __setitem__(self, arg0: slice, arg1: pyarts3.arts.ArrayOfTensor6, /) -> None
     * - Operator
-      - :func:`~pyarts3.arts.ArrayOfTensor6.__setstate__`
-      - __setstate__(self, arg: tuple[pyarts3.arts.ArrayOfTensor6]) -> None
-    * - Operator
       - :func:`~pyarts3.arts.ArrayOfTensor6.__str__`
       - __str__(self) -> str
 
@@ -108,9 +108,11 @@ ArrayOfTensor6
   .. rubric:: Methods
 
   .. automethod:: ArrayOfTensor6.append
+  .. automethod:: ArrayOfTensor6.appendxml
   .. automethod:: ArrayOfTensor6.clear
   .. automethod:: ArrayOfTensor6.count
   .. automethod:: ArrayOfTensor6.extend
+  .. automethod:: ArrayOfTensor6.extendxml
   .. automethod:: ArrayOfTensor6.insert
   .. automethod:: ArrayOfTensor6.pop
   .. automethod:: ArrayOfTensor6.readxml
@@ -130,7 +132,6 @@ ArrayOfTensor6
   .. automethod:: ArrayOfTensor6.__format__
   .. automethod:: ArrayOfTensor6.__ge__
   .. automethod:: ArrayOfTensor6.__getitem__
-  .. automethod:: ArrayOfTensor6.__getstate__
   .. automethod:: ArrayOfTensor6.__gt__
   .. automethod:: ArrayOfTensor6.__hash__
   .. automethod:: ArrayOfTensor6.__init__
@@ -141,6 +142,5 @@ ArrayOfTensor6
   .. automethod:: ArrayOfTensor6.__ne__
   .. automethod:: ArrayOfTensor6.__repr__
   .. automethod:: ArrayOfTensor6.__setitem__
-  .. automethod:: ArrayOfTensor6.__setstate__
   .. automethod:: ArrayOfTensor6.__str__
 

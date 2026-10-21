@@ -13,6 +13,9 @@ ArrayOfArrayOfStokvecVector
       - :func:`~pyarts3.arts.ArrayOfArrayOfStokvecVector.append`
       - Append `arg` to the end of the list.
     * - Method
+      - :func:`~pyarts3.arts.ArrayOfArrayOfStokvecVector.appendxml`
+      - Append variable from file.
+    * - Method
       - :func:`~pyarts3.arts.ArrayOfArrayOfStokvecVector.clear`
       - Remove all items from list.
     * - Method
@@ -21,6 +24,9 @@ ArrayOfArrayOfStokvecVector
     * - Method
       - :func:`~pyarts3.arts.ArrayOfArrayOfStokvecVector.extend`
       - Extend `self` by appending elements from `arg`.
+    * - Method
+      - :func:`~pyarts3.arts.ArrayOfArrayOfStokvecVector.extendxml`
+      - Extend variable from file.
     * - Method
       - :func:`~pyarts3.arts.ArrayOfArrayOfStokvecVector.insert`
       - Insert object `arg1` before index `arg0`.
@@ -61,9 +67,6 @@ ArrayOfArrayOfStokvecVector
       - :func:`~pyarts3.arts.ArrayOfArrayOfStokvecVector.__getitem__`
       - __getitem__(self, arg: slice, /) -> pyarts3.arts.ArrayOfArrayOfStokvecVector
     * - Operator
-      - :func:`~pyarts3.arts.ArrayOfArrayOfStokvecVector.__getstate__`
-      - __getstate__(self) -> tuple[pyarts3.arts.ArrayOfArrayOfStokvecVector]
-    * - Operator
       - :func:`~pyarts3.arts.ArrayOfArrayOfStokvecVector.__gt__`
       - Return self>value.
     * - Operator
@@ -94,9 +97,6 @@ ArrayOfArrayOfStokvecVector
       - :func:`~pyarts3.arts.ArrayOfArrayOfStokvecVector.__setitem__`
       - __setitem__(self, arg0: slice, arg1: pyarts3.arts.ArrayOfArrayOfStokvecVector, /) -> None
     * - Operator
-      - :func:`~pyarts3.arts.ArrayOfArrayOfStokvecVector.__setstate__`
-      - __setstate__(self, arg: tuple[pyarts3.arts.ArrayOfArrayOfStokvecVector]) -> None
-    * - Operator
       - :func:`~pyarts3.arts.ArrayOfArrayOfStokvecVector.__str__`
       - __str__(self) -> str
 
@@ -108,9 +108,11 @@ ArrayOfArrayOfStokvecVector
   .. rubric:: Methods
 
   .. automethod:: ArrayOfArrayOfStokvecVector.append
+  .. automethod:: ArrayOfArrayOfStokvecVector.appendxml
   .. automethod:: ArrayOfArrayOfStokvecVector.clear
   .. automethod:: ArrayOfArrayOfStokvecVector.count
   .. automethod:: ArrayOfArrayOfStokvecVector.extend
+  .. automethod:: ArrayOfArrayOfStokvecVector.extendxml
   .. automethod:: ArrayOfArrayOfStokvecVector.insert
   .. automethod:: ArrayOfArrayOfStokvecVector.pop
   .. automethod:: ArrayOfArrayOfStokvecVector.readxml
@@ -130,7 +132,6 @@ ArrayOfArrayOfStokvecVector
   .. automethod:: ArrayOfArrayOfStokvecVector.__format__
   .. automethod:: ArrayOfArrayOfStokvecVector.__ge__
   .. automethod:: ArrayOfArrayOfStokvecVector.__getitem__
-  .. automethod:: ArrayOfArrayOfStokvecVector.__getstate__
   .. automethod:: ArrayOfArrayOfStokvecVector.__gt__
   .. automethod:: ArrayOfArrayOfStokvecVector.__hash__
   .. automethod:: ArrayOfArrayOfStokvecVector.__init__
@@ -141,6 +142,5 @@ ArrayOfArrayOfStokvecVector
   .. automethod:: ArrayOfArrayOfStokvecVector.__ne__
   .. automethod:: ArrayOfArrayOfStokvecVector.__repr__
   .. automethod:: ArrayOfArrayOfStokvecVector.__setitem__
-  .. automethod:: ArrayOfArrayOfStokvecVector.__setstate__
   .. automethod:: ArrayOfArrayOfStokvecVector.__str__
 

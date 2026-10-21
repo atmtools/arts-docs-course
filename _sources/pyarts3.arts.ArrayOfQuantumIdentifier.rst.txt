@@ -13,6 +13,9 @@ ArrayOfQuantumIdentifier
       - :func:`~pyarts3.arts.ArrayOfQuantumIdentifier.append`
       - Append `arg` to the end of the list.
     * - Method
+      - :func:`~pyarts3.arts.ArrayOfQuantumIdentifier.appendxml`
+      - Append variable from file.
+    * - Method
       - :func:`~pyarts3.arts.ArrayOfQuantumIdentifier.clear`
       - Remove all items from list.
     * - Method
@@ -21,6 +24,9 @@ ArrayOfQuantumIdentifier
     * - Method
       - :func:`~pyarts3.arts.ArrayOfQuantumIdentifier.extend`
       - Extend `self` by appending elements from `arg`.
+    * - Method
+      - :func:`~pyarts3.arts.ArrayOfQuantumIdentifier.extendxml`
+      - Extend variable from file.
     * - Method
       - :func:`~pyarts3.arts.ArrayOfQuantumIdentifier.insert`
       - Insert object `arg1` before index `arg0`.
@@ -61,9 +67,6 @@ ArrayOfQuantumIdentifier
       - :func:`~pyarts3.arts.ArrayOfQuantumIdentifier.__getitem__`
       - __getitem__(self, arg: slice, /) -> pyarts3.arts.ArrayOfQuantumIdentifier
     * - Operator
-      - :func:`~pyarts3.arts.ArrayOfQuantumIdentifier.__getstate__`
-      - __getstate__(self) -> tuple[pyarts3.arts.ArrayOfQuantumIdentifier]
-    * - Operator
       - :func:`~pyarts3.arts.ArrayOfQuantumIdentifier.__gt__`
       - __gt__(self, arg: pyarts3.arts.ArrayOfQuantumIdentifier, /) -> bool
     * - Operator
@@ -94,9 +97,6 @@ ArrayOfQuantumIdentifier
       - :func:`~pyarts3.arts.ArrayOfQuantumIdentifier.__setitem__`
       - __setitem__(self, arg0: slice, arg1: pyarts3.arts.ArrayOfQuantumIdentifier, /) -> None
     * - Operator
-      - :func:`~pyarts3.arts.ArrayOfQuantumIdentifier.__setstate__`
-      - __setstate__(self, arg: tuple[pyarts3.arts.ArrayOfQuantumIdentifier]) -> None
-    * - Operator
       - :func:`~pyarts3.arts.ArrayOfQuantumIdentifier.__str__`
       - __str__(self) -> str
 
@@ -108,9 +108,11 @@ ArrayOfQuantumIdentifier
   .. rubric:: Methods
 
   .. automethod:: ArrayOfQuantumIdentifier.append
+  .. automethod:: ArrayOfQuantumIdentifier.appendxml
   .. automethod:: ArrayOfQuantumIdentifier.clear
   .. automethod:: ArrayOfQuantumIdentifier.count
   .. automethod:: ArrayOfQuantumIdentifier.extend
+  .. automethod:: ArrayOfQuantumIdentifier.extendxml
   .. automethod:: ArrayOfQuantumIdentifier.insert
   .. automethod:: ArrayOfQuantumIdentifier.pop
   .. automethod:: ArrayOfQuantumIdentifier.readxml
@@ -130,7 +132,6 @@ ArrayOfQuantumIdentifier
   .. automethod:: ArrayOfQuantumIdentifier.__format__
   .. automethod:: ArrayOfQuantumIdentifier.__ge__
   .. automethod:: ArrayOfQuantumIdentifier.__getitem__
-  .. automethod:: ArrayOfQuantumIdentifier.__getstate__
   .. automethod:: ArrayOfQuantumIdentifier.__gt__
   .. automethod:: ArrayOfQuantumIdentifier.__hash__
   .. automethod:: ArrayOfQuantumIdentifier.__init__
@@ -141,6 +142,5 @@ ArrayOfQuantumIdentifier
   .. automethod:: ArrayOfQuantumIdentifier.__ne__
   .. automethod:: ArrayOfQuantumIdentifier.__repr__
   .. automethod:: ArrayOfQuantumIdentifier.__setitem__
-  .. automethod:: ArrayOfQuantumIdentifier.__setstate__
   .. automethod:: ArrayOfQuantumIdentifier.__str__
 

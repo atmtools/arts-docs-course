@@ -23,14 +23,14 @@ in the calculations.
 - Latitude grid.
 
   The latitude grid is a vector of latitudes, in degrees,
-  that defines a horizontal coordinate upon a ellipsoid.
+  that defines a horizontal coordinate upon an ellipsoid.
   It is always in ascending order, and its range is [-90, 90].
 
   Use these methods to check the latitude grid for correctness:
 
-  - :func:`~pyarts3.workspace.Workspace.atmospheric_fieldCheck`
-  - :func:`~pyarts3.workspace.Workspace.surface_fieldCheck`
-  - :func:`~pyarts3.workspace.Workspace.subsurface_fieldCheck`
+  - :func:`~pyarts3.workspace.Workspace.atm_fieldCheck`
+  - :func:`~pyarts3.workspace.Workspace.surf_fieldCheck`
+  - :func:`~pyarts3.workspace.Workspace.subsurf_fieldCheck`
 
   The only way to fix this if the grid is not valid is
   to regrid the data manually.
@@ -38,21 +38,21 @@ in the calculations.
 - Longitude grid.
 
   The longitude grid is a vector of longitudes, in degrees,
-  that defines a horizontal coordinate upon a ellipsoid.
+  that defines a horizontal coordinate upon an ellipsoid.
   It is always in ascending order, and its range is [-180, 180).
 
   Use these methods to check the longitudes grid for correctness:
 
-  - :func:`~pyarts3.workspace.Workspace.atmospheric_fieldCheck`
-  - :func:`~pyarts3.workspace.Workspace.surface_fieldCheck`
-  - :func:`~pyarts3.workspace.Workspace.subsurface_fieldCheck`
+  - :func:`~pyarts3.workspace.Workspace.atm_fieldCheck`
+  - :func:`~pyarts3.workspace.Workspace.surf_fieldCheck`
+  - :func:`~pyarts3.workspace.Workspace.subsurf_fieldCheck`
 
   If these fail because of the longitude grid,
   there are methods to fix the cyclicity of the grid:
 
-  - :func:`~pyarts3.workspace.Workspace.atmospheric_fieldFixCyclicity`
-  - :func:`~pyarts3.workspace.Workspace.surface_fieldFixCyclicity`
-  - :func:`~pyarts3.workspace.Workspace.subsurface_fieldFixCyclicity`
+  - :func:`~pyarts3.workspace.Workspace.atm_fieldFixCyclicity`
+  - :func:`~pyarts3.workspace.Workspace.surf_fieldFixCyclicity`
+  - :func:`~pyarts3.workspace.Workspace.subsurf_fieldFixCyclicity`
 
 - Frequency grid.
 

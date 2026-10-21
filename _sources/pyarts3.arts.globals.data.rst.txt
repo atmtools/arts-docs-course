@@ -11,7 +11,7 @@ data
 
     * - Static Data
       - ``pyarts3.arts.globals.data.arts_source_dir``
-      - '/scratch3/u237/users/olemke/code/arts/' (:class:`~str`)
+      - '/scratch2/u237/users/olemke/Hacking/arts-course/' (:class:`~str`)
     * - Static Data
       - ``pyarts3.arts.globals.data.has_cdisort``
       - True (:class:`~bool`)
@@ -33,9 +33,6 @@ data
     * - Operator
       - :func:`~pyarts3.arts.globals.data.__ge__`
       - Return self>=value.
-    * - Operator
-      - :func:`~pyarts3.arts.globals.data.__getstate__`
-      - Helper for pickle.
     * - Operator
       - :func:`~pyarts3.arts.globals.data.__gt__`
       - Return self>value.
@@ -71,7 +68,6 @@ data
   .. automethod:: data.__eq__
   .. automethod:: data.__format__
   .. automethod:: data.__ge__
-  .. automethod:: data.__getstate__
   .. automethod:: data.__gt__
   .. automethod:: data.__hash__
   .. automethod:: data.__init__

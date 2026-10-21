@@ -19,19 +19,19 @@ DisortRadiance
       - :func:`~pyarts3.arts.DisortRadiance.fromxml`
       - Create variable from file.
     * - :class:`DescendingGrid`
-      - :attr:`~pyarts3.arts.DisortRadiance.altitude_grid`
+      - :attr:`~pyarts3.arts.DisortRadiance.alt_grid`
       - Altitude grid of the fluxes (level values)
-    * - :class:`AzimuthGrid`
-      - :attr:`~pyarts3.arts.DisortRadiance.azimuth_grid`
+    * - :class:`AziGrid`
+      - :attr:`~pyarts3.arts.DisortRadiance.azi_grid`
       - Azimuth grid
-    * - :class:`Matrix`
+    * - :class:`Tensor4`
       - :attr:`~pyarts3.arts.DisortRadiance.data`
       - Radiance field (layer values)
     * - :class:`AscendingGrid`
-      - :attr:`~pyarts3.arts.DisortRadiance.frequency_grid`
+      - :attr:`~pyarts3.arts.DisortRadiance.freq_grid`
       - Frequency grid of the fluxes
-    * - :class:`ZenithGrid`
-      - :attr:`~pyarts3.arts.DisortRadiance.zenith_grid`
+    * - :class:`ZenGrid`
+      - :attr:`~pyarts3.arts.DisortRadiance.zen_grid`
       - Zenith grid
     * - Operator
       - :func:`~pyarts3.arts.DisortRadiance.__eq__`
@@ -42,9 +42,6 @@ DisortRadiance
     * - Operator
       - :func:`~pyarts3.arts.DisortRadiance.__ge__`
       - Return self>=value.
-    * - Operator
-      - :func:`~pyarts3.arts.DisortRadiance.__getstate__`
-      - Helper for pickle.
     * - Operator
       - :func:`~pyarts3.arts.DisortRadiance.__gt__`
       - Return self>value.
@@ -86,7 +83,7 @@ DisortRadiance
 
   .. rubric:: Attributes
 
-  .. attribute:: DisortRadiance.altitude_grid
+  .. attribute:: DisortRadiance.alt_grid
      :type: DescendingGrid
 
      Altitude grid of the fluxes (level values)
@@ -94,23 +91,23 @@ DisortRadiance
      .. :class:`DescendingGrid`
 
 
-  .. attribute:: DisortRadiance.azimuth_grid
-     :type: AzimuthGrid
+  .. attribute:: DisortRadiance.azi_grid
+     :type: AziGrid
 
      Azimuth grid
 
-     .. :class:`AzimuthGrid`
+     .. :class:`AziGrid`
 
 
   .. attribute:: DisortRadiance.data
-     :type: Matrix
+     :type: Tensor4
 
      Radiance field (layer values)
 
-     .. :class:`Matrix`
+     .. :class:`Tensor4`
 
 
-  .. attribute:: DisortRadiance.frequency_grid
+  .. attribute:: DisortRadiance.freq_grid
      :type: AscendingGrid
 
      Frequency grid of the fluxes
@@ -118,12 +115,12 @@ DisortRadiance
      .. :class:`AscendingGrid`
 
 
-  .. attribute:: DisortRadiance.zenith_grid
-     :type: ZenithGrid
+  .. attribute:: DisortRadiance.zen_grid
+     :type: ZenGrid
 
      Zenith grid
 
-     .. :class:`ZenithGrid`
+     .. :class:`ZenGrid`
 
 
 
@@ -132,7 +129,6 @@ DisortRadiance
   .. automethod:: DisortRadiance.__eq__
   .. automethod:: DisortRadiance.__format__
   .. automethod:: DisortRadiance.__ge__
-  .. automethod:: DisortRadiance.__getstate__
   .. automethod:: DisortRadiance.__gt__
   .. automethod:: DisortRadiance.__hash__
   .. automethod:: DisortRadiance.__init__

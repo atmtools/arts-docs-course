@@ -8,7 +8,7 @@
     <link href="_static/favicon-32x32.png" sizes="32x32" rel="icon" type="image/png">
     <link rel="apple-touch-icon" sizes="180x180" href="_static/apple-touch-icon.png" type="image/png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Arts catalogue data &mdash; ARTS 3.0.0dev8 documentation</title>
+  <title>Arts catalogue data &mdash; ARTS 3.0.0dev10 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -17,9 +17,10 @@
       <link rel="stylesheet" type="text/css" href="_static/custom.css?v=73457b95" />
 
   
+    <link rel="canonical" href="https://atmtools.github.io/arts-docs-master/examples.5-absorption.1-arts-catalogue-data.html" />
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=3afc90f3"></script>
+      <script src="_static/documentation_options.js?v=abe3498d"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -69,6 +70,7 @@
 <li class="toctree-l3"><a class="reference internal" href="examples.5-absorption.2-absorption-cross-sections.html">Absorption cross sections</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="examples.6-satellite-sensors.html">Satellite sensors</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="users.html">Guide</a></li>
@@ -159,26 +161,26 @@ and how to use it in your own scripts.</p>
 
 
 <span class="c1"># Load line catalog</span>
-<span class="n">ws</span><span class="o">.</span><span class="n">absorption_speciesSet</span><span class="p">(</span><span class="n">species</span><span class="o">=</span><span class="p">[</span><span class="n">isotopologue</span><span class="p">])</span>
-<span class="n">ws</span><span class="o">.</span><span class="n">absorption_bandsReadSpeciesSplitCatalog</span><span class="p">(</span><span class="n">basename</span><span class="o">=</span><span class="s2">&quot;lines/&quot;</span><span class="p">)</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">abs_speciesSet</span><span class="p">(</span><span class="n">species</span><span class="o">=</span><span class="p">[</span><span class="n">isotopologue</span><span class="p">])</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">abs_bandsReadSpeciesSplitCatalog</span><span class="p">(</span><span class="n">basename</span><span class="o">=</span><span class="s2">&quot;lines/&quot;</span><span class="p">)</span>
 
 <span class="c1"># Throw away lines outside the frequency range</span>
-<span class="n">ws</span><span class="o">.</span><span class="n">absorption_bandsSelectFrequencyByLine</span><span class="p">(</span><span class="n">fmin</span><span class="o">=</span><span class="n">f_min</span><span class="p">,</span> <span class="n">fmax</span><span class="o">=</span><span class="n">f_max</span><span class="p">)</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">abs_bandsSelectFrequencyByLine</span><span class="p">(</span><span class="n">fmin</span><span class="o">=</span><span class="n">f_min</span><span class="p">,</span> <span class="n">fmax</span><span class="o">=</span><span class="n">f_max</span><span class="p">)</span>
 
 <span class="c1"># Bail out if no lines were found inside the frequency range</span>
-<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">ws</span><span class="o">.</span><span class="n">absorption_bands</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">ws</span><span class="o">.</span><span class="n">abs_bands</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
     <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;No lines found in frequency range&quot;</span><span class="p">)</span>
 
 <span class="c1"># Get the intensity of the strongest line in each band</span>
 <span class="n">max_strengths</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">calc_hitran_line_strengths</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">lines</span><span class="p">,</span> <span class="n">isotopologue</span><span class="p">,</span> <span class="n">T0</span><span class="p">))</span>
-    <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">ws</span><span class="o">.</span><span class="n">absorption_bands</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">ws</span><span class="o">.</span><span class="n">abs_bands</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
 <span class="p">]</span>
 
 <span class="c1"># Sort bands by descending maximum line strength</span>
 <span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">max_strengths</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">keys</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">ws</span><span class="o">.</span><span class="n">absorption_bands</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
-<span class="n">sorted_bands</span> <span class="o">=</span> <span class="p">{</span><span class="n">keys</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span> <span class="n">ws</span><span class="o">.</span><span class="n">absorption_bands</span><span class="p">[</span><span class="n">keys</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">indices</span><span class="p">}</span>
+<span class="n">keys</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">ws</span><span class="o">.</span><span class="n">abs_bands</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="n">sorted_bands</span> <span class="o">=</span> <span class="p">{</span><span class="n">keys</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span> <span class="n">ws</span><span class="o">.</span><span class="n">abs_bands</span><span class="p">[</span><span class="n">keys</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">indices</span><span class="p">}</span>
 
 <span class="c1"># Enumerate bands</span>
 <span class="n">enum_bands</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">(</span><span class="n">sorted_bands</span><span class="o">.</span><span class="n">items</span><span class="p">()))</span>

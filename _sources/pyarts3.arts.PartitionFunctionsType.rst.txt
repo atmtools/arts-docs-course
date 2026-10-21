@@ -28,6 +28,9 @@ PartitionFunctionsType
       - ``pyarts3.arts.PartitionFunctionsType.Coeff``
       - "Coeff" (:class:`~PartitionFunctionsType`)
     * - Static Data
+      - ``pyarts3.arts.PartitionFunctionsType.Constant``
+      - "Constant" (:class:`~PartitionFunctionsType`)
+    * - Static Data
       - ``pyarts3.arts.PartitionFunctionsType.Interp``
       - "Interp" (:class:`~PartitionFunctionsType`)
     * - Static Data
@@ -42,9 +45,6 @@ PartitionFunctionsType
     * - Operator
       - :func:`~pyarts3.arts.PartitionFunctionsType.__ge__`
       - `self >= other`
-    * - Operator
-      - :func:`~pyarts3.arts.PartitionFunctionsType.__getstate__`
-      - __getstate__(self) -> tuple[str]
     * - Operator
       - :func:`~pyarts3.arts.PartitionFunctionsType.__gt__`
       - `self > other`
@@ -66,9 +66,6 @@ PartitionFunctionsType
     * - Operator
       - :func:`~pyarts3.arts.PartitionFunctionsType.__repr__`
       - __repr__(self) -> str
-    * - Operator
-      - :func:`~pyarts3.arts.PartitionFunctionsType.__setstate__`
-      - __setstate__(self, arg: tuple[str], /) -> None
     * - Operator
       - :func:`~pyarts3.arts.PartitionFunctionsType.__str__`
       - __str__(self) -> str
@@ -94,7 +91,6 @@ PartitionFunctionsType
   .. automethod:: PartitionFunctionsType.__eq__
   .. automethod:: PartitionFunctionsType.__format__
   .. automethod:: PartitionFunctionsType.__ge__
-  .. automethod:: PartitionFunctionsType.__getstate__
   .. automethod:: PartitionFunctionsType.__gt__
   .. automethod:: PartitionFunctionsType.__hash__
   .. automethod:: PartitionFunctionsType.__init__
@@ -102,6 +98,5 @@ PartitionFunctionsType
   .. automethod:: PartitionFunctionsType.__lt__
   .. automethod:: PartitionFunctionsType.__ne__
   .. automethod:: PartitionFunctionsType.__repr__
-  .. automethod:: PartitionFunctionsType.__setstate__
   .. automethod:: PartitionFunctionsType.__str__
 

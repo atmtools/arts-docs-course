@@ -13,6 +13,9 @@ ArrayOfSpeciesIsotope
       - :func:`~pyarts3.arts.ArrayOfSpeciesIsotope.append`
       - Append `arg` to the end of the list.
     * - Method
+      - :func:`~pyarts3.arts.ArrayOfSpeciesIsotope.appendxml`
+      - Append variable from file.
+    * - Method
       - :func:`~pyarts3.arts.ArrayOfSpeciesIsotope.clear`
       - Remove all items from list.
     * - Method
@@ -21,6 +24,9 @@ ArrayOfSpeciesIsotope
     * - Method
       - :func:`~pyarts3.arts.ArrayOfSpeciesIsotope.extend`
       - Extend `self` by appending elements from `arg`.
+    * - Method
+      - :func:`~pyarts3.arts.ArrayOfSpeciesIsotope.extendxml`
+      - Extend variable from file.
     * - Method
       - :func:`~pyarts3.arts.ArrayOfSpeciesIsotope.insert`
       - Insert object `arg1` before index `arg0`.
@@ -61,9 +67,6 @@ ArrayOfSpeciesIsotope
       - :func:`~pyarts3.arts.ArrayOfSpeciesIsotope.__getitem__`
       - __getitem__(self, arg: slice, /) -> pyarts3.arts.ArrayOfSpeciesIsotope
     * - Operator
-      - :func:`~pyarts3.arts.ArrayOfSpeciesIsotope.__getstate__`
-      - __getstate__(self) -> tuple[pyarts3.arts.ArrayOfSpeciesIsotope]
-    * - Operator
       - :func:`~pyarts3.arts.ArrayOfSpeciesIsotope.__gt__`
       - __gt__(self, arg: pyarts3.arts.ArrayOfSpeciesIsotope, /) -> bool
     * - Operator
@@ -94,9 +97,6 @@ ArrayOfSpeciesIsotope
       - :func:`~pyarts3.arts.ArrayOfSpeciesIsotope.__setitem__`
       - __setitem__(self, arg0: slice, arg1: pyarts3.arts.ArrayOfSpeciesIsotope, /) -> None
     * - Operator
-      - :func:`~pyarts3.arts.ArrayOfSpeciesIsotope.__setstate__`
-      - __setstate__(self, arg: tuple[pyarts3.arts.ArrayOfSpeciesIsotope]) -> None
-    * - Operator
       - :func:`~pyarts3.arts.ArrayOfSpeciesIsotope.__str__`
       - __str__(self) -> str
 
@@ -108,9 +108,11 @@ ArrayOfSpeciesIsotope
   .. rubric:: Methods
 
   .. automethod:: ArrayOfSpeciesIsotope.append
+  .. automethod:: ArrayOfSpeciesIsotope.appendxml
   .. automethod:: ArrayOfSpeciesIsotope.clear
   .. automethod:: ArrayOfSpeciesIsotope.count
   .. automethod:: ArrayOfSpeciesIsotope.extend
+  .. automethod:: ArrayOfSpeciesIsotope.extendxml
   .. automethod:: ArrayOfSpeciesIsotope.insert
   .. automethod:: ArrayOfSpeciesIsotope.pop
   .. automethod:: ArrayOfSpeciesIsotope.readxml
@@ -130,7 +132,6 @@ ArrayOfSpeciesIsotope
   .. automethod:: ArrayOfSpeciesIsotope.__format__
   .. automethod:: ArrayOfSpeciesIsotope.__ge__
   .. automethod:: ArrayOfSpeciesIsotope.__getitem__
-  .. automethod:: ArrayOfSpeciesIsotope.__getstate__
   .. automethod:: ArrayOfSpeciesIsotope.__gt__
   .. automethod:: ArrayOfSpeciesIsotope.__hash__
   .. automethod:: ArrayOfSpeciesIsotope.__init__
@@ -141,6 +142,5 @@ ArrayOfSpeciesIsotope
   .. automethod:: ArrayOfSpeciesIsotope.__ne__
   .. automethod:: ArrayOfSpeciesIsotope.__repr__
   .. automethod:: ArrayOfSpeciesIsotope.__setitem__
-  .. automethod:: ArrayOfSpeciesIsotope.__setstate__
   .. automethod:: ArrayOfSpeciesIsotope.__str__
 

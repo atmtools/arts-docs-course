@@ -13,6 +13,9 @@ QuantumIdentifierVectorMap
       - :func:`~pyarts3.arts.QuantumIdentifierVectorMap.clear`
       - Remove all items
     * - Method
+      - :func:`~pyarts3.arts.QuantumIdentifierVectorMap.extendxml`
+      - Extend variable from file.
+    * - Method
       - :func:`~pyarts3.arts.QuantumIdentifierVectorMap.items`
       - Returns an iterable view of the map's items.
     * - Method
@@ -61,9 +64,6 @@ QuantumIdentifierVectorMap
       - :func:`~pyarts3.arts.QuantumIdentifierVectorMap.__getitem__`
       - __getitem__(self, arg: pyarts3.arts.QuantumIdentifier, /) -> pyarts3.arts.Vector
     * - Operator
-      - :func:`~pyarts3.arts.QuantumIdentifierVectorMap.__getstate__`
-      - Helper for pickle.
-    * - Operator
       - :func:`~pyarts3.arts.QuantumIdentifierVectorMap.__gt__`
       - Return self>value.
     * - Operator
@@ -105,6 +105,7 @@ QuantumIdentifierVectorMap
   .. rubric:: Methods
 
   .. automethod:: QuantumIdentifierVectorMap.clear
+  .. automethod:: QuantumIdentifierVectorMap.extendxml
   .. automethod:: QuantumIdentifierVectorMap.items
   .. automethod:: QuantumIdentifierVectorMap.keys
   .. automethod:: QuantumIdentifierVectorMap.readxml
@@ -124,7 +125,6 @@ QuantumIdentifierVectorMap
   .. automethod:: QuantumIdentifierVectorMap.__format__
   .. automethod:: QuantumIdentifierVectorMap.__ge__
   .. automethod:: QuantumIdentifierVectorMap.__getitem__
-  .. automethod:: QuantumIdentifierVectorMap.__getstate__
   .. automethod:: QuantumIdentifierVectorMap.__gt__
   .. automethod:: QuantumIdentifierVectorMap.__hash__
   .. automethod:: QuantumIdentifierVectorMap.__init__

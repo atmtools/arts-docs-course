@@ -8,7 +8,7 @@
     <link href="_static/favicon-32x32.png" sizes="32x32" rel="icon" type="image/png">
     <link rel="apple-touch-icon" sizes="180x180" href="_static/apple-touch-icon.png" type="image/png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Optimal estimation &mdash; ARTS 3.0.0dev8 documentation</title>
+  <title>Optimal estimation &mdash; ARTS 3.0.0dev10 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -17,9 +17,10 @@
       <link rel="stylesheet" type="text/css" href="_static/custom.css?v=73457b95" />
 
   
+    <link rel="canonical" href="https://atmtools.github.io/arts-docs-master/concept.oem.html" />
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=3afc90f3"></script>
+      <script src="_static/documentation_options.js?v=abe3498d"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -60,9 +61,9 @@
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="users.html">Guide</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="user.atmospheric_field.html">The atmosphere</a></li>
-<li class="toctree-l2"><a class="reference internal" href="user.surface_field.html">The surface and planet</a></li>
-<li class="toctree-l2"><a class="reference internal" href="user.subsurface_field.html">The subsurface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user.atm_field.html">The atmosphere</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user.surf_field.html">The surface and planet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user.subsurf_field.html">The subsurface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="user.sensors.html">Sensor description</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="concepts.html">Underpinning concepts and background</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="concept.absorption.html">Absorption</a></li>
@@ -114,15 +115,15 @@
   <section id="optimal-estimation">
 <span id="sec-oem"></span><h1>Optimal estimation<a class="headerlink" href="#optimal-estimation" title="Link to this heading"></a></h1>
 <p>The core expression of optimal estimation in ARTS
-follows from <span id="id1">Rodgers [<a class="reference internal" href="bibliography.html#id143" title="C.D. Rodgers. Inverse methods for atmospheric sounding: Theory and practise. World Scientific Publishing, 1 edition, 2000.">27</a>]</span>.
+follows from <span id="id1">Rodgers [<a class="reference internal" href="bibliography.html#id143" title="C.D. Rodgers. Inverse methods for atmospheric sounding: Theory and practise. World Scientific Publishing, 1 edition, 2000.">30</a>]</span>.
 He formulates the core expression of a measurement as</p>
 <div class="math notranslate nohighlight">
 \[\vec{y} = F\left(\vec{x}\right) + \epsilon,\]</div>
 <p>where <span class="math notranslate nohighlight">\(\vec{y}\)</span> is a measurement vector
-(i.e., <a class="reference internal" href="pyarts3.workspace.Workspace.measurement_vector.html#pyarts3.workspace.Workspace.measurement_vector" title="pyarts3.workspace.Workspace.measurement_vector"><code class="xref py py-attr docutils literal notranslate"><span class="pre">measurement_vector</span></code></a>
+(i.e., <a class="reference internal" href="pyarts3.workspace.Workspace.measurement_vec.html#pyarts3.workspace.Workspace.measurement_vec" title="pyarts3.workspace.Workspace.measurement_vec"><code class="xref py py-attr docutils literal notranslate"><span class="pre">measurement_vec</span></code></a>
 in the ARTS workspace),
 <span class="math notranslate nohighlight">\(\vec{x}\)</span> is the state of the model
-(i.e., <a class="reference internal" href="pyarts3.workspace.Workspace.model_state_vector.html#pyarts3.workspace.Workspace.model_state_vector" title="pyarts3.workspace.Workspace.model_state_vector"><code class="xref py py-attr docutils literal notranslate"><span class="pre">model_state_vector</span></code></a>
+(i.e., <a class="reference internal" href="pyarts3.workspace.Workspace.model_state_vec.html#pyarts3.workspace.Workspace.model_state_vec" title="pyarts3.workspace.Workspace.model_state_vec"><code class="xref py py-attr docutils literal notranslate"><span class="pre">model_state_vec</span></code></a>
 in the ARTS workspace),
 <span class="math notranslate nohighlight">\(F\)</span> is the model (i.e., ARTS itself), and
 <span class="math notranslate nohighlight">\(\epsilon\)</span> is some measurement error that cannot
@@ -141,7 +142,7 @@ that minimizes some cost-function, which in ARTS is defined as</p>
 <span class="math notranslate nohighlight">\(m\)</span> is the number of measurements,
 <span class="math notranslate nohighlight">\(\vec{x}_a\)</span> is an a priori of <span class="math notranslate nohighlight">\(\vec{x}\)</span>,
 <span class="math notranslate nohighlight">\(\mathbf{S}_\epsilon\)</span> is the covariance of the measurement noise, and
-<span class="math notranslate nohighlight">\(\mathbf{S}_a\)</span> is the covariance of the model state apriori.</p>
+<span class="math notranslate nohighlight">\(\mathbf{S}_a\)</span> is the covariance of the model state a priori.</p>
 <section id="linearization">
 <h2>Linearization<a class="headerlink" href="#linearization" title="Link to this heading"></a></h2>
 <p>The optimal estimation methods in ARTS only work if it is possible to
@@ -153,7 +154,7 @@ This is equivalent to stating that</p>
 <div class="math notranslate nohighlight">
 \[\mathbf{J} = \frac{\partial \vec{y}}{\partial \vec{x}}\]</div>
 <p>is the Jacobian matrix
-(i.e., <a class="reference internal" href="pyarts3.workspace.Workspace.measurement_jacobian.html#pyarts3.workspace.Workspace.measurement_jacobian" title="pyarts3.workspace.Workspace.measurement_jacobian"><code class="xref py py-attr docutils literal notranslate"><span class="pre">measurement_jacobian</span></code></a>
+(i.e., <a class="reference internal" href="pyarts3.workspace.Workspace.measurement_jac.html#pyarts3.workspace.Workspace.measurement_jac" title="pyarts3.workspace.Workspace.measurement_jac"><code class="xref py py-attr docutils literal notranslate"><span class="pre">measurement_jac</span></code></a>
 in the ARTS workspace).</p>
 <p>One approach to minimize <span class="math notranslate nohighlight">\(\vec{x}\)</span> is to
 use a Gauss-Newton approach to update the state
